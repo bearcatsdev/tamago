@@ -1,0 +1,2 @@
+# TamagoServer
+ServerApp for Tamago
