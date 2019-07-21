@@ -14,10 +14,7 @@ routes(app);
 
 app.listen(port);
 
-https.createServer({
-    key: fs.readFileSync('/etc/apache2/ssl/apache.key'),
-    cert: fs.readFileSync('/etc/apache2/ssl/apache.crt')
-}, app)
+https.createServer(app)
 .listen(3443);
 
 console.log('Copyright (c) 2019 Stanley Ang.\nHello, Tamago! Server started on port: ' + port);
