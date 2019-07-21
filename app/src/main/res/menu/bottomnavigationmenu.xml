@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Home" android:icon="@mipmap/ic_launcher"></item>
-    <item android:title="Task"  android:icon="@mipmap/ic_launcher"></item>
-    <item android:enabled="false" android:checkable="false" ></item>
-    <item android:title="Reward"  android:icon="@mipmap/ic_launcher"></item>
-    <item android:title="Profile"  android:icon="@mipmap/ic_launcher"></item>
+<item android:title="Home" android:icon="@drawable/ic_01_home_w" android:id="@+id/home"></item>
+<item android:title="Task"  android:icon="@drawable/ic_02_task_w" android:id="@+id/task"></item>
+<item android:enabled="false" android:checkable="false" ></item>
+<item android:title="Reward"  android:icon="@drawable/ic_03_reward_w" android:id="@+id/reward"></item>
+<item android:title="Account"  android:icon="@drawable/ic_04_account_w" android:id="@+id/account"></item>
+
 </menu>

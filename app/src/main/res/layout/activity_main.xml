@@ -5,64 +5,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1ccff3"
     tools:context=".MainActivity">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="50">
-            <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:lottie_fileName="793-cycle-animation.json"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"/>
-            <ImageButton
-                android:id="@+id/ayam"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:background="@mipmap/ic_launcher" />
-        </LinearLayout>
+            android:id="@+id/fragment"
+            android:layout_weight="50"></FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_weight="1"></LinearLayout>
     </LinearLayout>
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@id/bar"
+        android:background="@drawable/shadow"/>
 
     <android.support.design.bottomappbar.BottomAppBar
         android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
+        android:layout_height="65dp"
         android:id="@+id/bar"
         android:layout_gravity="bottom"
         app:menu="@menu/bottomnavigationmenu"
         android:clickable="false"
-        app:fabCradleRoundedCornerRadius="12dp"
+        app:fabCradleRoundedCornerRadius="20dp"
         app:fabAlignmentMode="center"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
+
+
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
+        android:id="@+id/fab"
         app:fabSize="normal"
-        app:layout_anchor="@id/bar" />
+        app:layout_anchor="@id/bar"
+        android:backgroundTint="#ffffff"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
+
         <android.support.design.widget.BottomNavigationView
             android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
+            android:layout_height="65dp"
             android:clickable="false"
-            app:menu="@menu/bottomnavigationmenu"
+            android:background="@drawable/transparent"
+            android:id="@+id/navigation_menu"
             app:labelVisibilityMode="labeled"
-            ></android.support.design.widget.BottomNavigationView>
+            app:menu="@menu/bottomnavigationmenu"></android.support.design.widget.BottomNavigationView>
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>
