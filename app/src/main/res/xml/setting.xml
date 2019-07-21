@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fragment="com.bearcats.tamago.Preferences">
+
+    <PreferenceCategory
+        android:key="account"
+        android:title="Account">
+        <Preference
+            android:title="Connect to a Parent Account">
+        </Preference>
+        <Preference
+            android:title="Change Account">
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="setting"
+        android:title="Setting">
+        <Preference
+            android:title="Change Language">
+        </Preference>
+        <Preference
+            android:title="Notification Setting" >
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="costumer_service"
+        android:title="Customer Service">
+        <Preference
+            android:title="Frequently Asked Question">
+        </Preference>
+        <Preference
+            android:title="Bug Report">
+        </Preference>
+        <Preference
+            android:title="Contact Us">
+        </Preference>
+        <Preference
+            android:title="Help">
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

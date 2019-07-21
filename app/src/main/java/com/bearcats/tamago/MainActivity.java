@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragment;
     Preferences preferences;
     MenuItem prev_menuItem;
-    Menu menu1;
+    Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
         reward = new Reward();
         account = new Account();
         preferences = new Preferences();
+        menu = navigationView.getMenu();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment,home).commit();
 
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                fragment = null;
-                refreshItemMenu(prev_menuItem);
+                refreshItemMenu();
                 if(menuItem.getItemId() == R.id.home){
                     fragment = home;
                     getFragmentManager().beginTransaction().remove(preferences).commit();
@@ -113,33 +113,10 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bottomnavigationmenu,menu);
-        menu1 = menu;
-        return true;
-    }
-
-    public void refreshItemMenu(MenuItem menuItem){
-        Toast.makeText(this, menu1+"", Toast.LENGTH_SHORT).show();
-//        if(menuItem.getItemId() == R.id.home){
-//            menuItem.setIcon(R.drawable.ic_01_home_w);
-//        }
-//        else
-//        if(menuItem.getItemId() == R.id.task){
-//            menuItem.setIcon(R.drawable.ic_02_task_w);
-//        }
-//        else
-//        if(menuItem.getItemId() == R.id.reward){
-//            menuItem.setIcon(R.drawable.ic_03_reward_w);
-//        }
-//        else
-//        if(menuItem.getItemId() == R.id.account){
-//            menuItem.setIcon(R.drawable.ic_04_account_w);
-//        }
-//        menu.findItem(R.id.home).setIcon(R.drawable.ic_01_home_w);
-//        menu.findItem(R.id.task).setIcon(R.drawable.ic_02_task_w);
-//        menu.findItem(R.id.reward).setIcon(R.drawable.ic_03_reward_w);
-//        menu.findItem(R.id.account).setIcon(R.drawable.ic_04_account_w);
+    public void refreshItemMenu(){
+        menu.findItem(R.id.home).setIcon(R.drawable.ic_01_home_w);
+        menu.findItem(R.id.task).setIcon(R.drawable.ic_02_task_w);
+        menu.findItem(R.id.reward).setIcon(R.drawable.ic_03_reward_w);
+        menu.findItem(R.id.account).setIcon(R.drawable.ic_04_account_w);
     }
 }
