@@ -2,7 +2,6 @@
 
 var response = require('./res');
 var connection = require('./conn');
-var path = require('path');
 
 exports.index = function(req, res) {
     res.sendFile( __dirname + "/public/" + "index.html" );
