@@ -1,14 +1,16 @@
-var express = require('express'),
-    https = require('https'),
-    fs = require('fs'),
-    app = express(),
-    port = process.env.PORT || 3000,
-    portHttps = 3443,
-    bodyParser = require('body-parser'),
-    controller = require('./controller');
+var express = require('express');
+var https = require('https');
+var fs = require('fs');
+var app = express();
+var port = process.env.PORT || 3000;
+var portHttps = 3443;
+var bodyParser = require('body-parser');
+var controller = require('./controller');
+var path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 var routes = require('./routes');
 routes(app);

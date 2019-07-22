@@ -4,7 +4,7 @@ module.exports = function(app) {
     var todoList = require('./controller');
 
     app.route('/')
-        .get(todoList.notFoundPage);
+        .get(todoList.index);
 
     app.route('/api/user/newUser')
         .post(todoList.newUser);
