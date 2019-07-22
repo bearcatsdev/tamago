@@ -86,4 +86,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Config files
 conn.js

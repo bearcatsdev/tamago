@@ -3,6 +3,7 @@ var express = require('express'),
     fs = require('fs'),
     app = express(),
     port = process.env.PORT || 3000,
+    portHttps = 3443,
     bodyParser = require('body-parser'),
     controller = require('./controller');
 
@@ -13,8 +14,6 @@ var routes = require('./routes');
 routes(app);
 
 app.listen(port);
+https.createServer(app).listen(portHttps);
 
-https.createServer(app)
-.listen(3443);
-
-console.log('Copyright (c) 2019 Stanley Ang.\nHello, Tamago! Server started on port: ' + port);
+console.log('Copyright (c) 2019 Stanley Ang.\nHello, Tamago! HTTP server started on port: ' + port + ' and HTTPS on port: ' + portHttps);
