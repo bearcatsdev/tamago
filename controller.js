@@ -7,6 +7,10 @@ exports.index = function(req, res) {
     response.notFound(res);
 };
 
+exports.notFoundPage = function(req, res) {
+    response.notFound(res);
+};
+
 exports.loginUser = function(req, res) {
     var sql = "SELECT * FROM `users_list` WHERE `user_tel` = ?";
     var userTel = req.body.user_tel;
@@ -49,7 +53,7 @@ exports.verifyOtp = function(req, res) {
                 var userId = rows[0].user_id;
                 response.ok(rows[0], res);
             } else if (rows.length == 0) {
-                response.error("Invalid information", res);
+                response.error("Data supplied not sufficient", res);
             }
         }
     });

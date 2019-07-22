@@ -4,7 +4,7 @@ module.exports = function(app) {
     var todoList = require('./controller');
 
     app.route('/')
-        .get(todoList.index);
+        .get(todoList.notFoundPage);
 
     app.route('/api/user/newUser')
         .post(todoList.newUser);
@@ -29,4 +29,11 @@ module.exports = function(app) {
         
     app.route('/api/child/task/getTaskList')
         .post(todoList.getTaskList);   
+
+    // default page if no route found
+    app.route('*')
+        .get(todoList.notFoundPage);  
+
+    app.route('*')
+        .post(todoList.notFoundPage);  
 };
