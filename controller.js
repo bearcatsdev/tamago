@@ -36,7 +36,7 @@ exports.loginUser = function(req, res) {
 };
 
 exports.verifyOtp = function(req, res) {
-    var sql = "SELECT * FROM `users_list` WHERE `user_tel` = ? AND `latest_otp` = ?";
+    var sql = "SELECT `user_id`, `user_name`, `user_tel`, `user_email`, `user_type` FROM `users_list` WHERE `user_tel` = ? AND `latest_otp` = ?";
     var userTel = req.body.user_tel;
     var otp = req.body.otp;
 
