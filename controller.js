@@ -2,7 +2,7 @@
 
 var response = require('./res');
 var connection = require('./conn');
-const request = require('request');
+var request = require('request');
 
 exports.index = function(req, res) {
     res.sendFile( __dirname + "/public/" + "index.html" );
@@ -24,7 +24,7 @@ exports.loginUser = function(req, res) {
     }
 
     function generateOtpMessage(otp) {
-        return "[Tamago] JANGAN BAGIKAN KODE INI KEPADA SIAPAPUN. Kode verifikasi OTP anda adalah" + otp;
+        return "(Tamago) JANGAN BAGIKAN KODE INI KEPADA SIAPAPUN. Kode verifikasi OTP Tamago anda adalah " + otp;
     }
 
     connection.query(sql, [userTel], function (error, rows, fields){
@@ -34,17 +34,28 @@ exports.loginUser = function(req, res) {
         } else {
             if (rows.length == 1) {
                 var userId = rows[0].user_id;
-                response.ok("Sending OTP verification", res);
 
                 // send OTP
+                var otpError;
                 var otp = Math.floor(100000 + Math.random() * 900000);
-                console.log("OTP for " + userTel + " is " + otp);
+                //console.log("OTP for " + userTel + " is " + otp);
 
-                request(generateOtpUrl(usertel, generateOtpMessage(otp)), function (error, response, body) {
+                request(generateOtpUrl(userTel, generateOtpMessage(otp)), function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    console.log(body)
+                    //console.log(body);
+                    if (body.success != 0) {
+                        otpError = false;
+                    } else if (body.fail != 0) {
+                        otpError = true;
+                    }
                 }
                 });
+
+                if (!otpError) {
+                    response.ok("OTP sent successfully", res);
+                } else {
+                    response.ok("OTP send failed", res);
+                }
 
                 // update OTP
                 var sql = "UPDATE `users_list` SET `latest_otp` = '?' WHERE `users_list`.`user_id` = ?;"
