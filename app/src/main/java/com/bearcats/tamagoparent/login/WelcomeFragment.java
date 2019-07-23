@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.manager.FontManager;
+import com.bearcats.tamagoparent.manager.FragmentChangeListener;
 import com.bearcats.tamagoparent.views.FButton;
 import com.google.android.material.button.MaterialButton;
 
@@ -37,5 +38,19 @@ public class WelcomeFragment extends Fragment {
         termsOfService.setTypeface(FontManager.getFontBold(getContext()));
         privacyPolicy.setTypeface(FontManager.getFontBold(getContext()));
         letsGoButton.setTypeface(FontManager.getFontBold(getContext()));
+
+        letsGoButton.setOnClickListener(v -> {
+            Fragment loginFragment = new LoginFragment();
+            FragmentChangeListener fc = (FragmentChangeListener) getActivity();
+            fc.replaceFragment(loginFragment);
+        });
+
+        termsOfService.setOnClickListener(v -> {
+
+        });
+
+        privacyPolicy.setOnClickListener(v -> {
+
+        });
     }
 }

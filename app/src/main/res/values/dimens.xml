@@ -5,5 +5,5 @@
     <dimen name="fbutton_default_padding_right">10dp</dimen>
     <dimen name="fbutton_default_padding_top">5dp</dimen>
     <dimen name="fbutton_default_padding_bottom">5dp</dimen>
-    <dimen name="fbutton_default_shadow_height">4dp</dimen>
+    <dimen name="fbutton_default_shadow_height">5dp</dimen>
 </resources>

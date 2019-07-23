@@ -10,7 +10,7 @@
         android:id="@+id/tamago_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        fbutton:srcCompat="@mipmap/splash_tamago_parent"
+        android:src="@mipmap/splash_tamago_parent"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/welcome_text"
         android:layout_centerInParent="true"/>
@@ -69,7 +69,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
         fbutton:buttonColor="@color/colorPrimary"
-        fbutton:shadowEnabled="true" />
+        fbutton:shadowEnabled="true"/>
 
 
 </RelativeLayout>
