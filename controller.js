@@ -2,6 +2,7 @@
 
 var response = require('./res');
 var connection = require('./conn');
+const request = require('request');
 
 exports.index = function(req, res) {
     res.sendFile( __dirname + "/public/" + "index.html" );
@@ -14,6 +15,17 @@ exports.notFoundPage = function(req, res) {
 exports.loginUser = function(req, res) {
     var sql = "SELECT * FROM `users_list` WHERE `user_tel` = ?";
     var userTel = req.body.user_tel;
+    var OTP_ACCOUNT = "numb_brianra4";
+    var OTP_PASSWORD = "123456";
+    
+    function generateOtpUrl(numbers, content) {
+        content = encodeURIComponent(content.trim());
+        return "http://103.81.246.59:20003/sendsms?account=" + OTP_ACCOUNT + "&password=" + OTP_PASSWORD + "&numbers=" + numbers + "&content=" + content;
+    }
+
+    function generateOtpMessage(otp) {
+        return "[Tamago] JANGAN BAGIKAN KODE INI KEPADA SIAPAPUN. Kode verifikasi OTP anda adalah" + otp;
+    }
 
     connection.query(sql, [userTel], function (error, rows, fields){
         if (error){
@@ -26,7 +38,14 @@ exports.loginUser = function(req, res) {
 
                 // send OTP
                 var otp = Math.floor(100000 + Math.random() * 900000);
-                console.log("OTP for " + userTel + " is " + otp);  //TODO ganti jadi SMS
+                console.log("OTP for " + userTel + " is " + otp);
+
+                request(generateOtpUrl(usertel, generateOtpMessage(otp)), function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    console.log(body)
+                }
+                });
+
                 // update OTP
                 var sql = "UPDATE `users_list` SET `latest_otp` = '?' WHERE `users_list`.`user_id` = ?;"
                 connection.query(sql, [otp, userId]);
