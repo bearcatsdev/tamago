@@ -2,13 +2,13 @@ package com.bearcats.tamagoparent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.util.Log;
+
+import com.bearcats.tamagoparent.preferences.UserPreferences;
 
 public class MainActivity extends AppCompatActivity {
-
-    TextView helloWorld;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +16,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        helloWorld = findViewById(R.id.hello_world);
+        if (!UserPreferences.getUserLoggedIn(this)) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        } else {
 
-        helloWorld.setTypeface(FontManager.getFontBold(this));
-
+        }
     }
 }

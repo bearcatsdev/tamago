@@ -1,4 +1,4 @@
-package com.bearcats.tamagoparent;
+package com.bearcats.tamagoparent.manager;
 
 import android.content.Context;
 import android.graphics.Typeface;
