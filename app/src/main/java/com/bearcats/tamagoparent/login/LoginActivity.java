@@ -28,6 +28,8 @@ public class LoginActivity extends AppCompatActivity implements FragmentChangeLi
     public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_out_left,
+                R.animator.slide_out_right, R.animator.slide_in_right);
         fragmentTransaction.replace(R.id.fragment_placeholder, fragment, fragment.toString());
         fragmentTransaction.addToBackStack(fragment.toString());
         fragmentTransaction.commit();

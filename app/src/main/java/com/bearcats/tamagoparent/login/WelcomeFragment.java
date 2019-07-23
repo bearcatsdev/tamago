@@ -17,10 +17,10 @@ import com.google.android.material.button.MaterialButton;
 
 public class WelcomeFragment extends Fragment {
 
-    TextView welcomeText;
-    TextView termsOfService;
-    TextView privacyPolicy;
-    FButton letsGoButton;
+    private TextView welcomeText;
+    private TextView termsOfService;
+    private TextView privacyPolicy;
+    private FButton letsGoButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
