@@ -24,7 +24,7 @@ exports.loginUser = function(req, res) {
     }
 
     function generateOtpMessage(otp) {
-        return "(Tamago) JANGAN BAGIKAN KODE INI KEPADA SIAPAPUN. Kode verifikasi OTP Tamago anda adalah " + otp;
+        return "(TAMAGO) JANGAN BAGIKAN KODE INI KEPADA SIAPAPUN. Kode verifikasi OTP Tamago Anda adalah " + otp;
     }
 
     connection.query(sql, [userTel], function (error, rows, fields){
