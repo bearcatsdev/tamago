@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
+import com.bearcats.tamagoparent.login.LoginActivity;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 
 public class MainActivity extends AppCompatActivity {

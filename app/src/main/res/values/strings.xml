@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Tamago Parent</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_tamago">Hey, welcome to\nTamago for Parents!</string>
+    <string name="action_lets_go">Let\'s go!</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="terms_of_service">Terms of service</string>
 </resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    tools:context=".login.WelcomeFragment">
+
+    <ImageView
+        android:id="@+id/tamago_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fbutton:srcCompat="@mipmap/splash_tamago_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/welcome_text"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_to_tamago"
+        android:padding="80dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@id/lets_go_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:id="@+id/terms_of_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/colorPrimary"
+            android:background="?attr/selectableItemBackground"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="|"/>
+
+        <TextView
+            android:id="@+id/privacy_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/colorPrimary"
+            android:background="?attr/selectableItemBackground"/>
+
+    </LinearLayout>
+
+    <com.bearcats.tamagoparent.views.FButton
+        android:id="@+id/lets_go_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="@string/action_lets_go"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/white"
+        fbutton:buttonColor="@color/colorPrimary"
+        fbutton:shadowEnabled="true" />
+
+
+</RelativeLayout>
