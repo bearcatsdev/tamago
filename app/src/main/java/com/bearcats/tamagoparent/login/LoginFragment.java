@@ -14,15 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bearcats.tamagoparent.R;
+import com.bearcats.tamagoparent.conn.NetworkManager;
 import com.bearcats.tamagoparent.manager.FontManager;
 import com.bearcats.tamagoparent.views.FButton;
-import com.google.android.material.textfield.TextInputLayout;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class LoginFragment extends Fragment {
 
     Toolbar toolbar;
@@ -48,6 +46,10 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        String countryCode = "62";
+
+        NetworkManager networkManager = new NetworkManager(getContext());
+
         toolbar = getView().findViewById(R.id.toolbar);
         verificaion = getView().findViewById(R.id.verification);
         inputPhoneNumber = getView().findViewById(R.id.text_input_phone_number);
@@ -66,8 +68,22 @@ public class LoginFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        toolbar.setNavigationOnClickListener(v -> {
-            getActivity().onBackPressed();
+        toolbar.setNavigationOnClickListener(v -> getActivity().onBackPressed());
+
+        sendOtpBtn.setOnClickListener(v -> {
+            String phoneNumber = countryCode + phoneNumberEditText.getText().toString();
+            networkManager.userLogin(phoneNumber, new NetworkManager.postCallback() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(getContext(), "SUKSES WOI", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onError(String err) {
+                    Toast.makeText(getContext(), err, Toast.LENGTH_LONG).show();
+                }
+            });
+
         });
     }
 }

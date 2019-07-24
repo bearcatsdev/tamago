@@ -58,7 +58,7 @@
             android:layout_gravity="center"
             fbutton:buttonColor="#FDFDFD"
             android:layout_marginLeft="3dp"
-            android:text="+62"/>
+            android:text="🇮🇩 +62"/>
 
         <EditText
             android:id="@+id/edittext_phone_number"
