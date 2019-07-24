@@ -7,4 +7,8 @@
     <string name="action_lets_go">Let\'s go!</string>
     <string name="privacy_policy">Privacy policy</string>
     <string name="terms_of_service">Terms of service</string>
+    <string name="action_send_otp">Send OTP</string>
+    <string name="verification">Verification</string>
+    <string name="please_input_phone_number">Please input your phone number</string>
+    <string name="hint_phone_number">Phone number</string>
 </resources>
