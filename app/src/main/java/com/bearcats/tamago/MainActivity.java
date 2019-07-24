@@ -1,6 +1,8 @@
 package com.bearcats.tamago;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     Preferences preferences;
     MenuItem prev_menuItem;
     Menu menu;
+    int[][] state;
+    int[] color1,color2,color3,color4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
         preferences = new Preferences();
         menu = navigationView.getMenu();
 
+        color1 = getApplicationContext().getResources().getIntArray(R.array.home);
+        color2 = getApplicationContext().getResources().getIntArray(R.array.task);
+        color3 = getApplicationContext().getResources().getIntArray(R.array.reward);
+        color4 = getApplicationContext().getResources().getIntArray(R.array.account);
+
+        state = new int[][] {
+                new int[] {android.R.attr.state_checked},
+                new int[] {-android.R.attr.state_checked}
+        };
+
+        setNavigationViewColor(0);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment,home).commit();
 
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -59,25 +75,31 @@ public class MainActivity extends AppCompatActivity {
                     fragment = home;
                     getFragmentManager().beginTransaction().remove(preferences).commit();
                     menuItem.setIcon(R.drawable.ic_01_home_b);
+                    setNavigationViewColor(0);
                 }
                 else
                 if(menuItem.getItemId() == R.id.task){
                     fragment = task;
                     getFragmentManager().beginTransaction().remove(preferences).commit();
                     menuItem.setIcon(R.drawable.ic_02_tasks_b);
+                    setNavigationViewColor(1);
                 }
                 else
                 if(menuItem.getItemId() == R.id.reward){
                     fragment = reward;
                     getFragmentManager().beginTransaction().remove(preferences).commit();
                     menuItem.setIcon(R.drawable.ic_03_rewards_b);
+                    setNavigationViewColor(2);
                 }
                 else
                 if(menuItem.getItemId() == R.id.account){
                     fragment = account;
                     getFragmentManager().beginTransaction().replace(R.id.fragment,preferences).commit();
                     menuItem.setIcon(R.drawable.ic_04_account_b);
+                    setNavigationViewColor(3);
                 }
+
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment,fragment).commit();
                 prev_menuItem = menuItem;
                 return true;
@@ -118,5 +140,27 @@ public class MainActivity extends AppCompatActivity {
         menu.findItem(R.id.task).setIcon(R.drawable.ic_02_task_w);
         menu.findItem(R.id.reward).setIcon(R.drawable.ic_03_reward_w);
         menu.findItem(R.id.account).setIcon(R.drawable.ic_04_account_w);
+    }
+
+    public void setNavigationViewColor(int i){
+        ColorStateList csl = null;
+        if(i == 0){
+            csl = new ColorStateList(state,color1);
+        }
+        else
+        if(i == 1){
+            csl = new ColorStateList(state,color2);
+        }
+        else
+        if(i == 2){
+            csl = new ColorStateList(state,color3);
+        }
+        else
+        if(i == 3){
+            csl = new ColorStateList(state,color4);
+        }
+
+        navigationView.setItemTextColor(csl);
+        navigationView.setItemIconTintList(csl);
     }
 }

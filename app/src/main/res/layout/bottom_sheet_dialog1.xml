@@ -11,13 +11,13 @@
         android:layout_height="wrap_content"
         android:text="Tamiya"
         android:textSize="25sp"
-        android:fontFamily="@font/quicksand"/>
+        android:fontFamily="@font/quicksand_m"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Toys/Hobbies"
         android:textSize="18sp"
-        android:fontFamily="@font/quicksand"/>
+        android:fontFamily="@font/quicksand_m"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -26,12 +26,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rp.100.000"
-            android:fontFamily="@font/quicksand"/>
+            android:fontFamily="@font/quicksand_m"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tokopedia"
-            android:fontFamily="@font/quicksand"
+            android:fontFamily="@font/quicksand_m"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
@@ -59,7 +59,7 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
-                android:fontFamily="@font/quicksand"
+                android:fontFamily="@font/quicksand_m"
                 />
         </LinearLayout>
 
@@ -89,7 +89,7 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
-                android:fontFamily="@font/quicksand"
+                android:fontFamily="@font/quicksand_m"
                 />
         </LinearLayout>
 

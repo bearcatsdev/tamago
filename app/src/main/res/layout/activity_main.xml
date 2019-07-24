@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1ccff3"
+    android:background="#ffffff"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -22,12 +22,11 @@
             android:layout_height="65dp"
             android:layout_weight="1"></LinearLayout>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_above="@id/bar"
-        android:background="@drawable/shadow"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="4dp"-->
+        <!--android:layout_above="@id/bar"-->
+        <!--android:background="@drawable/shadow"/>-->
 
     <android.support.design.bottomappbar.BottomAppBar
         android:layout_width="match_parent"
@@ -36,21 +35,20 @@
         android:layout_gravity="bottom"
         app:menu="@menu/bottomnavigationmenu"
         android:clickable="false"
-        app:fabCradleRoundedCornerRadius="20dp"
+        app:fabCradleRoundedCornerRadius="10dp"
         app:fabAlignmentMode="center"
         android:layout_weight="1" />
 
 
-
     <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="center|bottom"
         android:id="@+id/fab"
         app:fabSize="normal"
-        app:layout_anchor="@id/bar"
-        android:backgroundTint="#ffffff"/>
-
+        app:layout_anchor="@+id/bar"
+        app:borderWidth="0dp"
+        android:backgroundTint="#00A6ED"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,8 +60,8 @@
             android:clickable="false"
             android:background="@drawable/transparent"
             android:id="@+id/navigation_menu"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottomnavigationmenu"></android.support.design.widget.BottomNavigationView>
+            app:menu="@menu/bottomnavigationmenu"
+            app:itemBackground="@drawable/transparent"/>
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#00A6ED</color>
+    <color name="colorPrimaryDark">#0088C2</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="home_active">#F6511D</color>
+    <color name="task_active">#FFB400</color>
+    <color name="reward_active">#7FB800</color>
+    <color name="account_active">#0D2C54</color>
+    <color name="inactive">#C0C0C0</color>
+
+    <array name="home">
+        <item>@color/home_active</item>
+        <item>@color/inactive</item>
+    </array>
+    <array name="task">
+        <item>@color/task_active</item>
+        <item>@color/inactive</item>
+    </array>
+    <array name="reward">
+        <item>@color/reward_active</item>
+        <item>@color/inactive</item>
+    </array>
+    <array name="account">
+        <item>@color/account_active</item>
+        <item>@color/inactive</item>
+    </array>
+
 </resources>

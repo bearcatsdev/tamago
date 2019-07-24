@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="wkwkwkwkwkwkwk"
         android:id="@+id/RewardImageName"
-        android:fontFamily="@font/quicksand"
+        android:fontFamily="@font/quicksand_m"
         android:layout_gravity="center"/>
 
 </LinearLayout>
