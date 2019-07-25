@@ -16,7 +16,7 @@ exports.loginUser = function(req, res) {
     var sql = "SELECT * FROM `users_list` WHERE `user_tel` = ?";
     var userTel = req.body.user_tel;
     var OTP_ACCOUNT = "numb_brianra4";
-    var OTP_PASSWORD = "123456";
+    var OTP_PASSWORD = "slvlab2018";
     
     function generateOtpUrl(numbers, content) {
         content = encodeURIComponent(content.trim());
