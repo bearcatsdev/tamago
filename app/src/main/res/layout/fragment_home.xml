@@ -85,14 +85,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:id="@+id/gatcha_buttonLayout"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"
-            android:layout_margin = "20dp">
+         >
 
             <android.support.v7.widget.CardView
                 android:layout_width="70dp"
@@ -102,10 +105,75 @@
                 app:cardCornerRadius="14dp"></android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/btn_menu"
                 android:layout_width="70dp"
                 android:layout_height="42dp"
                 android:backgroundTint="#96C42E"
+                app:cardCornerRadius="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/quicksand_b"
+                    android:text="DONE"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/skin_buttonLayout">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="70dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#7FB800"
+                app:cardCornerRadius="14dp"></android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="70dp"
+                android:layout_height="42dp"
+                android:backgroundTint="#96C42E"
+                app:cardCornerRadius="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/quicksand_b"
+                    android:text="DONE"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin = "20dp"
+            android:id="@+id/menu_buttonLayout"
+            >
+
+            <android.support.v7.widget.CardView
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#0088C2"
+                app:cardCornerRadius="14dp"
+               ></android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:backgroundTint="#00A6ED"
+                android:id="@+id/btn_menu"
                 app:cardCornerRadius="14dp">
 
                 <TextView

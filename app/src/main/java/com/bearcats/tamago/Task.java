@@ -45,10 +45,12 @@ public class Task extends Fragment {
 
         task = new ArrayList<>();
 
-        task.add( new Task_Model(1,2,20,100000,"Vacuum the House","2 minute(s) ago"));
+        task.add( new Task_Model(1,2,0,100000,"Vacuum the House","2 minute(s) ago"));
         task.add(new Task_Model(2,3,10,0,"Wash Car","10 minute(s) ago"));
         task.add(new Task_Model(3,5,0,5000,"Do Laundry","7 minute(s) ago"));
-
+        task.add( new Task_Model(1,2,0,100000,"Vacuum the House","2 minute(s) ago"));
+        task.add(new Task_Model(2,3,10,0,"Wash Car","10 minute(s) ago"));
+        task.add(new Task_Model(3,5,0,5000,"Do Laundry","7 minute(s) ago"));
 
         Adapter adapter = new Adapter(getContext(),task);
         recyclerView.setAdapter(adapter);

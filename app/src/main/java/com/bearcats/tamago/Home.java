@@ -13,6 +13,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar;
 
@@ -30,14 +31,19 @@ public class Home extends Fragment {
     }
 
     RoundedHorizontalProgressBar roundedHorizontalProgressBar;
+    FrameLayout gatchaButtonLayout, skinButtonLayout;
     CardView menuButton;
+    boolean menuOpened = false;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        menuOpened = false;
         roundedHorizontalProgressBar = view.findViewById(R.id.progress_bar);
         menuButton = view.findViewById(R.id.btn_menu);
+        gatchaButtonLayout = view.findViewById(R.id.gatcha_buttonLayout);
+        skinButtonLayout = view.findViewById(R.id.skin_buttonLayout);
 
         roundedHorizontalProgressBar.animateProgress(2000,0,50);
 
@@ -47,8 +53,14 @@ public class Home extends Fragment {
             @Override
             public void run() {
                 menuButton.setClickable(true);
-                Intent intent = new Intent(getContext(),Gatcha.class);
-                startActivity(intent);
+                if(!menuOpened){
+                    showMenu();
+                }
+                else{
+                    closeMenu();
+                }
+//                Intent intent = new Intent(getContext(),Gatcha.class);
+//                startActivity(intent);
             }
         };
 
@@ -69,5 +81,17 @@ public class Home extends Fragment {
             }
         });
 
+    }
+
+    public void showMenu(){
+        menuOpened = true;
+        gatchaButtonLayout.animate().translationX(-225);
+        skinButtonLayout.animate().translationX(-425);
+    }
+
+    public void closeMenu(){
+        menuOpened = false;
+        gatchaButtonLayout.animate().translationX(0);
+        skinButtonLayout.animate().translationX(0);
     }
 }

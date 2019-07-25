@@ -14,14 +14,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reward"
-                android:textSize="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/quicksand_m"/>
+
             <com.synnapps.carouselview.CarouselView
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
