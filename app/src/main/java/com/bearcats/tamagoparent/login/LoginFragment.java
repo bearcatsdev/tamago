@@ -91,7 +91,10 @@ public class LoginFragment extends Fragment {
                     Intent intent = new Intent(getContext(), VerifyOtpActivity.class);
                     intent.putExtra("user_tel", "626969");
                     startActivity(intent);
-                    getActivity().finish();
+                    // enable UI
+                    loadingCircle.setVisibility(View.GONE);
+                    sendOtpBtn.setEnabled(true);
+                    phoneNumberEditText.setEnabled(true);
                     return;
                 }
                 // continue
@@ -102,15 +105,20 @@ public class LoginFragment extends Fragment {
                             // register new user
                             Intent intent = new Intent(getContext(), NewUserActivity.class);
                             intent.putExtra("user_tel", phoneNumber);
-                            startActivity(intent);
-                            getActivity().finish();
+                            startActivity(intent);// enable UI
+                            loadingCircle.setVisibility(View.GONE);
+                            sendOtpBtn.setEnabled(true);
+                            phoneNumberEditText.setEnabled(true);
 
                         } else if (response.getString("response").equals("OTP sent successfully")) {
                             // verify otp
                             Intent intent = new Intent(getContext(), VerifyOtpActivity.class);
                             intent.putExtra("user_tel", phoneNumber);
-                            startActivity(intent);
-                            getActivity().finish();
+                            startActivity(intent);// enable UI
+                            loadingCircle.setVisibility(View.GONE);
+                            sendOtpBtn.setEnabled(true);
+                            phoneNumberEditText.setEnabled(true);
+
                         } else {
                             // unknown error
                             Toast.makeText(getContext(), getString(R.string.unknown_error), Toast.LENGTH_LONG).show();

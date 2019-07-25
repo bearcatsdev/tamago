@@ -3,7 +3,7 @@
     package="com.bearcats.tamagoparent">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
 
@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Launcher">
-        <activity android:name=".login.NewUserActivity"></activity>
+        <activity android:name=".mainmenu.MainMenuActivity"></activity>
+        <activity android:name=".login.NewUserActivity" />
         <activity android:name=".login.VerifyOtpActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".MainActivity">

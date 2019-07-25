@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bearcats.tamagoparent.R;
+import com.bearcats.tamagoparent.mainmenu.MainMenuActivity;
 import com.bearcats.tamagoparent.manager.FontManager;
 import com.bearcats.tamagoparent.manager.NetworkManager;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
@@ -79,6 +80,16 @@ public class VerifyOtpActivity extends AppCompatActivity {
         otpSentNumber.setTextColor(getResources().getColor(R.color.textColorDisabled));
         loadingCircle.setVisibility(View.GONE);
 
+        // toolbar
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(v -> {
+            onBackPressed();
+        });
+
         Intent intent = getIntent();
         String phoneNumber = intent.getStringExtra("user_tel");
         otpSentNumber.setText(getString(R.string.otp_sent_number, "+" + phoneNumber));
@@ -133,6 +144,9 @@ public class VerifyOtpActivity extends AppCompatActivity {
                     UserPreferences.setUsername(this, userName);
                     UserPreferences.setUserTel(this, userTel);
                     UserPreferences.setUserLoggedIn(this, true);
+
+                    startActivity(new Intent(this, MainMenuActivity.class));
+                    finish();
 
                 } else {
                     String reason = response.getString("reason");
