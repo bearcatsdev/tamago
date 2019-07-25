@@ -162,7 +162,7 @@ public class NetworkManager {
     }
 
     public void verifyOtp(String userTel, String otp, postObjectCallback callback) {
-        String url =  SERVER_URL + "/api/user/newUser";
+        String url =  SERVER_URL + "/api/user/verifyOtp";
         Map<String,String> params = new HashMap<>();
         params.put("user_tel", userTel);
         params.put("otp", otp);
@@ -202,7 +202,9 @@ public class NetworkManager {
 
                     if (errorReason != null || responseBody != null) {
                         try {
-                            callback.onResponse(false, jsonObject.getJSONObject("reason"));
+                            JSONObject errorObject = new JSONObject();
+                            errorObject.put("reason", jsonObject.getString("reason"));
+                            callback.onResponse(false, errorObject);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.e(TAG, e.getLocalizedMessage());

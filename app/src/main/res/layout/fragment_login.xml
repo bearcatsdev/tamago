@@ -9,7 +9,20 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
+        android:layout_height="?actionBarSize"
+        android:contentInsetEnd="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/loading_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -25,9 +38,9 @@
 
     <ImageView
         android:id="@+id/chicken"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:src="@drawable/ic_chicken"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_otp_wait"
         android:layout_below="@id/verification"
         android:layout_centerHorizontal="true"
         android:paddingTop="40dp"/>

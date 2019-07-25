@@ -10,19 +10,20 @@ public class UserPreferences {
     static final String KEY_USERNAME = "user_name";
     static final String KEY_USER_TOKEN = "user_token";
     static final String KEY_USER_LOGGED_IN = "user_logged_in";
+    static final String KEY_USER_TEL = "user_tel";
 
     private static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public static void setUserId(Context context, String username){
+    public static void setUserId(Context context, int username){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putString(KEY_USERID, username);
+        editor.putInt(KEY_USERID, username);
         editor.apply();
     }
 
-    public static String getUserId(Context context){
-        return getSharedPreference(context).getString(KEY_USERID,"");
+    public static int getUserId(Context context){
+        return getSharedPreference(context).getInt(KEY_USERID, 0);
     }
 
     public static void setUsername(Context context, String userid){
@@ -33,6 +34,16 @@ public class UserPreferences {
 
     public static String getUsername(Context context){
         return getSharedPreference(context).getString(KEY_USERNAME,"");
+    }
+
+    public static void setUserTel(Context context, String userTel){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_USER_TEL, userTel);
+        editor.apply();
+    }
+
+    public static String getUserTel(Context context){
+        return getSharedPreference(context).getString(KEY_USER_TEL,"");
     }
 
     public static void setUserToken(Context context, String usertoken){

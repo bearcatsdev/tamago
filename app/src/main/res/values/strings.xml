@@ -14,4 +14,8 @@
     <string name="otp_note">We will send you a one time SMS message\nCarrier rates may apply</string>
     <string name="unknown_error">Unknown error</string>
     <string name="field_must_be_filled">Field must be filled</string>
+    <string name="otp_has_been_sent">OTP has been sent!</string>
+    <string name="otp_sent_number">Please type the verification code\nsent to %1s</string>
+    <string name="action_verify">Verify</string>
+    <string name="otp_invalid">OTP code is invalid</string>
 </resources>
