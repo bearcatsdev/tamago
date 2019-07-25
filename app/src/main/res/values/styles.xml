@@ -1,8 +1,8 @@
 <resources>
-
-    <!-- Base application theme. -->
+    <!-- Default fontnya Quicksand bold, tapi beberapa ada yang Quicksand Reguler. Mohon diperhatikan secara rinci di desain mockup. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/quicksand_b</item>
+        <item name="fontFamily">@font/quicksand_b</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
