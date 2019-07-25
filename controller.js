@@ -74,19 +74,23 @@ exports.verifyOtp = function(req, res) {
     var userTel = req.body.user_tel;
     var otp = req.body.otp;
 
-    connection.query(sql, [userTel, otp], function (error, rows, fields){
-        if (error){
-            console.log(error);
-            response.error(error, res);
-        } else {
-            if (rows.length == 1) {
-                var userId = rows[0].user_id;
-                response.ok(rows[0], res);
-            } else if (rows.length == 0) {
-                response.error("Data supplied not sufficient", res);
+    if (userTel == null || otp == null) {
+        response.error("Data supplied not sufficient", res);
+    } else {
+        connection.query(sql, [userTel, otp], function (error, rows, fields){
+            if (error){
+                console.log(error);
+                response.error(error, res);
+            } else {
+                if (rows.length == 1) {
+                    var userId = rows[0].user_id;
+                    response.ok(rows[0], res);
+                } else if (rows.length == 0) {
+                    response.error("Invalid OTP", res);
+                }
             }
-        }
-    });
+        });
+    }
 };
 
 exports.newUser = function(req, res) {
