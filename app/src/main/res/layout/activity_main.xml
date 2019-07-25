@@ -1,67 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <FrameLayout
+            android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/fragment"
             android:layout_weight="50"></FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_weight="1"></LinearLayout>
     </LinearLayout>
     <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="4dp"-->
-        <!--android:layout_above="@id/bar"-->
-        <!--android:background="@drawable/shadow"/>-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="4dp"-->
+    <!--android:layout_above="@id/bar"-->
+    <!--android:background="@drawable/shadow"/>-->
 
     <android.support.design.bottomappbar.BottomAppBar
+        android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:id="@+id/bar"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottomnavigationmenu"
+        android:layout_weight="1"
         android:clickable="false"
-        app:fabCradleRoundedCornerRadius="10dp"
         app:fabAlignmentMode="center"
-        android:layout_weight="1" />
+        app:fabCradleRoundedCornerRadius="10dp"
+        app:menu="@menu/bottomnavigationmenu" />
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center|bottom"
-        android:id="@+id/fab"
-        app:fabSize="normal"
-        app:layout_anchor="@+id/bar"
-        app:borderWidth="0dp"
-        android:backgroundTint="#00A6ED"/>
     <FrameLayout
+        android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/navigation_menu"
+            android:background="#DFDFDF"></View>
+
         <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation_menu"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:clickable="false"
             android:background="@drawable/transparent"
-            android:id="@+id/navigation_menu"
-            app:menu="@menu/bottomnavigationmenu"
-            app:itemBackground="@drawable/transparent"/>
+            android:clickable="false"
+            app:itemBackground="@drawable/transparent"
+            app:menu="@menu/bottomnavigationmenu" />
     </FrameLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center|bottom"
+        android:backgroundTint="#00A6ED"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:fabSize="normal"
+        app:layout_anchor="@+id/bar" />
 </android.support.design.widget.CoordinatorLayout>
