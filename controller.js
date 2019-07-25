@@ -27,6 +27,10 @@ exports.loginUser = function(req, res) {
         return "(TAMAGO) JANGAN BAGIKAN KODE INI KEPADA SIAPAPUN. Kode verifikasi OTP Tamago Anda adalah " + otp;
     }
 
+    if (userTel == null) {
+        response.error("Data supplied not sufficient", res);
+    }
+
     connection.query(sql, [userTel], function (error, rows, fields){
         if (error){
             console.log(error);
