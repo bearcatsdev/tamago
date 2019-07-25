@@ -3,6 +3,7 @@ package com.bearcats.tamago;
 import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,9 +11,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -34,8 +40,100 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         ((ViewHolder)viewHolder).task.setText(task_models.get(i).getTaskName());
-        ((ViewHolder)viewHolder).money.setText(task_models.get(i).getTaskReward());
         ((ViewHolder)viewHolder).time.setText(task_models.get(i).getTaskTime());
+
+        int parent_type = task_models.get(i).getParent_type();
+
+        //set icon for parent
+        switch(parent_type){
+            case 1:
+                ((ViewHolder)viewHolder).child_parent.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.avatar_dad));
+                break;
+            case 2:
+                ((ViewHolder)viewHolder).child_parent.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.avatar_mom));
+                break;
+            case 3:
+                ((ViewHolder)viewHolder).child_parent.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.avatar_grandpa));
+                break;
+            case 4:
+                ((ViewHolder)viewHolder).child_parent.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.avatar_grandma));
+                break;
+        }
+
+
+        int egg =task_models.get(i).getEgg();
+        int money = task_models.get(i).getMoney();
+
+        //format indonesia money
+        DecimalFormat format = (DecimalFormat)DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp ");
+        formatRp.setGroupingSeparator('.');
+
+        format.setDecimalFormatSymbols(formatRp);
+
+        // set reward, egg or money
+        if(egg == 0 && money > 0){
+            ((ViewHolder) viewHolder).money.setText(format.format(money).substring(0,format.format(money).length()-3));
+        }
+        else{
+            ((ViewHolder) viewHolder).money.setText(egg+"");
+        }
+
+        //set task icon
+        int task_type = task_models.get(i).getTask_type();
+
+        switch (task_type){
+            case 1:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_01_gloves));
+                break;
+            case 2:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_02_pump));
+                break;
+            case 3:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_03_liquid));
+                break;
+            case 4:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_04_garbage));
+                break;
+            case 5:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_05_broom));
+                break;
+            case 6:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_06_recycle));
+                break;
+            case 7:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_07_spray));
+                break;
+            case 8:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_08_soap));
+                break;
+            case 9:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_09_bucket));
+                break;
+            case 10:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_10_sponge));
+                break;
+            case 11:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_11_laundry));
+                break;
+            case 12:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_12_vacuum));
+                break;
+            case 13:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_13_iron));
+                break;
+            case 14:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_14_wiper));
+                break;
+            case 15:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_15_dish));
+                break;
+            case 16:
+                ((ViewHolder)viewHolder).child_task.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.chores_16_brush));
+                break;
+        }
 
         final CardView done = ((ViewHolder)viewHolder).done;
         final Handler handler = new Handler();
@@ -60,6 +158,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                done.setClickable(false);
                 done.animate().translationY(20).setDuration(100);
                 handler.postDelayed(runnable,100);
 
@@ -75,6 +174,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView task,money,time;
+        ImageView child_parent, child_task, reward;
         CardView done;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,13 +182,9 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             money = itemView.findViewById(R.id.tv_money);
             time = itemView.findViewById(R.id.tv_time);
             done = itemView.findViewById(R.id.btn_done);
-
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                }
-//            });
+            child_parent = itemView.findViewById(R.id.icon_parent);
+            child_task = itemView.findViewById(R.id.icon_task);
+            reward = itemView.findViewById(R.id.reward);
         }
     }
 }

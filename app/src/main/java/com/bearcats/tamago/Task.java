@@ -45,9 +45,9 @@ public class Task extends Fragment {
 
         task = new ArrayList<>();
 
-        task.add(new Task_Model("Vacuum the House","Rp.10.000","2 minute(s) ago","Mom"));
-        task.add(new Task_Model("Wash Car","2 Egg(s)","10 minute(s) ago","Dad"));
-        task.add(new Task_Model("Do Laundry","Rp.15.000","7 minute(s) ago","Granny"));
+        task.add( new Task_Model(1,2,20,100000,"Vacuum the House","2 minute(s) ago"));
+        task.add(new Task_Model(2,3,10,0,"Wash Car","10 minute(s) ago"));
+        task.add(new Task_Model(3,5,0,5000,"Do Laundry","7 minute(s) ago"));
 
 
         Adapter adapter = new Adapter(getContext(),task);

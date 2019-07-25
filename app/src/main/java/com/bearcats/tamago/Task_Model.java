@@ -1,13 +1,16 @@
 package com.bearcats.tamago;
 
 public class Task_Model{
-    private String taskName, taskReward, taskTime,taskSource;
+    private String taskName, taskTime;
+    private int parent_type,task_type,egg,money;
 
-    public Task_Model(String taskName, String taskReward, String taskTime, String taskSource){
+    public Task_Model(int parent_type, int task_type, int egg, int money, String taskName, String taskTime){
         this.taskName = taskName;
-        this.taskReward = taskReward;
         this.taskTime = taskTime;
-        this.taskSource = taskSource;
+        this.parent_type = parent_type;
+        this.egg = egg;
+        this.money = money;
+        this.task_type = task_type;
     }
 
     public String getTaskName() {
@@ -18,14 +21,6 @@ public class Task_Model{
         this.taskName = taskName;
     }
 
-    public String getTaskReward() {
-        return taskReward;
-    }
-
-    public void setTaskReward(String taskReward) {
-        this.taskReward = taskReward;
-    }
-
     public String getTaskTime() {
         return taskTime;
     }
@@ -34,11 +29,35 @@ public class Task_Model{
         this.taskTime = taskTime;
     }
 
-    public String getTaskSource() {
-        return taskSource;
+    public int getParent_type() {
+        return parent_type;
     }
 
-    public void setTaskSource(String taskSource) {
-        this.taskSource = taskSource;
+    public void setParent_type(int parent_type) {
+        this.parent_type = parent_type;
+    }
+
+    public int getEgg() {
+        return egg;
+    }
+
+    public void setEgg(int egg) {
+        this.egg = egg;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getTask_type() {
+        return task_type;
+    }
+
+    public void setTask_type(int task_type) {
+        this.task_type = task_type;
     }
 }
