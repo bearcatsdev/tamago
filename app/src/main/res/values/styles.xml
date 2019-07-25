@@ -1,8 +1,8 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/textViewStyle</item>
+        <item name="android:buttonStyle">@style/buttonStyle</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -11,6 +11,14 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">#ffffff</item>
         <item name="android:navigationBarColor">#ffffff</item>
+    </style>
+
+    <style name="textViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">quicksand_b</item>
+    </style>
+
+    <style name="buttonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">quicksand_b</item>
     </style>
 
 </resources>
