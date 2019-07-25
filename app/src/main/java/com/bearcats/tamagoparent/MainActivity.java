@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.bearcats.tamagoparent.login.LoginActivity;
+import com.bearcats.tamagoparent.mainmenu.MainMenuActivity;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         } else {
-            UserPreferences.clearLoggedInUser(this);
+            startActivity(new Intent(this, MainMenuActivity.class));
+            finish();
         }
     }
 }

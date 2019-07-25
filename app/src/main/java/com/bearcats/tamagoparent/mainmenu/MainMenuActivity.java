@@ -19,5 +19,14 @@ public class MainMenuActivity extends AppCompatActivity {
             // user not logged in
             finish();
         }
+
+        // Untuk ambil data user dari preferences, pakai UserPreferences
+        String userName = UserPreferences.getUsername(this);
+        int UserId = UserPreferences.getUserId(this);
+
+        // Untuk logout pakai ini
+        // UserPreferences.clearLoggedInUser(this);
+
+        // Untuk ngepost data ke server pakai NetworkManager
     }
 }

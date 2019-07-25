@@ -18,4 +18,8 @@
     <string name="otp_sent_number">Please type the verification code\nsent to %1s</string>
     <string name="action_verify">Verify</string>
     <string name="otp_invalid">OTP code is invalid</string>
+    <string name="tell_your_name">Hello, who are you?</string>
+    <string name="hint_name">Your name</string>
+    <string name="action_next">Next</string>
+    <string name="welcome">Welcome</string>
 </resources>

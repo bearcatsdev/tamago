@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +23,6 @@ import com.bearcats.tamagoparent.manager.NetworkManager;
 import com.bearcats.tamagoparent.manager.FontManager;
 import com.bearcats.tamagoparent.views.FButton;
 
-import org.json.JSONObject;
-
 public class LoginFragment extends Fragment {
 
     private static final String TAG = "LoginFragment";
@@ -33,7 +30,6 @@ public class LoginFragment extends Fragment {
     public LoginFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,13 +94,19 @@ public class LoginFragment extends Fragment {
                     return;
                 }
                 // continue
-                String phoneNumber = countryCode + phoneNumberEditText.getText().toString();
+                // remove 0 from number
+                String phoneNumber = phoneNumberEditText.getText().toString();
+                if (String.valueOf(phoneNumber.charAt(0)).equals("0")) {
+                    phoneNumber = phoneNumber.substring(1);
+                }
+                phoneNumber = countryCode + phoneNumber;
+                String finalPhoneNumber = phoneNumber;
                 networkManager.userLogin(phoneNumber, (success, response) -> {
                     if (success) {
                         if (response.getString("response").equals("User not found")) {
                             // register new user
                             Intent intent = new Intent(getContext(), NewUserActivity.class);
-                            intent.putExtra("user_tel", phoneNumber);
+                            intent.putExtra("user_tel", finalPhoneNumber);
                             startActivity(intent);// enable UI
                             loadingCircle.setVisibility(View.GONE);
                             sendOtpBtn.setEnabled(true);
@@ -113,7 +115,7 @@ public class LoginFragment extends Fragment {
                         } else if (response.getString("response").equals("OTP sent successfully")) {
                             // verify otp
                             Intent intent = new Intent(getContext(), VerifyOtpActivity.class);
-                            intent.putExtra("user_tel", phoneNumber);
+                            intent.putExtra("user_tel", finalPhoneNumber);
                             startActivity(intent);// enable UI
                             loadingCircle.setVisibility(View.GONE);
                             sendOtpBtn.setEnabled(true);

@@ -81,19 +81,28 @@ public class NetworkManager {
                     try {
                         responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
                         jsonObject = new JSONObject(responseBody);
+                        Log.d(TAG, jsonObject.getString("reason"));
                         errorReason = jsonObject.getString("reason");
-                        Log.d(TAG, errorReason);
-                        callback.onResponse(false, jsonObject.getJSONObject("reason"));
                     } catch (Exception e)  {
-                        e.printStackTrace();
                         Log.e(TAG, e.getLocalizedMessage());
+                    }
+
+                    if (errorReason != null || responseBody != null) {
                         try {
                             JSONObject errorObject = new JSONObject();
-                            errorObject.put("reason", e.getLocalizedMessage());
-                            Log.d(TAG, errorObject.toString());
+                            errorObject.put("reason", jsonObject.getString("reason"));
                             callback.onResponse(false, errorObject);
-                        } catch (JSONException e1) {
-                            e1.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.e(TAG, e.getLocalizedMessage());
+                        }
+                    } else {
+                        JSONObject errorObject = new JSONObject();
+                        try {
+                            errorObject.put("reason", error.getLocalizedMessage());
+                            callback.onResponse(false, errorObject);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
                     }
                 });
@@ -119,7 +128,7 @@ public class NetworkManager {
                         Integer networkStatus = jsonObject.getInt("status");
 
                         if (networkStatus == 200) {
-                            callback.onResponse(true, jsonObject.getJSONObject("response"));
+                            callback.onResponse(true, jsonObject);
                         }
 
                     } catch (Exception e) {
@@ -142,7 +151,9 @@ public class NetworkManager {
 
                     if (errorReason != null || responseBody != null) {
                         try {
-                            callback.onResponse(false, jsonObject.getJSONObject("reason"));
+                            JSONObject errorObject = new JSONObject();
+                            errorObject.put("reason", jsonObject.getString("reason"));
+                            callback.onResponse(false, errorObject);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.e(TAG, e.getLocalizedMessage());

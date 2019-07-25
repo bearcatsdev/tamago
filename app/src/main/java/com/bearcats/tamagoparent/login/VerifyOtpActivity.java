@@ -46,12 +46,21 @@ public class VerifyOtpActivity extends AppCompatActivity {
     EditText otp6;
     SmsVerifyCatcher smsVerifyCatcher;
     LinearLayout innerLayout;
+    TextView otpSentNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_otp);
+
+        Intent intent = getIntent();
+        String phoneNumber = intent.getStringExtra("user_tel");
+
+        if (phoneNumber == null) {
+            // no phone number
+            finish();
+        }
 
         otp1 = findViewById(R.id.otp_1);
         otp2 = findViewById(R.id.otp_2);
@@ -60,11 +69,11 @@ public class VerifyOtpActivity extends AppCompatActivity {
         otp5 = findViewById(R.id.otp_5);
         otp6 = findViewById(R.id.otp_6);
         innerLayout = findViewById(R.id.linear_layout_inner);
+        otpSentNumber = findViewById(R.id.text_otp_sent_number);
         Toolbar toolbar = findViewById(R.id.toolbar);
         TextView verification = findViewById(R.id.verification);
         TextView otpSentText = findViewById(R.id.text_otp_sent);
         FButton verifyBtn = findViewById(R.id.btn_verify);
-        TextView otpSentNumber = findViewById(R.id.text_otp_sent_number);
         ProgressBar loadingCircle = findViewById(R.id.loading_circle);
 
         verification.setTypeface(FontManager.getFontBold(this));
@@ -80,6 +89,8 @@ public class VerifyOtpActivity extends AppCompatActivity {
         otpSentNumber.setTextColor(getResources().getColor(R.color.textColorDisabled));
         loadingCircle.setVisibility(View.GONE);
 
+        otpSentNumber.setText(getString(R.string.otp_sent_number, "+" + phoneNumber));
+
         // toolbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -89,10 +100,6 @@ public class VerifyOtpActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
         });
-
-        Intent intent = getIntent();
-        String phoneNumber = intent.getStringExtra("user_tel");
-        otpSentNumber.setText(getString(R.string.otp_sent_number, "+" + phoneNumber));
 
         otp1.addTextChangedListener(new OtpTextWatcher(otp1));
         otp2.addTextChangedListener(new OtpTextWatcher(otp2));
@@ -145,7 +152,9 @@ public class VerifyOtpActivity extends AppCompatActivity {
                     UserPreferences.setUserTel(this, userTel);
                     UserPreferences.setUserLoggedIn(this, true);
 
-                    startActivity(new Intent(this, MainMenuActivity.class));
+                    Intent intent2 = new Intent(this, MainMenuActivity.class);
+                    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent2);
                     finish();
 
                 } else {
@@ -179,8 +188,6 @@ public class VerifyOtpActivity extends AppCompatActivity {
                 }
             });
         });
-
-
     }
 
     private void shakeOtpFields() {
