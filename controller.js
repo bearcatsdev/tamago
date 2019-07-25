@@ -63,7 +63,7 @@ exports.loginUser = function(req, res) {
 
             } else if (rows.length == 0) {
                 // register user
-                response.notFound(res);
+                response.ok("User not found", res);
             }
         }
     });
