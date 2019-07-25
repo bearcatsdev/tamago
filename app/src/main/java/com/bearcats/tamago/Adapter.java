@@ -60,9 +60,16 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 break;
         }
 
-
         int egg =task_models.get(i).getEgg();
         int money = task_models.get(i).getMoney();
+
+        //set icon for money
+        if(egg!=0){
+            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_02_egg));
+        }
+        else{
+            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_00_wallet));
+        }
 
         //format indonesia money
         DecimalFormat format = (DecimalFormat)DecimalFormat.getCurrencyInstance();
@@ -174,7 +181,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView task,money,time;
-        ImageView child_parent, child_task, reward;
+        ImageView child_parent, child_task, child_reward;
         CardView done;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -184,7 +191,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             done = itemView.findViewById(R.id.btn_done);
             child_parent = itemView.findViewById(R.id.icon_parent);
             child_task = itemView.findViewById(R.id.icon_task);
-            reward = itemView.findViewById(R.id.reward);
+            child_reward = itemView.findViewById(R.id.icon_reward);
         }
     }
 }

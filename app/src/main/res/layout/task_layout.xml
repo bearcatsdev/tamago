@@ -92,10 +92,10 @@
 
 
             <ImageView
+                android:id="@+id/icon_reward"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@mipmap/ic_launcher"
-                android:id="@+id/icon_reward"/>
+                 />
             <TextView
                 android:id="@+id/tv_money"
                 android:layout_width="wrap_content"

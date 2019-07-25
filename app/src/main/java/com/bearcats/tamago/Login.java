@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity implements ZXingScannerView.ResultH
     @Override
     public void handleResult(Result rawResult) {
         String text, format;
-        text = rawResult.getText().toString();
+        text = rawResult.getText();
         format = rawResult.getBarcodeFormat().toString();
 
         if(text.equals("12345678")){
