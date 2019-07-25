@@ -11,4 +11,7 @@
     <string name="verification">Verification</string>
     <string name="please_input_phone_number">Please input your phone number</string>
     <string name="hint_phone_number">Phone number</string>
+    <string name="otp_note">We will send you a one time SMS message\nCarrier rates may apply</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="field_must_be_filled">Field must be filled</string>
 </resources>

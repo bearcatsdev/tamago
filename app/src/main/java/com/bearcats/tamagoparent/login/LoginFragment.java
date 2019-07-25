@@ -1,6 +1,7 @@
 package com.bearcats.tamagoparent.login;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,18 +19,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bearcats.tamagoparent.R;
-import com.bearcats.tamagoparent.conn.NetworkManager;
+import com.bearcats.tamagoparent.manager.NetworkManager;
 import com.bearcats.tamagoparent.manager.FontManager;
 import com.bearcats.tamagoparent.views.FButton;
 
+import org.json.JSONObject;
+
 public class LoginFragment extends Fragment {
 
-    Toolbar toolbar;
-    TextView verificaion;
-    TextView inputPhoneNumber;
-    FButton countryCodeBtn;
-    FButton sendOtpBtn;
-    EditText phoneNumberEditText;
+    private static final String TAG = "LoginFragment";
 
     public LoginFragment() {
         // Required empty public constructor
@@ -50,18 +49,21 @@ public class LoginFragment extends Fragment {
 
         NetworkManager networkManager = new NetworkManager(getContext());
 
-        toolbar = getView().findViewById(R.id.toolbar);
-        verificaion = getView().findViewById(R.id.verification);
-        inputPhoneNumber = getView().findViewById(R.id.text_input_phone_number);
-        countryCodeBtn = getView().findViewById(R.id.btn_country_code);
-        sendOtpBtn = getView().findViewById(R.id.btn_send_otp);
-        phoneNumberEditText = getView().findViewById(R.id.edittext_phone_number);
+        Toolbar toolbar = getView().findViewById(R.id.toolbar);
+        TextView verification = getView().findViewById(R.id.verification);
+        TextView inputPhoneNumber = getView().findViewById(R.id.text_input_phone_number);
+        FButton countryCodeBtn = getView().findViewById(R.id.btn_country_code);
+        FButton sendOtpBtn = getView().findViewById(R.id.btn_send_otp);
+        EditText phoneNumberEditText = getView().findViewById(R.id.edittext_phone_number);
+        TextView otpNote = getView().findViewById(R.id.text_otp_note);
 
-        verificaion.setTypeface(FontManager.getFontBold(getContext()));
+        verification.setTypeface(FontManager.getFontBold(getContext()));
         inputPhoneNumber.setTypeface(FontManager.getFontBold(getContext()));
         countryCodeBtn.setTypeface(FontManager.getFontBold(getContext()));
         sendOtpBtn.setTypeface(FontManager.getFontBold(getContext()));
         phoneNumberEditText.setTypeface(FontManager.getFontBold(getContext()));
+        otpNote.setTypeface(FontManager.getFontRegular(getContext()));
+        otpNote.setTextColor(getResources().getColor(R.color.textColorDisabled));
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -71,19 +73,39 @@ public class LoginFragment extends Fragment {
         toolbar.setNavigationOnClickListener(v -> getActivity().onBackPressed());
 
         sendOtpBtn.setOnClickListener(v -> {
-            String phoneNumber = countryCode + phoneNumberEditText.getText().toString();
-            networkManager.userLogin(phoneNumber, new NetworkManager.postCallback() {
-                @Override
-                public void onSuccess() {
-                    Toast.makeText(getContext(), "SUKSES WOI", Toast.LENGTH_LONG).show();
-                }
+            // check if field empty
+            if (phoneNumberEditText.getText().toString().isEmpty()) {
+                phoneNumberEditText.setError(getString(R.string.field_must_be_filled));
+                phoneNumberEditText.requestFocus();
+            } else {
+                // continue
+                String phoneNumber = countryCode + phoneNumberEditText.getText().toString();
+                networkManager.userLogin(phoneNumber, (success, response) -> {
+                    if (success) {
+                        if (response.getString("response").equals("User not found")) {
+                            // register new user
+                            Intent intent = new Intent(getContext(), NewUserActivity.class);
+                            intent.putExtra("user_tel", phoneNumber);
+                            startActivity(intent);
+                            getActivity().finish();
 
-                @Override
-                public void onError(String err) {
-                    Toast.makeText(getContext(), err, Toast.LENGTH_LONG).show();
-                }
-            });
+                        } else if (response.getString("response").equals("OTP sent successfully")) {
+                            // verify otp
+                            Intent intent = new Intent(getContext(), VerifyOtpActivity.class);
+                            intent.putExtra("user_tel", phoneNumber);
+                            startActivity(intent);
+                            getActivity().finish();
+                        } else {
+                            // unknown error
+                            Toast.makeText(getContext(), getString(R.string.unknown_error), Toast.LENGTH_LONG).show();
+                        }
 
+                    } else {
+                        // unknown error
+                        Toast.makeText(getContext(), getString(R.string.unknown_error), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
         });
     }
 }
