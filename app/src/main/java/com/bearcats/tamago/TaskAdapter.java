@@ -20,12 +20,12 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     ArrayList<Task_Model> task_models;
     Context context;
 
-    public Adapter(Context context, ArrayList<Task_Model> task_models){
+    public TaskAdapter(Context context, ArrayList<Task_Model> task_models){
         this.context = context;
         this.task_models = task_models;
     }
