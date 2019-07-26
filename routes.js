@@ -11,6 +11,9 @@ module.exports = function(app) {
         
     app.route('/api/user/login')
         .post(todoList.loginUser);
+
+    app.route('/api/user/getProfile')
+        .post(todoList.getUserProfile);
         
     app.route('/api/user/verifyOtp')
         .post(todoList.verifyOtp);
@@ -32,6 +35,9 @@ module.exports = function(app) {
 
     app.route('/api/child/login')
         .post(todoList.loginChild);
+
+    app.route('/api/child/getProfile')
+        .post(todoList.getChildProfile);
 
     // default page if no route found
     app.route('*')
