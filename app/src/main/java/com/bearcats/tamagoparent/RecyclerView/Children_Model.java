@@ -6,6 +6,8 @@ public class Children_Model {
     private int goal_end;
     private int wallet;
     private int saving;
+    private int egg;
+    private int avatar_type;
 
     public Children_Model(String name, int goal_start, int goal_end, int wallet, int saving, int egg, int avatar_type) {
         this.name = name;
@@ -24,9 +26,6 @@ public class Children_Model {
     public void setAvatar_type(int avatar_type) {
         this.avatar_type = avatar_type;
     }
-
-    private int egg;
-    private int avatar_type;
 
     public String getName() {
         return name;

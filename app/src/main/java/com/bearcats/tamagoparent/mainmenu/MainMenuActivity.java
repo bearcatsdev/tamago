@@ -43,10 +43,10 @@ public class MainMenuActivity extends AppCompatActivity {
         recyclerView_child.setAdapter(adapter);
 
 
-        if (!UserPreferences.getUserLoggedIn(this)) {
-            // user not logged in
-            finish();
-        }
+//        if (!UserPreferences.getUserLoggedIn(this)) {
+//            // user not logged in
+//            finish();
+//        }
 
         // Untuk ambil data user dari preferences, pakai UserPreferences
         String userName = UserPreferences.getUsername(this);
