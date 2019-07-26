@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_time"
                 android:layout_alignParentRight="true"
-                android:fontFamily="@font/quicksand_r"
+                android:fontFamily="@font/quicksand_l"
                 android:textSize="14sp"/>
         </LinearLayout>
 

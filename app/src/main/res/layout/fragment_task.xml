@@ -48,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/listTask"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_margin="10dp"
                     >
                 </android.support.v7.widget.RecyclerView>
 

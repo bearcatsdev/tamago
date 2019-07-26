@@ -1,6 +1,7 @@
 package com.bearcats.tamago;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -63,14 +64,6 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         int egg =task_models.get(i).getEgg();
         int money = task_models.get(i).getMoney();
 
-        //set icon for money
-        if(egg!=0){
-            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_02_egg));
-        }
-        else{
-            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_00_wallet));
-        }
-
         //format indonesia money
         DecimalFormat format = (DecimalFormat)DecimalFormat.getCurrencyInstance();
         DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
@@ -83,9 +76,13 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         // set reward, egg or money
         if(egg == 0 && money > 0){
             ((ViewHolder) viewHolder).money.setText(format.format(money).substring(0,format.format(money).length()-3));
+            ((ViewHolder) viewHolder).money.setTextColor(0xFF0094D6);
+            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_00_wallet));
         }
         else{
             ((ViewHolder) viewHolder).money.setText(egg+"");
+            ((ViewHolder) viewHolder).money.setTextColor(0xFFF3B26C);
+            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_02_egg));
         }
 
         //set task icon
