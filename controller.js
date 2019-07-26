@@ -13,7 +13,7 @@ exports.notFoundPage = function(req, res) {
 };
 
 exports.loginUser = function(req, res) {
-    var sql = "SELECT user_id, user_name, user_tel, user_email, user_type FROM `users_list` FROM `users_list` WHERE `user_tel` = ?";
+    var sql = "SELECT user_id, user_name, user_tel, user_email, user_type FROM `users_list` WHERE `user_tel` = ?";
     var userTel = req.body.user_tel;
     var OTP_ACCOUNT = "numb_brianra4";
     var OTP_PASSWORD = "slvlab2018";
