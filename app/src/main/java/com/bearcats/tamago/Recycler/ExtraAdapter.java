@@ -1,4 +1,4 @@
-package com.bearcats.tamago;
+package com.bearcats.tamago.Recycler;
 
 import android.content.Context;
 import android.os.Handler;
@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bearcats.tamago.BottomSheetDialog;
+import com.bearcats.tamago.R;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
