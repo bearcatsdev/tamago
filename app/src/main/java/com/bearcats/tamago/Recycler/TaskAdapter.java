@@ -2,9 +2,11 @@ package com.bearcats.tamago.Recycler;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -190,6 +192,10 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             child_parent = itemView.findViewById(R.id.icon_parent);
             child_task = itemView.findViewById(R.id.icon_task);
             child_reward = itemView.findViewById(R.id.icon_reward);
+            
+            Typeface face = ResourcesCompat.getFont(context, R.font.quicksand_r);
+            time.setTypeface(face);
+            time.setTextColor(0xFFC0C0C0);
         }
     }
 }
