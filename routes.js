@@ -25,10 +25,13 @@ module.exports = function(app) {
         .post(todoList.newChildRelation); 
 
     app.route('/api/child/task/newTask')
-        .post(todoList.newTask);     
+        .post(todoList.newTask);
         
     app.route('/api/child/task/getTaskList')
-        .post(todoList.getTaskList);   
+        .post(todoList.getTaskList);
+
+    app.route('/api/child/login')
+        .post(todoList.loginChild);
 
     // default page if no route found
     app.route('*')

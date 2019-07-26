@@ -73,6 +73,30 @@ exports.loginUser = function(req, res) {
     });
 };
 
+exports.loginChild = function(req, res) {
+    var sql = "SELECT child_id, child_name, child_avatar, child_dob, child_gender, child_savings, child_wallet, child_daily_limit, child_eggs FROM `children_list` WHERE child_id=(SELECT pc_conn_child FROM `parent_child_connection` WHERE pc_conn_parent=? AND pc_conn_child=?";
+    var childId = req.body.child_id;
+    var userId = req.body.user_id;
+
+    if (childId == null || userId == null) {
+        response.error("Data supplied not sufficient", res);
+    } else {
+        connection.query(sql, [userId, childId], function (error, rows, fields){
+            if (error){
+                console.log(error);
+                response.error(error, res);
+            } else {
+                if (rows.length == 1) {
+                    var userId = rows[0].user_id;
+                    response.ok(rows[0], res);
+                } else if (rows.length == 0) {
+                    response.error("Invalid data supplied", res);
+                }
+            }
+        });
+    }
+};
+
 exports.verifyOtp = function(req, res) {
     var sql = "SELECT `user_id`, `user_name`, `user_tel`, `user_email`, `user_type` FROM `users_list` WHERE `user_tel` = ? AND `latest_otp` = ?";
     var userTel = req.body.user_tel;
