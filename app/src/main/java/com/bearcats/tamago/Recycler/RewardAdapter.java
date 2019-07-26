@@ -1,4 +1,4 @@
-package com.bearcats.tamago;
+package com.bearcats.tamago.Recycler;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bearcats.tamago.BottomSheetDialog1;
+import com.bearcats.tamago.R;
+import com.bearcats.tamago.Reward_Model;
 
 import java.util.ArrayList;
 

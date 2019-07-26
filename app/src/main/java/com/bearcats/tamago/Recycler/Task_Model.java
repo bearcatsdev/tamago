@@ -1,4 +1,4 @@
-package com.bearcats.tamago;
+package com.bearcats.tamago.Recycler;
 
 public class Task_Model{
     private String taskName, taskTime;

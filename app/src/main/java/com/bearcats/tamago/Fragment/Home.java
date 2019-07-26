@@ -1,4 +1,4 @@
-package com.bearcats.tamago;
+package com.bearcats.tamago.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.bearcats.tamago.R;
 import com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar;
 
 public class Home extends Fragment {
