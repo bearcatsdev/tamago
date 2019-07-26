@@ -69,6 +69,7 @@ public class ExtraAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         //set icon for money
         if(egg!=0){
             ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_02_egg));
+
         }
         else{
             ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_00_wallet));
@@ -86,9 +87,11 @@ public class ExtraAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         // set reward, egg or money
         if(egg == 0 && money > 0){
             ((ViewHolder) viewHolder).money.setText(format.format(money).substring(0,format.format(money).length()-3));
+            ((ViewHolder) viewHolder).money.setTextColor(0xFF0094D6);
         }
         else{
             ((ViewHolder) viewHolder).money.setText(egg+"");
+            ((ViewHolder) viewHolder).money.setTextColor(0xFFF3B26C);
         }
 
         //set task icon
