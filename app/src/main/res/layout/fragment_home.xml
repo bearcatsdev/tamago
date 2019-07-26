@@ -28,13 +28,14 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:background="@mipmap/ic_launcher" />
+                    android:background="@drawable/currency_01_saving" />
                 <TextView
                     android:id="@+id/tv_ChildMoney"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand_b"
                     android:text="Money"
+                    android:textColor="#FFBA2E"
                     android:textSize="17sp"/>
             </LinearLayout>
 
@@ -47,12 +48,13 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:background="@mipmap/ic_launcher" />
+                    android:background="@drawable/currency_00_wallet" />
                 <TextView
                     android:id="@+id/tv_childTabungan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand_b"
+                    android:textColor="#0094D6"
                     android:text="Money"
                     android:textSize="17sp"/>
             </LinearLayout>
@@ -65,14 +67,15 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:background="@mipmap/ic_launcher" />
+                    android:background="@drawable/currency_02_egg"/>
                 <TextView
                     android:id="@+id/tv_childEgg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand_b"
                     android:text="Money"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp"
+                    android:textColor="#F3B26C"/>
             </LinearLayout>
         </LinearLayout>
 
