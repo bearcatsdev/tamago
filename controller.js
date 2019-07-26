@@ -74,7 +74,7 @@ exports.loginUser = function(req, res) {
 };
 
 exports.loginChild = function(req, res) {
-    var sql = "SELECT child_id, child_name, child_avatar, child_dob, child_gender, child_savings, child_wallet, child_daily_limit, child_eggs FROM `children_list` WHERE child_id=(SELECT pc_conn_child FROM `parent_child_connection` WHERE pc_conn_parent=? AND pc_conn_child=?";
+    var sql = "SELECT child_id, child_name, child_avatar, child_dob, child_gender, child_savings, child_wallet, child_daily_limit, child_eggs FROM `children_list` WHERE child_id=(SELECT pc_conn_child FROM `parent_child_connection` WHERE pc_conn_parent=? AND pc_conn_child=?)";
     var childId = req.body.child_id;
     var userId = req.body.user_id;
 
