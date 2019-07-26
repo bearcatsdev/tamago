@@ -111,19 +111,19 @@
 
                     <android.support.design.card.MaterialCardView
                         android:layout_width="80dp"
-                        android:layout_height="42dp"
+                        android:layout_height="36dp"
                         android:layout_marginTop="5dp"
-                        android:backgroundTint="#0088C2"
+                        android:backgroundTint="#7FB800"
                         app:cardCornerRadius="14dp"
                         />
 
                     <android.support.design.card.MaterialCardView
                         android:id="@+id/btn_done"
                         android:layout_width="80dp"
-                        android:layout_height="42dp"
-                        android:backgroundTint="#00A6ED"
+                        android:layout_height="36dp"
+                        android:backgroundTint="#96C42E"
                         app:cardCornerRadius="14dp"
-                        app:strokeColor="#0088C2"
+                        app:strokeColor="#7FB800"
                         app:strokeWidth="1dp">
 
                         <TextView
