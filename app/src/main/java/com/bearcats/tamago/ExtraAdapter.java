@@ -1,7 +1,6 @@
 package com.bearcats.tamago;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -9,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,33 +15,31 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ExtraAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Task_Model> task_models;
+    ArrayList<Extra_Model> extra_models;
     Context context;
 
-    public Adapter(Context context, ArrayList<Task_Model> task_models){
+    public ExtraAdapter(Context context, ArrayList<Extra_Model> extra_models){
         this.context = context;
-        this.task_models = task_models;
+        this.extra_models = extra_models;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.task_layout,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.extra_layout,viewGroup,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        ((ViewHolder)viewHolder).task.setText(task_models.get(i).getTaskName());
-        ((ViewHolder)viewHolder).time.setText(task_models.get(i).getTaskTime());
+        ((ViewHolder)viewHolder).task.setText(extra_models.get(i).getTaskName());
+        ((ViewHolder)viewHolder).time.setText(extra_models.get(i).getTaskTime());
 
-        int parent_type = task_models.get(i).getParent_type();
+        int parent_type = extra_models.get(i).getParent_type();
 
         //set icon for parent
         switch(parent_type){
@@ -59,10 +55,21 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case 4:
                 ((ViewHolder)viewHolder).child_parent.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.avatar_grandma));
                 break;
+            case 5:
+                ((ViewHolder)viewHolder).child_parent.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.avatar_chicken));
+                break;
         }
 
-        int egg =task_models.get(i).getEgg();
-        int money = task_models.get(i).getMoney();
+        int egg = extra_models.get(i).getEgg();
+        int money = extra_models.get(i).getMoney();
+
+        //set icon for money
+        if(egg!=0){
+            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_02_egg));
+        }
+        else{
+            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_00_wallet));
+        }
 
         //format indonesia money
         DecimalFormat format = (DecimalFormat)DecimalFormat.getCurrencyInstance();
@@ -76,17 +83,13 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         // set reward, egg or money
         if(egg == 0 && money > 0){
             ((ViewHolder) viewHolder).money.setText(format.format(money).substring(0,format.format(money).length()-3));
-            ((ViewHolder) viewHolder).money.setTextColor(0xFF0094D6);
-            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_00_wallet));
         }
         else{
             ((ViewHolder) viewHolder).money.setText(egg+"");
-            ((ViewHolder) viewHolder).money.setTextColor(0xFFF3B26C);
-            ((ViewHolder)viewHolder).child_reward.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.currency_02_egg));
         }
 
         //set task icon
-        int task_type = task_models.get(i).getTask_type();
+        int task_type = extra_models.get(i).getTask_type();
 
         switch (task_type){
             case 1:
@@ -173,7 +176,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return task_models.size();
+        return extra_models.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
