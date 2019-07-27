@@ -16,7 +16,7 @@ public class Launch_Screen extends AppCompatActivity {
 
 
         Intent intent;
-        if(!ChildPreferences.getChildLoggedIn(this)){
+        if(ChildPreferences.getChildLoggedIn(this)){
             intent = new Intent(this, Login.class);
         }
         else
