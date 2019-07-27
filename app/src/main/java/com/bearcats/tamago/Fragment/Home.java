@@ -54,7 +54,7 @@ public class Home extends Fragment {
         saving = view.findViewById(R.id.tv_ChildSaving);
         egg = view.findViewById(R.id.tv_childEgg);
         skinButtonLayout = view.findViewById(R.id.skin_buttonLayout);
-//        gachaButtonLayout = view.findViewById(R.id.gacha_buttonLayout);
+        gachaButtonLayout = view.findViewById(R.id.gacha_buttonLayout);
 
         //set wallet, saving, and egg
         wallet.setText(FormatRp(ChildPreferences.getChildWallet(getContext())));
@@ -98,13 +98,13 @@ public class Home extends Fragment {
         });
 
 
-//        gachaButtonLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), Gacha.class);
-//                startActivity(intent);
-//            }
-//        });
+        gachaButtonLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Gacha.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void showMenu(){
