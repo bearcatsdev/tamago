@@ -49,29 +49,29 @@ public class parent_relation extends Fragment {
         parent_relation = view.findViewById(R.id.rg_parentRelation1);
         finishButton = view.findViewById(R.id.btn_finish1);
 
+        parent_relation.check(R.id.rb_dad1);
 
         //set redio button check change listenet
         parent_relation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
-                    case R.id.rb_dad:
+                    case R.id.rb_dad1:
                         parent_type = "Dad";
                         break;
-                    case R.id.rb_mom:
+                    case R.id.rb_mom1:
                         parent_type = "Mom";
                         break;
-                    case R.id.rb_grandpa:
+                    case R.id.rb_grandpa1:
                         parent_type = "Grandpa";
                         break;
-                    case R.id.rb_grandma:
+                    case R.id.rb_grandma1:
                         parent_type = "Grandma";
                         break;
                 }
             }
         });
-
-        Toast.makeText(getContext(), Temp.child_id+" "+UserPreferences.getUserId(getContext()), Toast.LENGTH_SHORT).show();
+        
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
