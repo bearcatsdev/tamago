@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Gatcha">
+    tools:context="Activity.Gacha">
 
 
     <TextView
@@ -39,7 +39,7 @@
 
 
         <android.support.v7.widget.CardView
-            android:id="@+id/btn_gatcha"
+            android:id="@+id/btn_gacha"
             android:layout_width="174dp"
             android:layout_height="47dp"
             android:backgroundTint="#96C42E"
