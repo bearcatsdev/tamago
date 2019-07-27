@@ -59,36 +59,6 @@ public class Task extends Fragment {
         task = new ArrayList<>();
         extra = new ArrayList<>();
 
-//        try{
-//            jsonObject.put("parent_id",1);
-//            jsonObject.put("child_name",childName.getText().toString());
-//            jsonObject.put("child_dob",childDob.getText().toString());
-//            jsonObject.put("child_initial_saving",childInitialSaving.getText().toString());
-//            jsonObject.put("child_daily_limit",childDailyLimit.getText().toString());
-//            jsonObject.put("child_avatar_type",1);
-//            jsonObject.put("child_gender",1);
-//            jsonObject.put("parent_relation",parentRelation.getText().toString());
-//        }catch(JSONException e){
-//            e.printStackTrace();
-//        }
-//
-
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-//                (Request.Method.GET, "https://raw.githubusercontent.com/BinusBearcats/TamagoFiles/master/test.json", null, new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        Toast.makeText(getContext(), response.toString()+"", Toast.LENGTH_SHORT).show();
-//                    }
-//                }, new Response.ErrorListener() {
-//
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//
-//                        Toast.makeText(getContext(), error.toString()+"", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                });
-//        Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
 
 
         //data untuk task
