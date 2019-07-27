@@ -140,7 +140,6 @@ public class Create_Child extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(Create_Child.this, jsonObject+"", Toast.LENGTH_SHORT).show();
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                             (Request.Method.POST, "https://tamago.bancet.cf/api/child/newChild", jsonObject, new Response.Listener<JSONObject>() {
                                 @Override

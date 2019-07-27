@@ -31,6 +31,17 @@
             android:text="@string/action_next"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/white" />
+
+
+        <com.bearcats.tamagoparent.views.FButton
+            android:id="@+id/btn_scan"
+            android:layout_alignParentLeft="@id/btn_menu"
+            android:src="@drawable/ic_baseline_menu_24px"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="@string/action_next"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
 

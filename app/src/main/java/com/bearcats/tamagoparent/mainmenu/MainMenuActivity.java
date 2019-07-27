@@ -1,13 +1,19 @@
 package com.bearcats.tamagoparent.mainmenu;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.bearcats.tamagoparent.Add_Existing_Child;
 import com.bearcats.tamagoparent.Create_Child;
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.manager.InterfaceManager;
@@ -24,9 +30,10 @@ import java.util.ArrayList;
 public class MainMenuActivity extends AppCompatActivity {
 
     RecyclerView recyclerView_child;
-    FButton menuButton;
+    FButton menuButton,scanButton;
     ArrayList<ChildrenModel> children_models;
     ShimmerFrameLayout loadingShimmer;
+    int MY_CAMERA_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,7 @@ public class MainMenuActivity extends AppCompatActivity {
         recyclerView_child = findViewById(R.id.recyclerView_child);
         menuButton = findViewById(R.id.btn_menu);
         loadingShimmer = findViewById(R.id.shimmer_view_container);
+        scanButton = findViewById(R.id.btn_scan);
 
         loadingShimmer.startShimmer();
 
@@ -53,6 +61,19 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainMenuActivity.this, Create_Child.class));
+            }
+        });
+
+        //to add a existing child activity
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(MainMenuActivity.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA},MY_CAMERA_REQUEST_CODE);
+                }
+                else
+                startActivity(new Intent(MainMenuActivity.this, Add_Existing_Child.class));
             }
         });
 
@@ -101,4 +122,23 @@ public class MainMenuActivity extends AppCompatActivity {
 
         // Untuk ngepost data ke server pakai NetworkManager
     }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == MY_CAMERA_REQUEST_CODE) {
+
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainMenuActivity.this,Add_Existing_Child.class));
+
+            } else {
+
+                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
+
+            }
+
+        }}//end onRequestPermissionsResult
 }
