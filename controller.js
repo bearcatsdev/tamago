@@ -16,7 +16,7 @@ exports.loginUser = function(req, res) {
     var sql = "SELECT user_id, user_name, user_tel, user_email, user_type FROM `users_list` WHERE `user_tel` = ?";
     var userTel = req.body.user_tel;
     var OTP_ACCOUNT = "numb_brianra4";
-    var OTP_PASSWORD = "slvlab2018";
+    var OTP_PASSWORD = "123456";
     
     function generateOtpUrl(numbers, content) {
         content = encodeURIComponent(content.trim());
@@ -47,9 +47,11 @@ exports.loginUser = function(req, res) {
                 request(generateOtpUrl(userTel, generateOtpMessage(otp)), function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     //console.log(body);
-                    if (body.success != 0) {
+                    if (body.status == 0 && body.success != 0) {
                         otpError = false;
                     } else if (body.fail != 0) {
+                        otpError = true;
+                    } else if (body.status == -1) {
                         otpError = true;
                     }
                 }
