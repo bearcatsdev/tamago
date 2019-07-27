@@ -15,7 +15,6 @@ public class LoginActivity extends AppCompatActivity implements FragmentChangeLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 

@@ -16,9 +16,6 @@ import com.bearcats.tamagoparent.manager.FontManager;
 import com.bearcats.tamagoparent.manager.NetworkManager;
 import com.bearcats.tamagoparent.views.FButton;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class NewUserActivity extends AppCompatActivity {
 
     TextView welcomeText;
@@ -30,7 +27,6 @@ public class NewUserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
 
@@ -77,10 +73,18 @@ public class NewUserActivity extends AppCompatActivity {
                 NetworkManager networkManager = new NetworkManager(this);
                 networkManager.registerUser(userName, phoneNumber, (success, response) -> {
                     if (success) {
-                        Intent intent2 = new Intent(this, VerifyOtpActivity.class);
-                        intent2.putExtra("user_tel", phoneNumber);
-                        startActivity(intent2);
-                        finish();
+                        // login lagi biar dapet OTP
+                        networkManager.userLogin(phoneNumber, (success1, response1) -> {
+                            if (success1) {
+                                Intent intent2 = new Intent(this, VerifyOtpActivity.class);
+                                intent2.putExtra("user_tel", phoneNumber);
+                                startActivity(intent2);
+                                finish();
+                            } else {
+                                Toast.makeText(this, getString(R.string.unknown_error), Toast.LENGTH_LONG).show();
+                                enableUI(true);
+                            }
+                        });
                     } else {
                         Toast.makeText(this, getString(R.string.unknown_error), Toast.LENGTH_LONG).show();
                         enableUI(true);
