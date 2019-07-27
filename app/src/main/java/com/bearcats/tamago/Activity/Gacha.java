@@ -8,38 +8,38 @@ import android.view.View;
 
 import com.bearcats.tamago.R;
 
- public class Gatcha extends AppCompatActivity {
+ public class Gacha extends AppCompatActivity {
 
-    CardView gatcha;
+    CardView gacha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gatcha);
+        setContentView(R.layout.activity_gacha);
 
-        gatcha = findViewById(R.id.btn_gatcha);
+        gacha = findViewById(R.id.btn_gacha);
 
         final Handler handler = new Handler();
 
         final Runnable runnable1 = new Runnable() {
             @Override
             public void run() {
-               gatcha.setClickable(true);
+               gacha.setClickable(true);
             }
         };
 
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                gatcha.animate().translationY(0).setDuration(100);
+                gacha.animate().translationY(0).setDuration(100);
                 handler.postDelayed(runnable1,100);
             }
         };
 
-        gatcha.setOnClickListener(new View.OnClickListener() {
+        gacha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gatcha.animate().translationY(20).setDuration(100);
+                gacha.animate().translationY(20).setDuration(100);
                 handler.postDelayed(runnable,100);
 
             }

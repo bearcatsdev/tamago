@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_margin = "10dp">
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,8 +27,8 @@
                 android:orientation="vertical"
                 android:layout_weight="1">
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/currency_01_saving" />
                 <TextView
                     android:id="@+id/tv_ChildMoney"
@@ -46,8 +47,8 @@
                 android:orientation="vertical"
                 android:layout_weight="1">
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/currency_00_wallet" />
                 <TextView
                     android:id="@+id/tv_childTabungan"
@@ -65,8 +66,8 @@
                 android:orientation="vertical"
                 android:layout_weight="1">
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/currency_02_egg"/>
                 <TextView
                     android:id="@+id/tv_childEgg"
@@ -200,7 +201,7 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 app:lottie_autoPlay="true"
-                app:lottie_fileName="793-cycle-animation.json"
+                app:lottie_fileName="gacha_roll.json"
                 app:lottie_loop="true" />
 
             <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
