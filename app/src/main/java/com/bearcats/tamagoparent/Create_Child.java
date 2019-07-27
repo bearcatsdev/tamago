@@ -77,13 +77,11 @@ public class Create_Child extends AppCompatActivity {
             }
 
         };
-
-        dob.setOnTouchListener(new View.OnTouchListener() {
+        dob.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+            public void onClick(View view) {
                 new DatePickerDialog(Create_Child.this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-                return true;
             }
         });
 
@@ -182,7 +180,7 @@ public class Create_Child extends AppCompatActivity {
 
 
     private void updateLabel() {
-        String myFormat = "yyyy-MM-dd"; //In which you need put here
+        String myFormat = "YYYY-MM-dd"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         dob.setText(sdf.format(myCalendar.getTime()));
