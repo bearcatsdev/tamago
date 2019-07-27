@@ -45,7 +45,7 @@ public class Task extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        task_recyclerView = (RecyclerView) view.findViewById(R.id.listTask);
+        task_recyclerView = view.findViewById(R.id.listTask);
         extra_recyclerView = view.findViewById(R.id.listExtra);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
