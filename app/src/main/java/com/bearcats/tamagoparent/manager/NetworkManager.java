@@ -204,5 +204,60 @@ public class NetworkManager {
         requestQueue.add(jsonObjReq);
     }
 
+    public void getChildrenList(int parentId, postArrayCallback callback) {
+        String url =  SERVER_URL + "/api/user/getChildrenList";
+        Map<String,Integer> params = new HashMap<>();
+        params.put("parent_id", parentId);
+        JSONObject jsonBody = new JSONObject(params);
+
+        Log.d(TAG, jsonBody.toString());
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                url, jsonBody,
+                response -> {
+                    Log.d(TAG, response.toString());
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.toString());
+                        Integer networkStatus = jsonObject.getInt("status");
+
+                        if (networkStatus == 200) {
+                            callback.onResponse(true, jsonObject.getJSONArray("response"));
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Log.e(TAG, e.getLocalizedMessage());
+                    }
+                },
+                error -> {
+                    try {
+                        String responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                        JSONObject jsonObject = new JSONObject(responseBody);
+                        String errorReason = jsonObject.getString("reason");
+                        Log.e(TAG, errorReason);
+
+                        if (errorReason != null) {
+                            JSONArray errorArray = new JSONArray();
+                            JSONObject errorObject = new JSONObject();
+                            errorObject.put("reason", errorReason);
+                            errorArray.put(0, jsonObject);
+                            callback.onResponse(false, errorArray);
+
+                        } else {
+                            JSONArray errorArray = new JSONArray();
+                            JSONObject errorObject = new JSONObject();
+                            errorObject.put("reason", error.getLocalizedMessage());
+                            errorArray.put(0, jsonObject);
+                            callback.onResponse(false, errorArray);
+                        }
+
+                    } catch (Exception e)  {
+                        Log.e(TAG, e.getLocalizedMessage());
+                    }
+                });
+
+        requestQueue.add(jsonObjReq);
+    }
+
     public String getServerUrl() { return SERVER_URL; }
 }

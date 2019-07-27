@@ -11,10 +11,14 @@ import android.view.View;
 import com.bearcats.tamagoparent.Create_Child;
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.manager.InterfaceManager;
+import com.bearcats.tamagoparent.manager.NetworkManager;
 import com.bearcats.tamagoparent.recyclerview.ChildrenAdapter;
 import com.bearcats.tamagoparent.recyclerview.ChildrenModel;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 import com.bearcats.tamagoparent.views.FButton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -31,6 +35,10 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         InterfaceManager.setLightStatusBar(this);
+
+        // Untuk ambil data user dari preferences, pakai UserPreferences
+        String userName = UserPreferences.getUsername(this);
+        int UserId = UserPreferences.getUserId(this);
 
         recyclerView_child = findViewById(R.id.recyclerView_child);
         menuButton = findViewById(R.id.btn_menu);
@@ -50,15 +58,28 @@ public class MainMenuActivity extends AppCompatActivity {
         recyclerView_child.setLayoutManager(linearLayoutManager);
 
         //input data children
-        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
-        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
-        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
-        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
-        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
+        NetworkManager networkManager = new NetworkManager(this);
+        networkManager.getChildrenList(UserId, (success, response) -> {
+            if (success) {
 
-        ChildrenAdapter adapter = new ChildrenAdapter(MainMenuActivity.this, children_models);
+                for (int i=0; i<response.length(); ++i) {
+                    children_models.add(new ChildrenModel(
+                            response.getJSONObject(i).getString("child_name"),
+                            5000,
+                            10000,
+                            response.getJSONObject(i).getInt("child_wallet"),
+                            response.getJSONObject(i).getInt("child_savings"),
+                            response.getJSONObject(i).getInt("child_eggs"),
+                            response.getJSONObject(i).getInt("child_avatar"))
+                    );
+                }
 
-        recyclerView_child.setAdapter(adapter);
+                ChildrenAdapter adapter = new ChildrenAdapter(MainMenuActivity.this, children_models);
+                recyclerView_child.setAdapter(adapter);
+            } else {
+
+            }
+        });
 
 
 //        if (!UserPreferences.getUserLoggedIn(this)) {
@@ -66,9 +87,6 @@ public class MainMenuActivity extends AppCompatActivity {
 //            finish();
 //        }
 
-        // Untuk ambil data user dari preferences, pakai UserPreferences
-        String userName = UserPreferences.getUsername(this);
-        int UserId = UserPreferences.getUserId(this);
 
         // Untuk logout pakai ini
         // UserPreferences.clearLoggedInUser(this);
