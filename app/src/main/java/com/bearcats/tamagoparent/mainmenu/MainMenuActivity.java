@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.bearcats.tamagoparent.R;
-import com.bearcats.tamagoparent.RecyclerView.Children_Adapter;
-import com.bearcats.tamagoparent.RecyclerView.Children_Model;
+import com.bearcats.tamagoparent.recyclerview.ChildrenAdapter;
+import com.bearcats.tamagoparent.recyclerview.ChildrenModel;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class MainMenuActivity extends AppCompatActivity {
 
     RecyclerView recyclerView_child;
-    ArrayList<Children_Model> children_models;
+    ArrayList<ChildrenModel> children_models;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +32,13 @@ public class MainMenuActivity extends AppCompatActivity {
         recyclerView_child.setLayoutManager(linearLayoutManager);
 
         //input data children
-        children_models.add(new Children_Model("Chandra",5000,10000,10000,10000,2,1));
-        children_models.add(new Children_Model("Chandra",5000,10000,10000,10000,2,1));
-        children_models.add(new Children_Model("Chandra",5000,10000,10000,10000,2,1));
-        children_models.add(new Children_Model("Chandra",5000,10000,10000,10000,2,1));
-        children_models.add(new Children_Model("Chandra",5000,10000,10000,10000,2,1));
+        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
+        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
+        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
+        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
+        children_models.add(new ChildrenModel("Chandra",5000,10000,10000,10000,2,1));
 
-        Children_Adapter adapter = new Children_Adapter(MainMenuActivity.this, children_models);
+        ChildrenAdapter adapter = new ChildrenAdapter(MainMenuActivity.this, children_models);
 
         recyclerView_child.setAdapter(adapter);
 

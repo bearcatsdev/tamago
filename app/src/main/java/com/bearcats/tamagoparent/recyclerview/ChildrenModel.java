@@ -1,6 +1,6 @@
-package com.bearcats.tamagoparent.RecyclerView;
+package com.bearcats.tamagoparent.recyclerview;
 
-public class Children_Model {
+public class ChildrenModel {
     private String name;
     private int goal_start;
     private int goal_end;
@@ -9,7 +9,7 @@ public class Children_Model {
     private int egg;
     private int avatar_type;
 
-    public Children_Model(String name, int goal_start, int goal_end, int wallet, int saving, int egg, int avatar_type) {
+    public ChildrenModel(String name, int goal_start, int goal_end, int wallet, int saving, int egg, int avatar_type) {
         this.name = name;
         this.goal_start = goal_start;
         this.goal_end = goal_end;

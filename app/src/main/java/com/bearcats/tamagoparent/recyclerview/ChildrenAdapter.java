@@ -1,4 +1,4 @@
-package com.bearcats.tamagoparent.RecyclerView;
+package com.bearcats.tamagoparent.recyclerview;
 
 
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,12 +20,12 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
-public class Children_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ChildrenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Children_Model> children_models;
+    ArrayList<ChildrenModel> children_models;
     Context context;
 
-    public Children_Adapter(Context context, ArrayList<Children_Model> children_models){
+    public ChildrenAdapter(Context context, ArrayList<ChildrenModel> children_models){
         this.context = context;
         this.children_models = children_models;
     }
