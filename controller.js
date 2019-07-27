@@ -266,15 +266,13 @@ exports.getChildrenList = function(req, res) {
                 rows.forEach(element => {
                     var sql = "SELECT * FROM `children_list` WHERE `child_id`=?";
                     connection.query(sql, [element.pc_conn_child], function (error, rows, fields){
-                        console.log(element);
-                        console.log(rows);
                         if (error) {
                             console.log(error);
                             response.error(error, res);
                         } else {
                             responseArray.push(rows[0]);
-                            if (element.length == responseArray.length) {
-                                response.ok(rows, responseArray);
+                            if (rows.length == responseArray.length) {
+                                response.ok(res, responseArray);
                             }
                         }
                     });
