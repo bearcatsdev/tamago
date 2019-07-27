@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.mainmenu.MainMenuActivity;
 import com.bearcats.tamagoparent.manager.FontManager;
+import com.bearcats.tamagoparent.manager.InterfaceManager;
 import com.bearcats.tamagoparent.manager.NetworkManager;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 import com.bearcats.tamagoparent.views.FButton;
@@ -54,6 +55,8 @@ public class VerifyOtpActivity extends AppCompatActivity {
             // no phone number
             finish();
         }
+
+        InterfaceManager.setLightStatusBar(this);
 
         otp1 = findViewById(R.id.otp_1);
         otp2 = findViewById(R.id.otp_2);

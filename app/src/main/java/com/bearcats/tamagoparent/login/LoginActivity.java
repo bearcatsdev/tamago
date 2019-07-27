@@ -6,10 +6,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
 
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.manager.FragmentChangeListener;
+import com.bearcats.tamagoparent.manager.InterfaceManager;
 
 public class LoginActivity extends AppCompatActivity implements FragmentChangeListener {
 
@@ -17,6 +21,8 @@ public class LoginActivity extends AppCompatActivity implements FragmentChangeLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        InterfaceManager.setLightStatusBar(this);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_placeholder, new WelcomeFragment());

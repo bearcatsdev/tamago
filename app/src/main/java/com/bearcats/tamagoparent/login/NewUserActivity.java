@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.manager.FontManager;
+import com.bearcats.tamagoparent.manager.InterfaceManager;
 import com.bearcats.tamagoparent.manager.NetworkManager;
 import com.bearcats.tamagoparent.views.FButton;
 
@@ -37,6 +38,8 @@ public class NewUserActivity extends AppCompatActivity {
             // no phone number
             finish();
         }
+
+        InterfaceManager.setLightStatusBar(this);
 
         welcomeText = findViewById(R.id.welcome);
         tellNameText = findViewById(R.id.text_tell_your_name);

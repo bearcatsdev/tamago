@@ -3,10 +3,10 @@ package com.bearcats.tamagoparent.mainmenu;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 
 import com.bearcats.tamagoparent.R;
+import com.bearcats.tamagoparent.manager.InterfaceManager;
 import com.bearcats.tamagoparent.recyclerview.ChildrenAdapter;
 import com.bearcats.tamagoparent.recyclerview.ChildrenModel;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
@@ -20,8 +20,11 @@ public class MainMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_TransparentStatusBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        InterfaceManager.setLightStatusBar(this);
 
         recyclerView_child = findViewById(R.id.recyclerView_child);
         children_models = new ArrayList<>();
