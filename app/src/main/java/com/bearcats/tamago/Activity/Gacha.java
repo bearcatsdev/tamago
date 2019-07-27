@@ -15,7 +15,7 @@ import com.bearcats.tamago.R;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gatcha);
+        setContentView(R.layout.activity_gacha);
 
         gatcha = findViewById(R.id.btn_gatcha);
 

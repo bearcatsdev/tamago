@@ -192,7 +192,7 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             child_parent = itemView.findViewById(R.id.icon_parent);
             child_task = itemView.findViewById(R.id.icon_task);
             child_reward = itemView.findViewById(R.id.icon_reward);
-            
+
             Typeface face = ResourcesCompat.getFont(context, R.font.quicksand_r);
             time.setTypeface(face);
             time.setTextColor(0xFFC0C0C0);
