@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -25,14 +27,20 @@ import com.google.android.material.snackbar.Snackbar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class Create_Child extends AppCompatActivity {
 
     RadioGroup childGender,parentRelation;
-    EditText childName,initialSaving,dailyLimit;
+    EditText childName,initialSaving,dailyLimit,dob;
     JSONObject jsonObject;
     FButton finish;
+    Calendar myCalendar;
+    int child_gender;
+    String parent;
 
-    DatePickerDialog.OnDateSetListener mDateSetListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +51,7 @@ public class Create_Child extends AppCompatActivity {
         childName = findViewById(R.id.edit_name);
         initialSaving = findViewById(R.id.edit_initialSaving);
         dailyLimit = findViewById(R.id.edit_dailyLimit);
+        dob = findViewById(R.id.edit_dob);
         finish = findViewById(R.id.btn_finish);
 
         //set Radio Group childGender to boy
@@ -51,6 +60,70 @@ public class Create_Child extends AppCompatActivity {
         //set Radio Group parentRelation to dad
         parentRelation.check(R.id.rb_dad);
 
+        //set date picker listener and respont when dob clicked
+
+        myCalendar = Calendar.getInstance();
+
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+
+        dob.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                new DatePickerDialog(Create_Child.this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                return true;
+            }
+        });
+
+        //set radio group change listener
+        childGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rb_boy:
+                        child_gender = 1;
+                        break;
+                    case R.id.rb_girl:
+                        child_gender = 2;
+                        break;
+                }
+            }
+        });
+
+        parentRelation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rb_dad:
+                        parent = "Dad";
+                        break;
+                    case R.id.rb_mom:
+                        parent = "Mom";
+                        break;
+                    case R.id.rb_grandpa:
+                        parent = "Grandpa";
+                        break;
+                    case R.id.rb_grandma:
+                        parent = "Grandma";
+                        break;
+                    }
+                }
+            });
+
+
+        //Post
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,12 +132,12 @@ public class Create_Child extends AppCompatActivity {
                     try{
                         jsonObject.put("parent_id", UserPreferences.getUserId(Create_Child.this));
                         jsonObject.put("child_name",childName.getText().toString());
-                        jsonObject.put("child_dob","2012-05-29");
+                        jsonObject.put("child_dob",dob.getText().toString());
                         jsonObject.put("child_initial_saving",Integer.parseInt(initialSaving.getText().toString()));
                         jsonObject.put("child_daily_limit",Integer.parseInt(dailyLimit.getText().toString()));
-                        jsonObject.put("child_avatar_type",1);
-                        jsonObject.put("child_gender",1);
-                        jsonObject.put("parent_relation","Ayah");
+                        jsonObject.put("child_avatar_type",child_gender);
+                        jsonObject.put("child_gender",child_gender);
+                        jsonObject.put("parent_relation",parent);
                     }catch(JSONException e){
                         e.printStackTrace();
                     }
@@ -76,7 +149,6 @@ public class Create_Child extends AppCompatActivity {
                                 public void onResponse(JSONObject response) {
                                     try{
                                         if(response.getInt("status") == 200){
-                                            Toast.makeText(Create_Child.this, response.toString()+"", Toast.LENGTH_SHORT).show();
                                             //add  data to sqlite
                                             //pindah
                                         }
@@ -108,6 +180,13 @@ public class Create_Child extends AppCompatActivity {
         return true;
     }
 
+
+    private void updateLabel() {
+        String myFormat = "yyyy-MM-dd"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        dob.setText(sdf.format(myCalendar.getTime()));
+    }
 
 
 }

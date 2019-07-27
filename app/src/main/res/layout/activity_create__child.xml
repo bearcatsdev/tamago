@@ -8,6 +8,8 @@
     android:orientation="vertical">
 
 
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,201 +28,198 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:fontFamily="@font/quicksand_b"
-            android:textSize="18sp"
-            android:text="@string/child_gender" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/rg_childGender">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Boy"
-                android:id="@+id/rb_boy"
-                android:fontFamily="@font/quicksand_b"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Girl"
-                android:id="@+id/rb_girl"
-                android:fontFamily="@font/quicksand_b"/>
-        </RadioGroup>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/quicksand_b"
-            android:textSize="18sp"
-            android:text="@string/child_name"
-            />
-
-        <EditText
-            android:id="@+id/edit_name"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_name"
-            android:inputType="textPersonName|textCapWords|textCapSentences"
-            android:lines="1"
-            android:maxLength="32"
-            android:gravity="center"
-            android:layout_weight="2"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/quicksand_b"
-            android:textSize="18sp"
-            android:text="@string/dob"
-            />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/dob"
-            app:strokeColor="#E1E1E1"
-            app:strokeWidth="1dp">
-
+            android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
                 android:fontFamily="@font/quicksand_b"
-                android:textSize="15sp"
+                android:textSize="18sp"
+                android:text="@string/child_gender" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/rg_childGender">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Boy"
+                    android:id="@+id/rb_boy"
+                    android:fontFamily="@font/quicksand_b"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Girl"
+                    android:id="@+id/rb_girl"
+                    android:fontFamily="@font/quicksand_b"/>
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/quicksand_b"
+                android:textSize="18sp"
+                android:text="@string/child_name"
                 />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="17dp"
-                android:src="@drawable/ic_baseline_calendar_today_24px" />
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/quicksand_b"
-            android:textSize="18sp"
-            android:text="@string/child_initial_saving"
-            />
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName|textCapWords|textCapSentences"
+                android:lines="1"
+                android:maxLength="32"
+                android:gravity="center"
+                android:layout_weight="2"/>
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/edit_initialSaving"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_name"
-            android:inputType="textPersonName|textCapWords|textCapSentences"
-            android:lines="1"
-            android:maxLength="32"
-            android:gravity="center"
-            android:layout_weight="2"/>
-    </LinearLayout>
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/quicksand_b"
+                android:textSize="18sp"
+                android:text="@string/dob"
+                />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/quicksand_b"
-            android:textSize="18sp"
-            android:text="@string/child_daily_limit"
-            />
+            <EditText
+                android:id="@+id/edit_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_name"
+                android:inputType="time"
+                android:editable="false"
+                android:clickable="true"
+                android:lines="1"
+                android:maxLength="32" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/edit_dailyLimit"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_name"
-            android:inputType="textPersonName|textCapWords|textCapSentences"
-            android:lines="1"
-            android:maxLength="32"
-            android:gravity="center"
-            android:layout_weight="2"/>
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/quicksand_b"
+                android:textSize="18sp"
+                android:text="@string/child_initial_saving"
+                />
+
+            <EditText
+                android:id="@+id/edit_initialSaving"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_name"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="32" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/quicksand_b"
+                android:textSize="18sp"
+                android:text="@string/child_daily_limit"
+                />
+
+            <EditText
+                android:id="@+id/edit_dailyLimit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_name"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="32"
+                android:layout_weight="2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/quicksand_b"
+                android:textSize="18sp"
+                android:text="@string/parent_relation" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/rg_parentRelation">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dad"
+                    android:id="@+id/rb_dad"
+                    android:fontFamily="@font/quicksand_b"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mom"
+                    android:id="@+id/rb_mom"
+                    android:fontFamily="@font/quicksand_b"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grandpa"
+                    android:id="@+id/rb_grandpa"
+                    android:fontFamily="@font/quicksand_b"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grandma"
+                    android:id="@+id/rb_grandma"
+                    android:fontFamily="@font/quicksand_b"/>
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <com.bearcats.tamagoparent.views.FButton
+            android:id="@+id/btn_finish"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_baseline_menu_24px"
+            android:text="@string/action_finish"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/quicksand_b"
-            android:textSize="18sp"
-            android:text="@string/parent_relation" />
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/rg_parentRelation">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dad"
-                android:id="@+id/rb_dad"
-                android:fontFamily="@font/quicksand_b"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mom"
-                android:id="@+id/rb_mom"
-                android:fontFamily="@font/quicksand_b"/>
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Grandpa"
-                android:id="@+id/rb_grandpa"
-                android:fontFamily="@font/quicksand_b"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Grandma"
-                android:id="@+id/rb_grandma"
-                android:fontFamily="@font/quicksand_b"/>
-        </RadioGroup>
-    </LinearLayout>
-
-
-    <com.bearcats.tamagoparent.views.FButton
-        android:id="@+id/btn_finish"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_baseline_menu_24px"
-        android:text="@string/action_finish"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="@android:color/white" />
 
 
 
