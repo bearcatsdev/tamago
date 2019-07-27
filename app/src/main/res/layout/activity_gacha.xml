@@ -44,16 +44,16 @@
         android:layout_margin = "10dp"
         android:layout_gravity="center">
 
-        <android.support.design.card.MaterialCardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="174dp"
             android:layout_height="47dp"
             android:layout_marginTop="5dp"
             android:backgroundTint="#0088C2"
             app:cardCornerRadius="14dp">
 
-        </android.support.design.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <android.support.design.card.MaterialCardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/btn_gacha"
             android:layout_width="174dp"
             android:layout_height="47dp"
@@ -78,7 +78,7 @@
                     android:textColor="#ffffff"
                     android:textSize="14sp" />
             </LinearLayout>
-        </android.support.design.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
     <LinearLayout
         android:layout_width="wrap_content"

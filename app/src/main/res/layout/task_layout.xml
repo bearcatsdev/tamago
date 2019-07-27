@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-<android.support.design.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
     android:layout_width="match_parent"
     android:layout_height="124dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,7 +18,7 @@
     app:cardBackgroundColor="#E1E1E1"
     app:strokeColor="#E1E1E1"
     />
-<android.support.design.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView
     android:layout_width="match_parent"
     android:layout_height="124dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
 
-                <android.support.design.card.MaterialCardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="70dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="5dp"
@@ -115,7 +115,7 @@
                     app:cardCornerRadius="14dp"
                     />
 
-                <android.support.design.card.MaterialCardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/btn_done"
                     android:layout_width="70dp"
                     android:layout_height="36dp"
@@ -132,12 +132,12 @@
                         android:text="DONE"
                         android:textColor="#ffffff"
                         android:textSize="14sp" />
-                </android.support.design.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
             </FrameLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</android.support.design.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView>
 </FrameLayout>
