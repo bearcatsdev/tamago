@@ -16,9 +16,9 @@ public class Login_ScanQRCode extends AppCompatActivity implements ZXingScannerV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login__scan_qrcode);
 
-        zXingScannerView = new ZXingScannerView(this);
-        setContentView(zXingScannerView);
+        zXingScannerView = (ZXingScannerView) findViewById(R.id.zxingscanner);
         zXingScannerView.setResultHandler(this);
         zXingScannerView.startCamera();
     }
