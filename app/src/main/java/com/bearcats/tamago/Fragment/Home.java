@@ -101,6 +101,7 @@ public class Home extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), Gacha.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.from_right_in, R.anim.from_left_out);
             }
         });
     }

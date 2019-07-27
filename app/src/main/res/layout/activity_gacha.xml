@@ -29,14 +29,27 @@
             android:background="#F5F5F5"/>
     </LinearLayout>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_gravity="center"
-        android:id="@+id/gachanimation"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="gacha_idle.json"
-        app:lottie_loop="true" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_gravity="center"
+            android:id="@+id/gacha_idle"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="gacha_idle.json"
+            app:lottie_loop="true" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_gravity="center"
+            android:id="@+id/gacha_roll"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="gacha_roll.json"
+            android:visibility="invisible"/>
+    </FrameLayout>
+
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

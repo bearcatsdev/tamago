@@ -15,7 +15,7 @@ import com.bearcats.tamago.R;
  public class Gacha extends AppCompatActivity {
     TextView egg_count;
     CardView gacha;
-    LottieAnimationView gachanimation;
+    LottieAnimationView gacha_idle,gacha_roll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,8 @@ import com.bearcats.tamago.R;
 
         egg_count = findViewById(R.id.egg_count);
         gacha = findViewById(R.id.btn_gacha);
-        gachanimation = findViewById(R.id.gachanimation);
+        gacha_idle = findViewById(R.id.gacha_idle);
+        gacha_roll = findViewById(R.id.gacha_roll);
         final Handler handler = new Handler();
 
         final Runnable runnable1 = new Runnable() {
@@ -42,37 +43,37 @@ import com.bearcats.tamago.R;
             }
         };
 
+        gacha_roll.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                gacha_idle.setVisibility(View.VISIBLE);
+                gacha_roll.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
         gacha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 gacha.animate().translationY(20).setDuration(100);
                 handler.postDelayed(runnable,100);
-                gachanimation.setAnimation("gacha_roll.json");
-                gachanimation.setRepeatCount(0);
-                gachanimation.playAnimation();
-                gachanimation.addAnimatorListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-                        //leave it blank
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        gachanimation.setAnimation("gacha_idle.json");
-                        gachanimation.setRepeatCount(LottieDrawable.INFINITE);
-                        gachanimation.playAnimation();
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-                        //leave it blank
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-                        //leave it blank
-                    }
-                });
+                gacha_idle.setVisibility(View.INVISIBLE);
+                gacha_roll.setVisibility(View.VISIBLE);
+                gacha_roll.playAnimation();
             }
         });
 
