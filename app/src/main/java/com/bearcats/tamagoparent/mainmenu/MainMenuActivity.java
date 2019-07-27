@@ -3,19 +3,25 @@ package com.bearcats.tamagoparent.mainmenu;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import com.bearcats.tamagoparent.Create_Child;
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.manager.InterfaceManager;
 import com.bearcats.tamagoparent.recyclerview.ChildrenAdapter;
 import com.bearcats.tamagoparent.recyclerview.ChildrenModel;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
+import com.bearcats.tamagoparent.views.FButton;
 
 import java.util.ArrayList;
 
 public class MainMenuActivity extends AppCompatActivity {
 
     RecyclerView recyclerView_child;
+    FButton menuButton;
     ArrayList<ChildrenModel> children_models;
 
     @Override
@@ -27,7 +33,17 @@ public class MainMenuActivity extends AppCompatActivity {
         InterfaceManager.setLightStatusBar(this);
 
         recyclerView_child = findViewById(R.id.recyclerView_child);
+        menuButton = findViewById(R.id.btn_menu);
         children_models = new ArrayList<>();
+
+        //to make a child activity
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainMenuActivity.this, Create_Child.class));
+            }
+        });
+
 
         //set recycler view layout
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainMenuActivity.this,RecyclerView.VERTICAL,false);
