@@ -16,9 +16,8 @@ import com.bearcats.tamagoparent.recyclerview.ChildrenAdapter;
 import com.bearcats.tamagoparent.recyclerview.ChildrenModel;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 import com.bearcats.tamagoparent.views.FButton;
-
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.facebook.shimmer.Shimmer;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -27,6 +26,7 @@ public class MainMenuActivity extends AppCompatActivity {
     RecyclerView recyclerView_child;
     FButton menuButton;
     ArrayList<ChildrenModel> children_models;
+    ShimmerFrameLayout loadingShimmer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,10 @@ public class MainMenuActivity extends AppCompatActivity {
 
         recyclerView_child = findViewById(R.id.recyclerView_child);
         menuButton = findViewById(R.id.btn_menu);
+        loadingShimmer = findViewById(R.id.shimmer_view_container);
+
+        loadingShimmer.startShimmer();
+
         children_models = new ArrayList<>();
 
         //to make a child activity
@@ -76,6 +80,9 @@ public class MainMenuActivity extends AppCompatActivity {
 
                 ChildrenAdapter adapter = new ChildrenAdapter(MainMenuActivity.this, children_models);
                 recyclerView_child.setAdapter(adapter);
+                recyclerView_child.setVisibility(View.VISIBLE);
+                loadingShimmer.stopShimmer();
+                loadingShimmer.setVisibility(View.GONE);
             } else {
 
             }
