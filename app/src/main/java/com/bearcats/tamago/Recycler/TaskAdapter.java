@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.bearcats.tamago.BottomSheetDialog;
 import com.bearcats.tamago.R;
-import com.bearcats.tamago.Task_Model;
+import com.bearcats.tamago.Recycler.Task_Model;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

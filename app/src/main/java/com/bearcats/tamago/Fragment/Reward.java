@@ -1,4 +1,4 @@
-package com.bearcats.tamago;
+package com.bearcats.tamago.Fragment;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -16,6 +16,8 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
+import com.bearcats.tamago.R;
+import com.bearcats.tamago.Recycler.RewardAdapter;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -25,7 +27,7 @@ public class Reward extends Fragment {
 
     CarouselView carouselView;
     int[] image = {R.drawable.gundam,R.drawable.tamiya,R.drawable.hotwell,R.drawable.rubik};
-    ArrayList<Reward_Model> reward_models;
+    ArrayList<com.bearcats.tamago.Reward_Model> reward_models;
 
     RecyclerView recyclerView;
 
@@ -49,10 +51,10 @@ public class Reward extends Fragment {
         recyclerView = view.findViewById(R.id.listReward);
         reward_models = new ArrayList<>();
 
-        reward_models.add(new Reward_Model(R.drawable.gundam,"Gundam"));
-        reward_models.add(new Reward_Model(R.drawable.tamiya,"Tamiya"));
-        reward_models.add(new Reward_Model(R.drawable.hotwell,"Lego"));
-        reward_models.add(new Reward_Model(R.drawable.rubik,"rubik"));
+        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.gundam,"Gundam"));
+        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.tamiya,"Tamiya"));
+        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.hotwell,"Lego"));
+        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.rubik,"rubik"));
 
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
 

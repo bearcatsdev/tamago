@@ -1,4 +1,4 @@
-package com.bearcats.tamago;
+package com.bearcats.tamago.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bearcats.tamago.R;
 import com.bearcats.tamago.Recycler.ExtraAdapter;
 import com.bearcats.tamago.Recycler.Extra_Model;
 import com.bearcats.tamago.Recycler.TaskAdapter;
+import com.bearcats.tamago.Recycler.Task_Model;
 
 import org.json.JSONObject;
 
@@ -23,7 +25,7 @@ public class Task extends Fragment {
 
 
     RecyclerView task_recyclerView,extra_recyclerView;
-    ArrayList<com.bearcats.tamago.Task_Model> task;
+    ArrayList<Task_Model> task;
     ArrayList<Extra_Model> extra;
     JSONObject jsonObject;
 
@@ -90,12 +92,12 @@ public class Task extends Fragment {
 
 
         //data untuk task
-        task.add( new com.bearcats.tamago.Task_Model(1,2,0,100000,"Vacuum the House","2 minute(s) ago"));
-        task.add(new com.bearcats.tamago.Task_Model(2,3,10,0,"Wash Car","10 minute(s) ago"));
-        task.add(new com.bearcats.tamago.Task_Model(3,5,0,5000,"Do Laundry","7 minute(s) ago"));
-        task.add( new com.bearcats.tamago.Task_Model(1,2,0,100000,"Vacuum the House","2 minute(s) ago"));
-        task.add(new com.bearcats.tamago.Task_Model(2,3,10,0,"Wash Car","10 minute(s) ago"));
-        task.add(new com.bearcats.tamago.Task_Model(3,5,0,5000,"Do Laundry","7 minute(s) ago"));
+        task.add( new Task_Model(1,2,0,100000,"Vacuum the House","2 minute(s) ago"));
+        task.add(new Task_Model(2,3,10,0,"Wash Car","10 minute(s) ago"));
+        task.add(new Task_Model(3,5,0,5000,"Do Laundry","7 minute(s) ago"));
+        task.add( new Task_Model(1,2,0,100000,"Vacuum the House","2 minute(s) ago"));
+        task.add(new Task_Model(2,3,10,0,"Wash Car","10 minute(s) ago"));
+        task.add(new Task_Model(3,5,0,5000,"Do Laundry","7 minute(s) ago"));
 
         //data untuk extra
         extra.add( new Extra_Model(5,2,1,0,"Watch Video","Advertisement"));

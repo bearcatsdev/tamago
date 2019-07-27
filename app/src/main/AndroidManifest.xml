@@ -16,12 +16,20 @@
         <activity android:name=".Activity.Login"></activity>
         <activity android:name=".Activity.Gacha"></activity>
         <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.Login_ScanQRCode"></activity>
+        <activity
+            android:name=".Launch_Screen"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Scan_Barcode" />
+        <activity android:name=".Activity.Login" />
+        <activity android:name=".Activity.Gatcha" />
+        <activity android:name=".Activity.MainActivity"></activity>
     </application>
 
 </manifest>

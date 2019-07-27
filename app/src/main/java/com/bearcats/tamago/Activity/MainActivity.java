@@ -23,10 +23,12 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bearcats.tamago.Fragment.Account;
+import com.bearcats.tamago.Fragment.Home;
+import com.bearcats.tamago.Fragment.Reward;
+import com.bearcats.tamago.Fragment.Task;
 import com.bearcats.tamago.Preferences;
 import com.bearcats.tamago.R;
 import com.bearcats.tamago.Scan_Barcode;
-import com.bearcats.tamago.Task;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         bottomAppBar = findViewById(R.id.bar);
         navigationView = findViewById(R.id.navigation_menu);
         fab = findViewById(R.id.fab);
-        home = new com.bearcats.tamago.Home();
+        home = new Home();
         task = new Task();
-        reward = new com.bearcats.tamago.Reward();
+        reward = new Reward();
         account = new Account();
         preferences = new Preferences();
         menu = navigationView.getMenu();
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                 if(menuItem.getItemId() == R.id.account){
                     fragment = account;
-                    getFragmentManager().beginTransaction().replace(R.id.fragment,preferences).commit();
+//                    getFragmentManager().beginTransaction().replace(R.id.fragment,preferences);
                     menuItem.setIcon(R.drawable.ic_04_account_b);
                     setNavigationViewColor(3);
                 }

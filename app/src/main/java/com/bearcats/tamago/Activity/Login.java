@@ -1,7 +1,11 @@
 package com.bearcats.tamago.Activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +19,9 @@ import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class Login extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+public class Login extends AppCompatActivity {
 
+    int MY_CAMERA_REQUEST_CODE = 100;
     Button btn_qrcode;
     TextView tv_qrcode;
     ZXingScannerView zXingScannerView;
@@ -27,44 +32,43 @@ public class Login extends AppCompatActivity implements ZXingScannerView.ResultH
         setContentView(R.layout.activity_login);
 
         btn_qrcode = findViewById(R.id.btn_qrcode);
-        tv_qrcode = findViewById(R.id.tv_qrcode);
 
         btn_qrcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                zXingScannerView = new ZXingScannerView(Login.this);
-                setContentView(zXingScannerView);
-                zXingScannerView.setResultHandler(Login.this);
-                zXingScannerView.startCamera();
+                if (ContextCompat.checkSelfPermission(Login.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{Manifest.permission.CAMERA},MY_CAMERA_REQUEST_CODE);
+                }
+                else
+                startActivity(new Intent(Login.this,Login_ScanQRCode.class));
             }
         });
 
+
+
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        zXingScannerView.stopCamera();
-    }
 
-    @Override
-    public void handleResult(Result rawResult) {
-        String text, format;
-        text = rawResult.getText();
-        format = rawResult.getBarcodeFormat().toString();
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        if(text.equals("12345678")){
-            Intent i = new Intent(Login.this, MainActivity.class);
-            startActivity(i);
-            finish();
-        }
-        else{
-            Toast.makeText(this,text+" Have no any data similar", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(Login.this,Login.class);
-            startActivity(i);
-            finish();
-        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == MY_CAMERA_REQUEST_CODE) {
+
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(Login.this,Login_ScanQRCode.class));
+
+            } else {
+
+                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
+
+            }
+
+        }}//end onRequestPermissionsResult
 
 
-    }
 }
