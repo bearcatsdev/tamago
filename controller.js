@@ -264,7 +264,7 @@ exports.getChildrenList = function(req, res) {
                 //response.ok(rows, res);
                 var responseArray = [];
                 rows.forEach(element => {
-                    var sql = "SELECT * FROM `parent_child_connection` WHERE `child_id`=?";
+                    var sql = "SELECT * FROM `children_list` WHERE `child_id`=?";
                     connection.query(sql, [element.pc_conn_child], function (error, rows, fields){
                         if (error) {
                             console.log(error);
