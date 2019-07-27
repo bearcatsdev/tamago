@@ -255,13 +255,28 @@ exports.getChildrenList = function(req, res) {
     if (parentId == null) {
         response.error("Data not sufficient", res);
     } else {
-        var sql = "SELECT * FROM `children_list` WHERE `child_id` = (SELECT `pc_conn_child` FROM `parent_child_connection` WHERE `pc_conn_parent` = ?)";
+        var sql = "SELECT `pc_conn_child` FROM `parent_child_connection` WHERE `pc_conn_parent` = ?";
         connection.query(sql, [parentId], function (error, rows, fields){
             if(error){
                 console.log(error);
                 response.error(error, res);
             } else{
-                response.ok(rows, res);
+                //response.ok(rows, res);
+                var responseArray = [];
+                rows.array.forEach(element => {
+                    var sql = "SELECT `pc_conn_child` FROM `parent_child_connection` WHERE `pc_conn_parent` = ?";
+                    connection.query(sql, [parentId], function (error, rows, fields){
+                        if (error) {
+                            console.log(error);
+                            response.error(error, res);
+                        } else {
+                            responseArray.push(rows[0]);
+                            if (element.length == responseArray.length) {
+                                response.ok(rows, responseArray);
+                            }
+                        }
+                    });
+                });
             }
         });
 
