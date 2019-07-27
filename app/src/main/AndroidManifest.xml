@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Create_Child"></activity>
+        <activity android:name=".Add_Mission"></activity>
+        <activity android:name=".Create_Child" />
         <activity android:name=".mainmenu.MainMenuActivity" />
         <activity android:name=".login.NewUserActivity" />
         <activity android:name=".login.VerifyOtpActivity" />

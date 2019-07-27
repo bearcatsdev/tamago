@@ -2,6 +2,7 @@ package com.bearcats.tamagoparent.recyclerview;
 
 public class ChildrenModel {
     private String name;
+    private int id;
     private int goal_start;
     private int goal_end;
     private int wallet;
@@ -9,7 +10,8 @@ public class ChildrenModel {
     private int egg;
     private int avatar_type;
 
-    public ChildrenModel(String name, int goal_start, int goal_end, int wallet, int saving, int egg, int avatar_type) {
+    public ChildrenModel(int id, String name, int goal_start, int goal_end, int wallet, int saving, int egg, int avatar_type) {
+        this.id = id;
         this.name = name;
         this.goal_start = goal_start;
         this.goal_end = goal_end;
@@ -17,6 +19,15 @@ public class ChildrenModel {
         this.saving = saving;
         this.egg = egg;
         this.avatar_type = avatar_type;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getAvatar_type() {

@@ -2,6 +2,7 @@ package com.bearcats.tamagoparent.recyclerview;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bearcats.tamagoparent.Add_Mission;
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.views.FButton;
 import com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar;
@@ -70,6 +72,14 @@ public class ChildrenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
 
         //add click listener here
+        ((ViewHolder) viewHolder).addMission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Add_Mission.class);
+                intent.putExtra("child_id",children_models.get(i).getId());
+                context.startActivity(intent);
+            }
+        });
 
     }
 

@@ -30,4 +30,10 @@
     <string name="child_initial_saving">Initial Saving</string>
     <string name="child_daily_limit">Daily Limit</string>
     <string name="parent_relation">Parent Relation</string>
+    <string name="add_mission_title">Add Mission</string>
+    <string name="mission_name">Mission Name</string>
+    <string name="mission_detail">Mission Detail</string>
+    <string name="Reward">Reward</string>
+    <string name="mission_deadline">Mission Deadline</string>
+    <string name="amount">Amount</string>
 </resources>

@@ -68,6 +68,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
                 for (int i=0; i<response.length(); ++i) {
                     children_models.add(new ChildrenModel(
+                            response.getJSONObject(i).getInt("child_id"),
                             response.getJSONObject(i).getString("child_name"),
                             5000,
                             10000,
