@@ -272,7 +272,7 @@ exports.getChildrenList = function(req, res) {
                         } else {
                             responseArray.push(rows[0]);
                             if (rows.length == responseArray.length) {
-                                response.ok(res, responseArray);
+                                response.ok(responseArray, res);
                             }
                         }
                     });
