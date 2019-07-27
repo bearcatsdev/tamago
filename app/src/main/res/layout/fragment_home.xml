@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home">
+    tools:context="Fragment.Home">
 
 
 
@@ -15,77 +15,82 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp">
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_weight="1">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/currency_01_saving" />
-                <TextView
-                    android:id="@+id/tv_ChildMoney"
-                    android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_b"
-                    android:text="Money"
-                    android:textColor="#FFBA2E"
-                    android:textSize="17sp"/>
-            </LinearLayout>
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/currency_01_saving" />
+                    <TextView
+                        android:id="@+id/tv_ChildMoney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_b"
+                        android:text="Money"
+                        android:textColor="#FFBA2E"
+                        android:textSize="17sp"/>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_weight="1">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/currency_00_wallet" />
-                <TextView
-                    android:id="@+id/tv_childTabungan"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_b"
-                    android:textColor="#0094D6"
-                    android:text="Money"
-                    android:textSize="17sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_weight="1">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/currency_02_egg"/>
-                <TextView
-                    android:id="@+id/tv_childEgg"
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/currency_00_wallet" />
+                    <TextView
+                        android:id="@+id/tv_childTabungan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_b"
+                        android:textColor="#0094D6"
+                        android:text="Money"
+                        android:textSize="17sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_b"
-                    android:text="Money"
-                    android:textSize="17sp"
-                    android:textColor="#F3B26C"/>
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/currency_02_egg"/>
+                    <TextView
+                        android:id="@+id/tv_childEgg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_b"
+                        android:text="Money"
+                        android:textSize="17sp"
+                        android:textColor="#F3B26C"/>
+                </LinearLayout>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F5F5F5"/>
         </LinearLayout>
 
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#F5F5F5"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -95,7 +100,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/gatcha_buttonLayout"
+            android:id="@+id/gacha_buttonLayout"
             android:layout_marginTop="25dp"
             android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"
@@ -190,6 +195,7 @@
                     android:textSize="14sp" />
             </android.support.v7.widget.CardView>
         </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -209,8 +215,8 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="200dp"
                 android:layout_height="22dp"
-                android:indeterminate="false"
                 android:layout_margin="10dp"
+                android:indeterminate="false"
                 android:maxHeight="12dp"
                 android:minHeight="12dp"
                 android:progress="40"
@@ -221,9 +227,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_b"
                 android:text="Goal Progress"
-                android:textSize="19sp"
-                android:fontFamily="@font/quicksand_b"/>
+                android:textSize="19sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -231,8 +237,7 @@
                 android:layout_alignParentRight="true"
                 android:fontFamily="@font/quicksand_b"
                 android:text="(Rp 10.000/ Rp 20.000)"
-                android:textSize="14sp"/>
-
+                android:textSize="14sp" />
 
 
             <!--<ImageButton-->

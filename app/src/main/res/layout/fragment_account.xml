@@ -9,20 +9,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Account Settings"
-            android:layout_gravity="center"
-            android:textColor="#c0c0c0"
-            android:textSize="19dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/quicksand_b"/>
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#F5F5F5"/>
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_b"
+                android:text="Account Settings"
+                android:layout_gravity="center"
+                android:textColor="#c0c0c0"
+                android:textSize="19dp"
+                android:layout_marginBottom="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F5F5F5"/>
+        </LinearLayout>
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">

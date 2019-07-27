@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.bearcats.tamago.Activity.Gacha;
 import com.bearcats.tamago.R;
 import com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar;
 
@@ -32,7 +33,7 @@ public class Home extends Fragment {
     }
 
     RoundedHorizontalProgressBar roundedHorizontalProgressBar;
-    FrameLayout gatchaButtonLayout, skinButtonLayout;
+    FrameLayout gachaButtonLayout, skinButtonLayout;
     CardView menuButton;
     boolean menuOpened = false;
 
@@ -43,7 +44,7 @@ public class Home extends Fragment {
         menuOpened = false;
         roundedHorizontalProgressBar = view.findViewById(R.id.progress_bar);
         menuButton = view.findViewById(R.id.btn_menu);
-        gatchaButtonLayout = view.findViewById(R.id.gatcha_buttonLayout);
+        gachaButtonLayout = view.findViewById(R.id.gacha_buttonLayout);
         skinButtonLayout = view.findViewById(R.id.skin_buttonLayout);
 
         roundedHorizontalProgressBar.animateProgress(2000,0,50);
@@ -60,7 +61,7 @@ public class Home extends Fragment {
                 else{
                     closeMenu();
                 }
-//                Intent intent = new Intent(getContext(),Gatcha.class);
+//                Intent intent = new Intent(getContext(),Gacha.class);
 //                startActivity(intent);
             }
         };
@@ -82,17 +83,25 @@ public class Home extends Fragment {
             }
         });
 
+
+        gachaButtonLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Gacha.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void showMenu(){
         menuOpened = true;
-        gatchaButtonLayout.animate().translationX(-225);
+        gachaButtonLayout.animate().translationX(-225);
         skinButtonLayout.animate().translationX(-425);
     }
 
     public void closeMenu(){
         menuOpened = false;
-        gatchaButtonLayout.animate().translationX(0);
+        gachaButtonLayout.animate().translationX(0);
         skinButtonLayout.animate().translationX(0);
     }
 }

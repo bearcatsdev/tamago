@@ -5,55 +5,100 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffffff"
     tools:context="Activity.Gacha">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gacha Shop"
-        android:textSize="28sp"
-        android:layout_gravity="center"
-        android:fontFamily="@font/quicksand_b"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_b"
+            android:text="Gacha Shop"
+            android:layout_gravity="center"
+            android:textColor="#c0c0c0"
+            android:textSize="19dp"
+            android:layout_marginBottom="10dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F5F5F5"/>
+    </LinearLayout>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:id="@+id/gachanimation"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="gacha_roll.json"
+        app:lottie_fileName="gacha_idle.json"
         app:lottie_loop="true" />
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_alignParentRight="true"
-        android:layout_margin = "20dp"
+        android:layout_margin = "10dp"
         android:layout_gravity="center">
 
-        <android.support.v7.widget.CardView
+        <android.support.design.card.MaterialCardView
             android:layout_width="174dp"
             android:layout_height="47dp"
             android:layout_marginTop="5dp"
-            android:backgroundTint="#7FB800"
-            app:cardCornerRadius="14dp"></android.support.v7.widget.CardView>
+            android:backgroundTint="#0088C2"
+            app:cardCornerRadius="14dp">
 
+        </android.support.design.card.MaterialCardView>
 
-        <android.support.v7.widget.CardView
+        <android.support.design.card.MaterialCardView
             android:id="@+id/btn_gacha"
             android:layout_width="174dp"
             android:layout_height="47dp"
-            android:backgroundTint="#96C42E"
+            android:backgroundTint="#00A6ED"
+            app:strokeWidth="1dp"
+            app:strokeColor="#0088C2"
             app:cardCornerRadius="14dp">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/quicksand_b"
-                android:text="DONE"
-                android:textColor="#ffffff"
-                android:textSize="14sp" />
-        </android.support.v7.widget.CardView>
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/currency_04_white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_b"
+                    android:text=" x 15"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </android.support.design.card.MaterialCardView>
     </FrameLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/egg_left"/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/currency_02_egg" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#F3B26C"/>
+    </LinearLayout>
 
 </LinearLayout>

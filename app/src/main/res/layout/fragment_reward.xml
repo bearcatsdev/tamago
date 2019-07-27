@@ -1,63 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.Reward">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rewards"
-        android:layout_gravity="center"
-        android:textColor="#c0c0c0"
-        android:textSize="19dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/quicksand_b"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#F5F5F5"/>
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:orientation="vertical"
+            android:gravity="bottom"
             >
-
-            <com.synnapps.carouselview.CarouselView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_b"
+                android:text="Rewards"
+                android:layout_gravity="center"
+                android:textColor="#c0c0c0"
+                android:textSize="19dp"
+                android:layout_marginBottom="10dp"/>
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="175dp"
-                android:id="@+id/carouselView"
-                app:fillColor="#FFFFFFFF"
-                app:pageColor="#00000000"
-                app:radius="5dp"
-                app:slideInterval="3000"
-                app:strokeColor="#FF777777"
-                android:layout_margin="20dp"
-                app:strokeWidth="1dp">
-            </com.synnapps.carouselview.CarouselView>
+                android:layout_height="1dp"
+                android:background="#F5F5F5"/>
+        </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/listReward"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical"
+                >
 
-            </android.support.v7.widget.RecyclerView>
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:layout_margin="20dp"
+                    app:fillColor="#FFFFFFFF"
+                    app:pageColor="#00000000"
+                    app:radius="5dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp">
+                </com.synnapps.carouselview.CarouselView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/listReward"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp">
+
+                </android.support.v7.widget.RecyclerView>
 
 
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
 
 
