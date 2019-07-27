@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Launch_Screen"
+        <activity android:name=".Activity.Login_ScanQRCode"></activity>
+        <activity
+            android:name=".Launch_Screen"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +25,7 @@
         <activity android:name=".Scan_Barcode" />
         <activity android:name=".Activity.Login" />
         <activity android:name=".Activity.Gatcha" />
-        <activity android:name=".Activity.MainActivity">
-
-        </activity>
+        <activity android:name=".Activity.MainActivity"></activity>
     </application>
 
 </manifest>
