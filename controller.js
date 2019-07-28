@@ -418,7 +418,7 @@ exports.getTaskList = function(req, res) {
             if(error){
                 console.log(error);
                 response.error(error, res);
-            } else{
+            } else {
                 response.ok(rows, res);
             }
         });
@@ -428,6 +428,7 @@ exports.getTaskList = function(req, res) {
 
 exports.newTask = function(req, res) {
     var taskName = req.body.task_name;
+    var taskType = req.body.task_type;
     var taskDetail = req.body.task_detail;
     var childId = req.body.child_id;
     var parentId = req.body.parent_id;
@@ -435,11 +436,11 @@ exports.newTask = function(req, res) {
     var rewardEggs = req.body.task_reward_eggs;
     var taskExpiry = req.body.task_expiry;
 
-    if (taskName == null || taskDetail == null || childId == null || parentId == null || rewardWallet == null || rewardEggs == null || taskExpiry == null) {
+    if (taskName == null || taskType == null || taskDetail == null || childId == null || parentId == null || rewardWallet == null || rewardEggs == null || taskExpiry == null) {
         response.error("Data supplied not sufficient", res);
     } else {
-        var sql = 'INSERT INTO `child_task_list` (`task_name`, `task_child_id`, `task_detail`, `task_parent_id`, `task_reward_wallet`, `task_reward_eggs`, `task_expiry`) VALUES (?, ?, ?, ?, ?, ?, ?)';
-        connection.query(sql, [taskName, childId, taskDetail, parentId, rewardWallet, rewardEggs, taskExpiry], function (error, rows){
+        var sql = 'INSERT INTO `child_task_list` (`task_name`, `task_type`, `task_child_id`, `task_detail`, `task_parent_id`, `task_reward_wallet`, `task_reward_eggs`, `task_expiry`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        connection.query(sql, [taskName, taskType, childId, taskDetail, parentId, rewardWallet, rewardEggs, taskExpiry], function (error, rows){
             if(error){
                 console.log(error)
                 response.error(error, res)
