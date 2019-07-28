@@ -88,7 +88,7 @@ public class Login_ScanQRCode extends AppCompatActivity implements ZXingScannerV
                         Intent intent = new Intent(Login_ScanQRCode.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
-                        finish(); //
+                        finish();
                     }
 
                 }, new Response.ErrorListener() {
