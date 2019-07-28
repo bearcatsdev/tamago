@@ -27,8 +27,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-//TODO: Change Missions.java and fragment_missions.xml.xml into Missions.java and fragment_missions.xml respectively
-
 public class Missions extends Fragment {
 
 

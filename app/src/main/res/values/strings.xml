@@ -5,6 +5,9 @@
     <string name="gacha_title_bar">Gacha Shop</string>
     <string name="gacha_egg_left">You Have:</string>
 
+    <!--Barcode Activity-->
+    <string name="barcode_title_bar">My Barcode</string>
+
     <!--Missions Fragment-->
     <string name="missions_title_bar">Your Missions</string>
     <string name="missions_chores">Chores</string>
