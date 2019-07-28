@@ -67,9 +67,7 @@ public class QRCode extends Fragment {
                 startActivity(new Intent(getContext(),Login_ScanQRCode.class));
 
             } else {
-
                 Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
-
             }
 
         }}//end onRequestPermissionsResult
