@@ -249,6 +249,28 @@ exports.newChildRelation = function(req, res) {
     }
 };
 
+exports.newChildGoal = function(req, res) {
+    var childId = req.body.child_id;
+    var goalName = req.body.goal_name;
+    var goalUrl = req.body.goal_url;
+    var goalPrice = req.body.goal_price;
+    var goalDone = req.body.goal_done;
+
+    if (childId == null || goalName == null || goalUrl == null || goalPrice == null || goalDone == null) {
+        response.error("Data supplied not sufficient", res);
+    } else {
+        var sql = 'INSERT INTO `child_goal_list` (goal_itemname`, `goal_itemurl`, `goal_itemprice`, `child_id`, `goal_done`) VALUES (?, ?, ?, ?, ?);';
+        connection.query(sql, [goalName, goalUrl, goalPrice, childId, goalDone], function (error, rows) {
+            if(error){
+                console.log(error);
+                response.error(error, res);
+            } else{
+                response.ok("Add new goal completed.", res);
+            }
+        });
+    }
+};
+
 exports.getChildrenList = function(req, res) {
     var parentId = req.body.parent_id;
 
@@ -277,6 +299,25 @@ exports.getChildrenList = function(req, res) {
                         }
                     });
                 });
+            }
+        });
+
+    }
+}
+
+exports.getChildGoals = function(req, res) {
+    var childId = req.body.child_id;
+
+    if (childId == null) {
+        response.error("Data not sufficient", res);
+    } else {
+        var sql = "SELECT * FROM `child_goal_list` WHERE `child_id` = ?";
+        connection.query(sql, [childId], function (error, rows, fields){
+            if(error){
+                console.log(error);
+                response.error(error, res);
+            } else{
+                response.ok(rows, res);
             }
         });
 

@@ -39,6 +39,12 @@ module.exports = function(app) {
     app.route('/api/child/getProfile')
         .post(todoList.getChildProfile);
 
+    app.route('/api/child/goal/newGoal')
+        .post(todoList.newChildGoal);
+        
+    app.route('/api/child/goal/getGoals')
+        .post(todoList.getChildGoals);
+
     // default page if no route found
     app.route('*')
         .get(todoList.notFoundPage);  
