@@ -259,7 +259,7 @@ exports.newChildGoal = function(req, res) {
     if (childId == null || goalName == null || goalUrl == null || goalPrice == null || goalDone == null) {
         response.error("Data supplied not sufficient", res);
     } else {
-        var sql = 'INSERT INTO `child_goal_list` (goal_itemname`, `goal_itemurl`, `goal_itemprice`, `child_id`, `goal_done`) VALUES (?, ?, ?, ?, ?);';
+        var sql = 'INSERT INTO `child_goal_list` (`goal_itemname`, `goal_itemurl`, `goal_itemprice`, `child_id`, `goal_done`) VALUES (?, ?, ?, ?, ?);';
         connection.query(sql, [goalName, goalUrl, goalPrice, childId, goalDone], function (error, rows) {
             if(error){
                 console.log(error);
