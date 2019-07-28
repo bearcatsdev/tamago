@@ -22,7 +22,7 @@ import com.bearcats.tamago.R;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gacha);
 
-        egg_count = findViewById(R.id.egg_count);
+//        egg_count = findViewById(R.id.egg_count);
         gacha = findViewById(R.id.btn_gacha);
         gacha_idle = findViewById(R.id.gacha_idle);
         gacha_roll = findViewById(R.id.gacha_roll);

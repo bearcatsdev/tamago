@@ -5,13 +5,16 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class ChildPreferences {
-    static final String KEY_CHILDID ="user_id";
-    static final String KEY_CHILDNAME = "user_name";
-    static final String KEY_CHILD_TOKEN = "user_token";
-    static final String KEY_CHILD_LOGGED_IN = "user_logged_in";
-    static final String KEY_CHILD_WALLET = "user_wallet";
-    static final String KEY_CHILD_SAVING = "user_wallet";
-    static final String KEY_CHILD_EGG = "user_wallet";
+    static final String KEY_CHILDID ="child_id";
+    static final String KEY_CHILDNAME = "child_name";
+    static final String KEY_CHILD_TOKEN = "child_token";
+    static final String KEY_CHILD_LOGGED_IN = "child_logged_in";
+    static final String KEY_CHILD_WALLET = "child_wallet";
+    static final String KEY_CHILD_SAVING = "child_saving";
+    static final String KEY_CHILD_EGG = "child_egg";
+    static final String KEY_CHILD_GENDER = "child_gender";
+    static final String KEY_CHILD_DAILY_LIMIT = "child_daily_limit";
+    static final String KEY_CHILD_DOB = "child_dob";
 
     private static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -88,6 +91,36 @@ public class ChildPreferences {
         return getSharedPreference(context).getInt(KEY_CHILD_EGG,0);
     }
 
+    public static void setChildGender(Context context, int childGender){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putInt(KEY_CHILD_GENDER, childGender);
+        editor.apply();
+    }
+
+    public static int getChildGender(Context context){
+        return getSharedPreference(context).getInt(KEY_CHILD_GENDER,0);
+    }
+
+    public static void setChildDob(Context context, String childDOB){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_CHILD_DOB, childDOB);
+        editor.apply();
+    }
+
+    public static String getChildDob(Context context){
+        return getSharedPreference(context).getString(KEY_CHILD_DOB,"");
+    }
+
+    public static void setChildDailyLimit(Context context, int dailyLimit){
+        SharedPreferences.Editor editor= getSharedPreference(context).edit();
+        editor.putInt(KEY_CHILD_DAILY_LIMIT,dailyLimit);
+        editor.apply();
+    }
+
+    public static int getChildDailyLimit(Context context){
+        return getSharedPreference(context).getInt(KEY_CHILD_DAILY_LIMIT,0);
+    }
+
 
 
     public static void clearLoggedInUser (Context context){
@@ -99,6 +132,9 @@ public class ChildPreferences {
         editor.remove(KEY_CHILD_WALLET);
         editor.remove(KEY_CHILD_SAVING);
         editor.remove(KEY_CHILD_EGG);
+        editor.remove(KEY_CHILD_GENDER);
+        editor.remove(KEY_CHILD_DOB);
+        editor.remove(KEY_CHILD_DAILY_LIMIT);
         editor.apply();
     }
 }

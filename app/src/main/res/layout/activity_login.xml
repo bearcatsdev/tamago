@@ -7,28 +7,8 @@
     tools:context=".Activity.Login"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:id="@+id/toolbar">
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/verification"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login Using QRCode"
-        android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="20dp"/>
-
-  <Button
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Use QRCODE scanner"
-      android:id="@+id/btn_qrcode"/>
-
-
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/fragment_login"></FrameLayout>
 </LinearLayout>
