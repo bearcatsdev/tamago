@@ -18,11 +18,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_b"
-                android:text="Account Settings"
+                android:text="@string/account_title_bar"
                 android:layout_gravity="center"
                 android:textColor="#c0c0c0"
-                android:textSize="19dp"
+                android:textSize="18sp"
                 android:layout_marginBottom="10dp"/>
             <View
                 android:layout_width="match_parent"
@@ -37,6 +36,47 @@
                 android:layout_height="match_parent"
                 android:id="@+id/account_layout"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Category 1"
+                    android:layout_margin="20dp"
+                    android:textSize="24sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F5F5F5"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Subcategory 1"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="15dp"
+                    android:textSize="18sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F5F5F5"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Subcategory 1"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="15dp"
+                    android:textSize="18sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F5F5F5"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Category 2"
+                    android:layout_margin="20dp"
+                    android:textSize="24sp"/>
+
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

@@ -44,7 +44,7 @@
                     android:text="@string/missions_chores"
                     android:textSize="24sp"
                     android:textColor="#707070"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/quicksand_b"/>
 
@@ -62,7 +62,7 @@
                     android:text="@string/missions_extra"
                     android:textSize="24sp"
                     android:textColor="#707070"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:fontFamily="@font/quicksand_b"/>
 
                 <androidx.recyclerview.widget.RecyclerView
