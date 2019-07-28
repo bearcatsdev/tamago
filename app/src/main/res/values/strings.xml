@@ -15,4 +15,9 @@
 
     <!--Account Fragment-->
     <string name="account_title_bar">Account Settings</string>
+    <string name="account_show_qr">Show my QR</string>
+    <string name="account_logout">Logout</string>
+
+    <!--Placeholder-->
+    <string name="placeholder_category">Category</string>
 </resources>

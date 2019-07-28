@@ -33,6 +33,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+//TODO: Change Task.java and fragment_task.xml into Missions.java and fragment_missions.xml respectively
 
 public class Task extends Fragment {
 
