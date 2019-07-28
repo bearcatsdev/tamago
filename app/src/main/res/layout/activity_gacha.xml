@@ -18,10 +18,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_b"
-            android:text="Gacha Shop"
+            android:text="@string/gacha_title_bar"
             android:layout_gravity="center"
             android:textColor="#c0c0c0"
-            android:textSize="19dp"
+            android:textSize="19sp"
             android:layout_marginBottom="10dp"/>
         <View
             android:layout_width="match_parent"
@@ -101,7 +101,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/egg_left"/>
+            android:text="@string/gacha_egg_left"/>
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"

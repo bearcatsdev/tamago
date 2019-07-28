@@ -1,5 +1,6 @@
 package com.bearcats.tamago.Fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -101,7 +102,7 @@ public class Home extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), Gacha.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.from_right_in, R.anim.from_left_out);
+
             }
         });
     }

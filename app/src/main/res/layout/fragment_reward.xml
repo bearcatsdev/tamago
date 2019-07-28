@@ -19,11 +19,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_b"
-                android:text="Rewards"
+                android:text="@string/reward_title_bar"
                 android:layout_gravity="center"
                 android:textColor="#c0c0c0"
-                android:textSize="19dp"
+                android:textSize="18sp"
                 android:layout_marginBottom="10dp"/>
             <View
                 android:layout_width="match_parent"
