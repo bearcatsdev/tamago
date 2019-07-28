@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -36,18 +38,34 @@ public class Introduction extends Fragment {
 
 
     MaterialCardView next;
+    Toolbar toolbar;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         next = view.findViewById(R.id.btn_next);
 
-        final Handler handler = new Handler();
+        toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              getActivity().onBackPressed();
+            }
+        });
+
+        final Handler handler = new Handler();
         final Runnable runnable1 = new Runnable() {
             @Override
             public void run() {
                 next.setClickable(true);
+                Fragment loginFragment = new QRCode();
+                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
+                fc.replaceFragment(loginFragment);
             }
         };
 
@@ -65,9 +83,7 @@ public class Introduction extends Fragment {
                 next.setClickable(false);
                 next.animate().translationY(20).setDuration(100);
                 handler.postDelayed(runnable,100);
-                Fragment loginFragment = new QRCode();
-                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
-                fc.replaceFragment(loginFragment);
+
             }
         });
 
