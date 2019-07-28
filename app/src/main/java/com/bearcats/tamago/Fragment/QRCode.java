@@ -27,7 +27,7 @@ import com.bearcats.tamago.R;
 import com.google.android.material.card.MaterialCardView;
 
 public class QRCode extends Fragment {
-
+//TODO: Change QRCode into QRlogin
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

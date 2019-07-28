@@ -39,7 +39,14 @@ public class Account extends Fragment {
         account_show_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+            }
+        });
+
+        account_show_qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
