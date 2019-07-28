@@ -31,7 +31,6 @@ public class Account extends Fragment {
         return inflater.inflate(R.layout.fragment_account, container, false);
     }
 
-    TextView showBarcode;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -41,18 +40,13 @@ public class Account extends Fragment {
 
         account_show_qr.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), ShowBarcode.class);
+                startActivity(i);
             }
         });
 
-        account_show_qr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-        showBarcode = view.findViewById(R.id.show_barcode);
-        showBarcode.setOnClickListener(new View.OnClickListener() {
+        account_logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), ShowBarcode.class);

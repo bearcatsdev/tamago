@@ -40,7 +40,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/placeholder_category"
+                    android:text="@string/account_category_account"
                     android:layout_margin="20dp"
                     android:textSize="24sp"/>
                 <View
@@ -54,7 +54,6 @@
                     android:text="@string/account_show_qr"
                     android:paddingHorizontal="30dp"
                     android:paddingVertical="15dp"
-                    android:id="@+id/show_barcode"
                     android:textSize="18sp"
                     android:background="?android:attr/selectableItemBackground"/>
                 <View
@@ -64,7 +63,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/placeholder_category"
+                    android:text="@string/account_category_system"
                     android:layout_margin="20dp"
                     android:textSize="24sp"/>
                 <View
