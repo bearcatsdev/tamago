@@ -18,6 +18,8 @@ import com.bearcats.tamago.Scan_Barcode;
 
 public class Account extends Fragment {
 
+    TextView account_show_qr, account_logout;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,19 +28,25 @@ public class Account extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_account, container, false);
     }
 
-    TextView showBarcode;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        account_show_qr = view.findViewById(R.id.account_show_qr);
+        account_logout = view.findViewById(R.id.account_logout);
 
-        showBarcode = view.findViewById(R.id.show_barcode);
-        showBarcode.setOnClickListener(new View.OnClickListener() {
+        account_show_qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), ShowBarcode.class);
+                startActivity(i);
+            }
+        });
+
+        account_logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), ShowBarcode.class);

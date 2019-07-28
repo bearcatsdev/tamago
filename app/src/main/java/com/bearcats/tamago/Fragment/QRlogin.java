@@ -98,11 +98,11 @@ public class QRlogin extends Fragment {
 
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                Toast.makeText(getContext(), "camera permission granted", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Camera permission granted", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getContext(), QRscan.class));
 
             } else {
-                Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Camera permission denied", Toast.LENGTH_LONG).show();
             }
 
         }}//end onRequestPermissionsResult

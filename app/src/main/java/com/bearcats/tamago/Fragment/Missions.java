@@ -27,8 +27,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-//TODO: Change Missions.java and fragment_missions.xml.xml into Missions.java and fragment_missions.xml respectively
-
 public class Missions extends Fragment {
 
 
@@ -45,7 +43,6 @@ public class Missions extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_missions, container, false);
     }
 

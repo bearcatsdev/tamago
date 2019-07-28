@@ -5,6 +5,13 @@
     <string name="gacha_title_bar">Gacha Shop</string>
     <string name="gacha_egg_left">You Have:</string>
 
+    <!--Barcode Activity-->
+    <string name="barcode_title_bar">My Barcode</string>
+
+    <!--Home Activity-->
+    <string name="home_button_gacha">Gacha</string>
+    <string name="home_button_skin">Skin</string>
+
     <!--Missions Fragment-->
     <string name="missions_title_bar">Your Missions</string>
     <string name="missions_chores">Chores</string>
@@ -15,11 +22,11 @@
 
     <!--Account Fragment-->
     <string name="account_title_bar">Account Settings</string>
+    <string name="account_category_account">My Account</string>
+    <string name="account_category_system">System Settings</string>
     <string name="account_show_qr">Show my QR</string>
     <string name="account_logout">Logout</string>
 
     <!--Placeholder-->
     <string name="placeholder_category">Category</string>
-
-    <string name="show_qrcode_title">Show QR Code</string>
 </resources>
