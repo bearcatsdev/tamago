@@ -414,12 +414,26 @@ exports.getTaskList = function(req, res) {
         response.error("Data not sufficient", res);
     } else {
         var sql = "SELECT * FROM `child_task_list` WHERE `task_child_id` = ?";
-        connection.query(sql, [childId], function (error, rows, fields){
+        connection.query(sql, [childId], function (error, rows){
             if(error){
                 console.log(error);
                 response.error(error, res);
             } else {
-                response.ok(rows, res);
+                //response.ok(rows, res);
+                rows.forEach(function(Element, count) {
+                    var sql = "SELECT `parent_relation` FROM `parent_child_connection` WHERE `pc_conn_child` = ? AND `pc_conn_parent` = ?";
+                    connection.query(sql, [childId, Element.task_parent_id], function (error1, rows1){
+                        if (error1) {
+                            console.log(error);
+                            response.error(error, res);
+                        } else {
+                            Element.task_parent_relation = rows1[0].parent_relation;
+                            if (count == rows.length-1) {
+                                response.ok(rows, res);
+                            }
+                        }
+                    });
+                })
             }
         });
 
