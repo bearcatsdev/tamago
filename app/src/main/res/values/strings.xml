@@ -23,9 +23,14 @@
     <!--Account Fragment-->
     <string name="account_title_bar">Account Settings</string>
     <string name="account_category_account">My Account</string>
+    <string name="account_category_debug">Debug Options</string>
     <string name="account_category_system">System Settings</string>
-    <string name="account_show_qr">Show my QR</string>
-    <string name="account_logout">Logout</string>
+    <string name="account_sub_show_qr">Show my QR</string>
+    <string name="account_debug_add_wallet">Add wallet</string>
+    <string name="account_debug_add_egg">Add egg</string>
+    <string name="account_debug_reduce_saving">Reduce saving</string>
+
+    <string name="account_sub_logout">Logout</string>
 
     <!--Placeholder-->
     <string name="placeholder_category">Category</string>

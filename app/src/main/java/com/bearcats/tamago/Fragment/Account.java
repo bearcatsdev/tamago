@@ -9,16 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bearcats.tamago.Activity.ShowBarcode;
 import com.bearcats.tamago.Preferences;
 import com.bearcats.tamago.R;
 import com.bearcats.tamago.Scan_Barcode;
+import com.bearcats.tamago.preferences.ChildPreferences;
 
 
 public class Account extends Fragment {
 
-    TextView account_show_qr, account_logout;
+    TextView account_show_qr, account_logout, debug_add_wallet, debug_add_egg, debug_reduce_saving;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,9 @@ public class Account extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         account_show_qr = view.findViewById(R.id.account_show_qr);
         account_logout = view.findViewById(R.id.account_logout);
+        debug_add_wallet = view.findViewById(R.id.add_wallet);
+        debug_add_egg = view.findViewWithTag(R.id.add_egg);
+        debug_reduce_saving = view.findViewById(R.id.reduce_saving);
 
         account_show_qr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +56,32 @@ public class Account extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), ShowBarcode.class);
                 startActivity(i);
+            }
+        });
+
+        debug_add_wallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChildPreferences.setChildWallet(getContext(), ChildPreferences.getChildWallet(getContext()) + 1000);
+                Toast.makeText(getContext(), "Wallet added by 1000", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        debug_add_egg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) + 15);
+//                Toast.makeText(getContext(), "Egg added by 15", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+        debug_reduce_saving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChildPreferences.getChildSaving(getContext())>1000){
+                    ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) - 1000);
+                    Toast.makeText(getContext(), "Saving reduced by 1000", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

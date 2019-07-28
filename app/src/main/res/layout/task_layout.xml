@@ -129,7 +129,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/quicksand_b"
                         android:text="WAIT"
                         android:textColor="#ffffff"
                         android:textSize="14sp" />

@@ -208,9 +208,8 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             child_reward = itemView.findViewById(R.id.icon_reward);
 
             Typeface face = ResourcesCompat.getFont(context, R.font.quicksand_r);
-            Typeface face1 = ResourcesCompat.getFont(context, R.font.quicksand_b);
-            time.setTypeface(face1);
-            time.setTextColor(0xFF96C42E);
+            time.setTypeface(face);
+            time.setTextColor(0xFFC0C0C0);
             task_done.setTypeface(face);
             task_done.setTextColor(0xFFC0C0C0);
         }
