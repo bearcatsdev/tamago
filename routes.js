@@ -31,7 +31,10 @@ module.exports = function(app) {
         .post(todoList.newTask);
         
     app.route('/api/child/task/getTaskList')
-        .post(todoList.getTaskList);
+        .post(todoList.getTaskList);      
+
+    app.route('/api/child/task/setTaskDone')
+        .post(todoList.setTaskDone);
 
     app.route('/api/child/login')
         .post(todoList.loginChild);

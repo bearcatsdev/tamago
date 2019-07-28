@@ -440,6 +440,24 @@ exports.getTaskList = function(req, res) {
     }
 }
 
+exports.setTaskDone = function(req, res) {
+    var taskId = req.body.task_id;
+
+    if (taskId == null) {
+        response.error("Data supplied not sufficient", res);
+    } else {
+        var sql = 'UPDATE `child_task_list` SET `task_done` = true WHERE `child_task_list`.`task_id` = ?;';
+        connection.query(sql, [taskId], function (error, rows) {
+            if(error){
+                console.log(error);
+                response.error(error, res);
+            } else{
+                response.ok("Task is now done.", res);
+            }
+        });
+    }
+};
+
 exports.newTask = function(req, res) {
     var taskName = req.body.task_name;
     var taskType = req.body.task_type;
