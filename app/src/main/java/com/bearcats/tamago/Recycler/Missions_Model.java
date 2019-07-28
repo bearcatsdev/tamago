@@ -1,10 +1,10 @@
 package com.bearcats.tamago.Recycler;
 
-public class Task_Model{
+public class Missions_Model {
     private String taskName, taskTime;
     private int parent_type,task_type,egg,money;
 
-    public Task_Model(int parent_type, int task_type, int egg, int money, String taskName, String taskTime){
+    public Missions_Model(int parent_type, int task_type, int egg, int money, String taskName, String taskTime){
         this.taskName = taskName;
         this.taskTime = taskTime;
         this.parent_type = parent_type;

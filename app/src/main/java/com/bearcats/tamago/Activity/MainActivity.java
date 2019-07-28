@@ -17,7 +17,7 @@ import android.view.View;
 import com.bearcats.tamago.Fragment.Account;
 import com.bearcats.tamago.Fragment.Home;
 import com.bearcats.tamago.Fragment.Reward;
-import com.bearcats.tamago.Fragment.Task;
+import com.bearcats.tamago.Fragment.Missions;
 import com.bearcats.tamago.Preferences;
 import com.bearcats.tamago.R;
 import com.bearcats.tamago.Scan_Barcode;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation_menu);
         fab = findViewById(R.id.fab);
         home = new Home();
-        task = new Task();
+        task = new Missions();
         reward = new Reward();
         account = new Account();
         preferences = new Preferences();

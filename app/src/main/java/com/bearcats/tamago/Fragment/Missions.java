@@ -1,6 +1,5 @@
 package com.bearcats.tamago.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,20 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.bearcats.tamago.Activity.Login_ScanQRCode;
-import com.bearcats.tamago.Activity.MainActivity;
 import com.bearcats.tamago.R;
-import com.bearcats.tamago.Recycler.ExtraAdapter;
-import com.bearcats.tamago.Recycler.Extra_Model;
-import com.bearcats.tamago.Recycler.TaskAdapter;
-import com.bearcats.tamago.Recycler.Task_Model;
+import com.bearcats.tamago.Recycler.MissionsAdapter;
+import com.bearcats.tamago.Recycler.Missions_Model;
 import com.bearcats.tamago.preferences.ChildPreferences;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
@@ -33,13 +27,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-//TODO: Change Task.java and fragment_task.xml into Missions.java and fragment_missions.xml respectively
+//TODO: Change Missions.java and fragment_missions.xml.xml into Missions.java and fragment_missions.xml respectively
 
-public class Task extends Fragment {
+public class Missions extends Fragment {
 
 
     RecyclerView task_recyclerView;
-    ArrayList<Task_Model> task;
+    ArrayList<Missions_Model> task;
     JSONObject jsonObject;
     ShimmerFrameLayout loadingShimmer;
 
@@ -52,7 +46,7 @@ public class Task extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_task, container, false);
+        return inflater.inflate(R.layout.fragment_missions, container, false);
     }
 
     @Override
@@ -87,10 +81,10 @@ public class Task extends Fragment {
                             if (response.getInt("status") == 200) {
                                 JSONArray jsonArray = response.getJSONArray("response");
                                 for (int i= 0 ;i <jsonArray.length();i++){
-                                    task.add( new Task_Model(1,2,jsonArray.getJSONObject(i).getInt("task_reward_eggs"),jsonArray.getJSONObject(i).getInt("task_reward_wallet"),jsonArray.getJSONObject(i).getString("task_name"),jsonArray.getJSONObject(i).getString("task_expiry").substring(0,10)));
+                                    task.add( new Missions_Model(1,2,jsonArray.getJSONObject(i).getInt("task_reward_eggs"),jsonArray.getJSONObject(i).getInt("task_reward_wallet"),jsonArray.getJSONObject(i).getString("task_name"),jsonArray.getJSONObject(i).getString("task_expiry").substring(0,10)));
                                 }
-                                TaskAdapter taskAdapter = new TaskAdapter(getContext(),task);
-                                task_recyclerView.setAdapter(taskAdapter);
+                                MissionsAdapter missionsAdapter = new MissionsAdapter(getContext(),task);
+                                task_recyclerView.setAdapter(missionsAdapter);
                                 task_recyclerView.setVisibility(View.VISIBLE);
                                 loadingShimmer.stopShimmerAnimation();
                                 loadingShimmer.setVisibility(View.GONE);

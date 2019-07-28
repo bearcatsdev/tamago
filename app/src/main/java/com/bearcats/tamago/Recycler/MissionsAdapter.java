@@ -22,14 +22,14 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
-public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Task_Model> task_models;
+    ArrayList<Missions_Model> missions_models;
     Context context;
 
-    public TaskAdapter(Context context, ArrayList<Task_Model> task_models){
+    public MissionsAdapter(Context context, ArrayList<Missions_Model> missions_models){
         this.context = context;
-        this.task_models = task_models;
+        this.missions_models = missions_models;
     }
 
     @NonNull
@@ -41,10 +41,10 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        ((ViewHolder)viewHolder).task.setText(task_models.get(i).getTaskName());
-        ((ViewHolder)viewHolder).time.setText(task_models.get(i).getTaskTime());
+        ((ViewHolder)viewHolder).task.setText(missions_models.get(i).getTaskName());
+        ((ViewHolder)viewHolder).time.setText(missions_models.get(i).getTaskTime());
 
-        int parent_type = task_models.get(i).getParent_type();
+        int parent_type = missions_models.get(i).getParent_type();
 
         //set icon for parent
         switch(parent_type){
@@ -62,8 +62,8 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 break;
         }
 
-        int egg =task_models.get(i).getEgg();
-        int money = task_models.get(i).getMoney();
+        int egg = missions_models.get(i).getEgg();
+        int money = missions_models.get(i).getMoney();
 
         //format indonesia money
         DecimalFormat format = (DecimalFormat)DecimalFormat.getCurrencyInstance();
@@ -87,7 +87,7 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         //set task icon
-        int task_type = task_models.get(i).getTask_type();
+        int task_type = missions_models.get(i).getTask_type();
 
         switch (task_type){
             case 1:
@@ -174,7 +174,7 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return task_models.size();
+        return missions_models.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
