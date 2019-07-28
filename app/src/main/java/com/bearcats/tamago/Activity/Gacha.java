@@ -16,8 +16,6 @@ import com.airbnb.lottie.LottieDrawable;
 import com.bearcats.tamago.R;
 import com.bearcats.tamago.preferences.ChildPreferences;
 
-import static java.security.AccessController.getContext;
-
  public class Gacha extends AppCompatActivity {
     TextView egg_count;
     CardView gacha;
@@ -33,7 +31,7 @@ import static java.security.AccessController.getContext;
         gacha_idle = findViewById(R.id.gacha_idle);
         gacha_roll = findViewById(R.id.gacha_roll);
 
-        egg_count.setText(ChildPreferences.getChildEgg()) ;
+        egg_count.setText(ChildPreferences.getChildEgg(Gacha.this)+"") ;
 
         final Handler handler = new Handler();
 
@@ -80,16 +78,16 @@ import static java.security.AccessController.getContext;
             public void onClick(View view) {
                 gacha.animate().translationY(20).setDuration(100);
                 handler.postDelayed(runnable,100);
-//                if(ChildPreferences.getChildEgg(Gacha.this)>=15){
+                if(ChildPreferences.getChildEgg(Gacha.this)>=15){
                     gacha_idle.setVisibility(View.INVISIBLE);
                     gacha_roll.setVisibility(View.VISIBLE);
                     gacha_roll.playAnimation();
-//                    ChildPreferences.setChildEgg(Gacha.this, ChildPreferences.getChildEgg(Gacha.this) + 15);
-//                    egg_count.setText(ChildPreferences.getChildEgg(Gacha.this)) ;
-//                }
-//                else{
-//                    Toast.makeText(Gacha.this, "Insufficient egg", Toast.LENGTH_SHORT).show();
-//                }
+                    ChildPreferences.setChildEgg(Gacha.this, ChildPreferences.getChildEgg(Gacha.this) - 15);
+                    egg_count.setText(ChildPreferences.getChildEgg(Gacha.this)+"") ;
+                }
+                else{
+                    Toast.makeText(Gacha.this, "Insufficient egg", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

@@ -54,8 +54,8 @@ public class Account extends Fragment {
         account_logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), ShowBarcode.class);
-                startActivity(i);
+                ChildPreferences.setChildLoggedIn(getContext(),false);
+                Toast.makeText(getContext(), "Please restart the app", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -183,6 +183,10 @@ public class Home extends Fragment {
                     chicken_click.setVisibility(View.VISIBLE);
                     chicken_click.setSpeed(2);
                     chicken_click.playAnimation();
+                    int a = ChildPreferences.getChildSaving(getContext());
+                    int b = sharedPreferences.getInt("goal",0);
+                    roundedHorizontalProgressBar.setProgress(a*100/b);
+                    progress_status.setText("("+FormatRp(a)+"/"+FormatRp(b)+")");
                 }
                 else{
                     Toast.makeText(getContext(), "Insufficient wallet", Toast.LENGTH_SHORT).show();
