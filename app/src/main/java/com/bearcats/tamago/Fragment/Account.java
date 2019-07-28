@@ -67,23 +67,23 @@ public class Account extends Fragment {
             }
         });
 
-        debug_add_egg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) + 15);
-                Toast.makeText(getContext(), "Egg added by 15", Toast.LENGTH_SHORT).show();
-            }
-        });
-//
-//        debug_reduce_saving.setOnClickListener(new View.OnClickListener() {
+//        debug_add_egg.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                if(ChildPreferences.getChildSaving(getContext())>1000){
-//                    ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) - 1000);
-//                    Toast.makeText(getContext(), "Saving reduced by 1000", Toast.LENGTH_SHORT).show();
-//                }
+//                ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) + 15);
+//                Toast.makeText(getContext(), "Egg added by 15", Toast.LENGTH_SHORT).show();
 //            }
 //        });
+
+        debug_reduce_saving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChildPreferences.getChildSaving(getContext())>1000){
+                    ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) - 1000);
+                    Toast.makeText(getContext(), "Saving reduced by 1000", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }

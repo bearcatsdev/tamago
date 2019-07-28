@@ -78,6 +78,10 @@
                     android:paddingHorizontal="30dp"
                     android:paddingVertical="15dp"
                     android:textSize="18sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F5F5F5"/>
                 <TextView
                     android:id="@+id/add_egg"
                     android:layout_width="match_parent"
@@ -86,6 +90,10 @@
                     android:paddingHorizontal="30dp"
                     android:paddingVertical="15dp"
                     android:textSize="18sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F5F5F5"/>
                 <TextView
                     android:id="@+id/reduce_saving"
                     android:layout_width="match_parent"
