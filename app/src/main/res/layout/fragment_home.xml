@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/quicksand_b"
-                    android:text="DONE"
+                    android:text="@string/home_button_gacha"
                     android:textColor="#ffffff"
                     android:textSize="14sp" />
             </androidx.cardview.widget.CardView>
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/quicksand_b"
-                    android:text="DONE"
+                    android:text="@string/home_button_skin"
                     android:textColor="#ffffff"
                     android:textSize="14sp" />
             </androidx.cardview.widget.CardView>

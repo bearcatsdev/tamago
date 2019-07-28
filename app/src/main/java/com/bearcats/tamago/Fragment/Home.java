@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bearcats.tamago.Activity.Gacha;
@@ -114,10 +115,19 @@ public class Home extends Fragment {
         chicken_idle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chicken_idle.setVisibility(View.INVISIBLE);
-                chicken_click.setVisibility(View.VISIBLE);
-                chicken_click.setSpeed(2);
-                chicken_click.playAnimation();
+
+
+                if(ChildPreferences.getChildWallet(getContext()) >= 1000) {
+                    ChildPreferences.setChildSaving(getContext(), ChildPreferences.getChildSaving(getContext()) + 1000);
+                    saving.setText(FormatRp(ChildPreferences.getChildSaving(getContext())));
+                    chicken_idle.setVisibility(View.INVISIBLE);
+                    chicken_click.setVisibility(View.VISIBLE);
+                    chicken_click.setSpeed(2);
+                    chicken_click.playAnimation();
+                }
+                else{
+                    Toast.makeText(getContext(), "Your wallet is insufficient", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

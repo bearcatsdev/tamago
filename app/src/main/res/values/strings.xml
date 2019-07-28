@@ -8,6 +8,10 @@
     <!--Barcode Activity-->
     <string name="barcode_title_bar">My Barcode</string>
 
+    <!--Home Activity-->
+    <string name="home_button_gacha">Gacha</string>
+    <string name="home_button_skin">Skin</string>
+
     <!--Missions Fragment-->
     <string name="missions_title_bar">Your Missions</string>
     <string name="missions_chores">Chores</string>
