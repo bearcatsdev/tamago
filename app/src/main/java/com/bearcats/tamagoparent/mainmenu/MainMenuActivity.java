@@ -91,8 +91,8 @@ public class MainMenuActivity extends AppCompatActivity {
                     children_models.add(new ChildrenModel(
                             response.getJSONObject(i).getInt("child_id"),
                             response.getJSONObject(i).getString("child_name"),
-                            5000,
-                            10000,
+                            response.getJSONObject(i).getInt("child_savings"),
+                            response.getJSONObject(i).getInt("child_total_goals"),
                             response.getJSONObject(i).getInt("child_wallet"),
                             response.getJSONObject(i).getInt("child_savings"),
                             response.getJSONObject(i).getInt("child_eggs"),

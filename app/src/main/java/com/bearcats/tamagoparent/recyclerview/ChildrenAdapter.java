@@ -47,10 +47,15 @@ public class ChildrenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         //set Goal Sentence
         int a = children_models.get(i).getGoal_start();
         int b = children_models.get(i).getGoal_end();
-        ((ViewHolder) viewHolder).goal.setText("Goal Progress ("+FormatRp(a)+"/"+FormatRp(b)+")");
 
         //set Goal progress bar
-        ((ViewHolder) viewHolder).progressBar.setProgress(a*100/b);
+        if (b != 0) {
+            ((ViewHolder) viewHolder).progressBar.setProgress(a * 100 / b);
+            ((ViewHolder) viewHolder).goal.setText("Goal Progress ("+FormatRp(a)+"/"+FormatRp(b)+")");
+        } else {
+            ((ViewHolder) viewHolder).progressBar.setVisibility(View.GONE);
+            ((ViewHolder) viewHolder).goal.setText("No current goals");
+        }
 
         //set wallet
         ((ViewHolder) viewHolder).wallet.setText(FormatRp(children_models.get(i).getWallet()));
