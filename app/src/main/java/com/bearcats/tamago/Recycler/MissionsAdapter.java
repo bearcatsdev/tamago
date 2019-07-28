@@ -1,9 +1,11 @@
 package com.bearcats.tamago.Recycler;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Handler;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.appcompat.app.AppCompatActivity;
@@ -147,8 +149,21 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void run() {
                 done.setClickable(true);
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog();
-                bottomSheetDialog.show(((AppCompatActivity)context).getSupportFragmentManager(),"example");
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Do you realy want to confirm this mission?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                builder.create();
             }
         };
 

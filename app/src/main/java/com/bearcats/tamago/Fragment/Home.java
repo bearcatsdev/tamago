@@ -2,7 +2,9 @@ package com.bearcats.tamago.Fragment;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.NonNull;
@@ -18,10 +20,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bearcats.tamago.Activity.Gacha;
 import com.bearcats.tamago.R;
 import com.bearcats.tamago.preferences.ChildPreferences;
 import com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -40,12 +51,16 @@ public class Home extends Fragment {
     }
 
     RoundedHorizontalProgressBar roundedHorizontalProgressBar;
-    TextView wallet,saving,egg;
+    TextView wallet,saving,egg,progress_status;
     FrameLayout gachaButtonLayout, skinButtonLayout;
     CardView menuButton;
     LottieAnimationView chicken_idle,chicken_click;
 
     boolean menuOpened = false;
+    JSONObject jsonObject;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    int goal;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -57,18 +72,63 @@ public class Home extends Fragment {
         wallet = view.findViewById(R.id.tv_childWallet);
         saving = view.findViewById(R.id.tv_ChildSaving);
         egg = view.findViewById(R.id.tv_childEgg);
+        progress_status = view.findViewById(R.id.progress_status);
+        progress_status = view.findViewById(R.id.progress_status);
         skinButtonLayout = view.findViewById(R.id.skin_buttonLayout);
         gachaButtonLayout = view.findViewById(R.id.gacha_buttonLayout);
         chicken_idle = view.findViewById(R.id.chicken_idle);
         chicken_click = view.findViewById(R.id.chicken_click);
+        sharedPreferences = getContext().getSharedPreferences("Goal", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        //get goal data
+        jsonObject = new JSONObject();
+        try{
+            jsonObject.put("child_id", ChildPreferences.getChildId(getContext()));
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+        //get Json child mission data
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, "https://tamago.bancet.cf/api/child/goal/getGoals", jsonObject, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            JSONArray j = response.getJSONArray("response");
+                            editor.putInt("goal",j.getJSONObject(j.length()-1).getInt("goal_itemprice"));
+                            editor.commit();
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
+
+        Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
+
 
         //set wallet, saving, and egg
         wallet.setText(FormatRp(ChildPreferences.getChildWallet(getContext())));
         saving.setText(FormatRp(ChildPreferences.getChildSaving(getContext())));
         egg.setText(ChildPreferences.getChildEgg(getContext())+"");
 
-        roundedHorizontalProgressBar.animateProgress(2000,0,50);
+        if(sharedPreferences.getInt("goal",0) == 0){
+            roundedHorizontalProgressBar.animateProgress(2000,0,100);
+            progress_status.setText("Have no any goal set");
+        }
+        else
+        {
+            int a = ChildPreferences.getChildSaving(getContext());
+            int b = sharedPreferences.getInt("goal",0);
+            roundedHorizontalProgressBar.setProgress(a*100/b);
+            progress_status.setText("("+FormatRp(a)+"/"+FormatRp(b)+")");
 
+        }
         final Handler handler = new Handler();
 
         final Runnable runnable1 = new Runnable() {
@@ -81,8 +141,6 @@ public class Home extends Fragment {
                 else{
                     closeMenu();
                 }
-//                Intent intent = new Intent(getContext(),Gacha.class);
-//                startActivity(intent);
             }
         };
 

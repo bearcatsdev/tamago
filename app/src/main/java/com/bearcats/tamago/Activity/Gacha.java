@@ -2,6 +2,7 @@
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +22,6 @@ import static java.security.AccessController.getContext;
     TextView egg_count;
     CardView gacha;
     LottieAnimationView gacha_idle,gacha_roll;
-    int egg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ import static java.security.AccessController.getContext;
         gacha_idle = findViewById(R.id.gacha_idle);
         gacha_roll = findViewById(R.id.gacha_roll);
 
-        egg_count.setText(ChildPreferences.getChildEgg(Gacha.this)) ;
+        egg_count.setText(ChildPreferences.getChildEgg()) ;
 
         final Handler handler = new Handler();
 
@@ -80,16 +80,16 @@ import static java.security.AccessController.getContext;
             public void onClick(View view) {
                 gacha.animate().translationY(20).setDuration(100);
                 handler.postDelayed(runnable,100);
-                if(ChildPreferences.getChildEgg(Gacha.this)>=15){
+//                if(ChildPreferences.getChildEgg(Gacha.this)>=15){
                     gacha_idle.setVisibility(View.INVISIBLE);
                     gacha_roll.setVisibility(View.VISIBLE);
                     gacha_roll.playAnimation();
-                    ChildPreferences.setChildEgg(Gacha.this, ChildPreferences.getChildEgg(Gacha.this) + 15);
-                    egg_count.setText(ChildPreferences.getChildEgg(Gacha.this)) ;
-                }
-                else{
-                    Toast.makeText(Gacha.this, "Insufficient egg", Toast.LENGTH_SHORT).show();
-                }
+//                    ChildPreferences.setChildEgg(Gacha.this, ChildPreferences.getChildEgg(Gacha.this) + 15);
+//                    egg_count.setText(ChildPreferences.getChildEgg(Gacha.this)) ;
+//                }
+//                else{
+//                    Toast.makeText(Gacha.this, "Insufficient egg", Toast.LENGTH_SHORT).show();
+//                }
 
             }
         });
