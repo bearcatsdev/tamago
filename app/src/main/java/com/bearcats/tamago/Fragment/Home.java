@@ -1,5 +1,6 @@
 package com.bearcats.tamago.Fragment;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -51,6 +54,8 @@ public class Home extends Fragment {
     TextView wallet,saving,egg,progress_status;
     FrameLayout gachaButtonLayout, skinButtonLayout;
     CardView menuButton;
+    LottieAnimationView chicken_idle,chicken_click;
+
     boolean menuOpened = false;
     JSONObject jsonObject;
     SharedPreferences sharedPreferences;
@@ -71,6 +76,8 @@ public class Home extends Fragment {
         progress_status = view.findViewById(R.id.progress_status);
         skinButtonLayout = view.findViewById(R.id.skin_buttonLayout);
         gachaButtonLayout = view.findViewById(R.id.gacha_buttonLayout);
+        chicken_idle = view.findViewById(R.id.chicken_idle);
+        chicken_click = view.findViewById(R.id.chicken_click);
         sharedPreferences = getContext().getSharedPreferences("Goal", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -134,8 +141,6 @@ public class Home extends Fragment {
                 else{
                     closeMenu();
                 }
-//                Intent intent = new Intent(getContext(),Gacha.class);
-//                startActivity(intent);
             }
         };
 
@@ -163,6 +168,49 @@ public class Home extends Fragment {
                 Intent intent = new Intent(getContext(), Gacha.class);
                 startActivity(intent);
 
+            }
+        });
+
+        chicken_idle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChildPreferences.getChildWallet(getContext()) >= 1000) {
+                    ChildPreferences.setChildSaving(getContext(), ChildPreferences.getChildSaving(getContext()) + 1000);
+                    saving.setText(FormatRp(ChildPreferences.getChildSaving(getContext())));
+                    ChildPreferences.setChildWallet(getContext(), ChildPreferences.getChildWallet(getContext()) - 1000);
+                    wallet.setText(FormatRp(ChildPreferences.getChildWallet(getContext())));
+                    chicken_idle.setVisibility(View.INVISIBLE);
+                    chicken_click.setVisibility(View.VISIBLE);
+                    chicken_click.setSpeed(2);
+                    chicken_click.playAnimation();
+                    int a = ChildPreferences.getChildSaving(getContext());
+                    int b = sharedPreferences.getInt("goal",0);
+                    roundedHorizontalProgressBar.setProgress(a*100/b);
+                    progress_status.setText("("+FormatRp(a)+"/"+FormatRp(b)+")");
+                }
+                else{
+                    Toast.makeText(getContext(), "Insufficient wallet", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        chicken_click.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                chicken_idle.setVisibility(View.VISIBLE);
+                chicken_click.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
             }
         });
     }

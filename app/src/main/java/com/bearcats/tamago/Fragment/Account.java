@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bearcats.tamago.Activity.MainActivity;
-import com.bearcats.tamago.Activity.QRscan;
 import com.bearcats.tamago.Activity.ShowBarcode;
 import com.bearcats.tamago.Preferences;
 import com.bearcats.tamago.R;
@@ -72,13 +70,13 @@ public class Account extends Fragment {
             }
         });
 
-//        debug_add_egg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) + 15);
-//                Toast.makeText(getContext(), "Egg added by 15", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        debug_add_egg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) + 15);
+                    Toast.makeText(getContext(), "Egg added by 15", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         debug_reduce_saving.setOnClickListener(new View.OnClickListener() {
             @Override
