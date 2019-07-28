@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">Tamago</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Gacha Activity-->
+    <string name="gacha_title_bar">Gacha Shop</string>
+    <string name="gacha_egg_left">You Have:</string>
 
-    <!--Activity Gacha-->
-    <string name="egg_left">You Have:</string>
+    <!--Missions Fragment-->
+    <string name="missions_title_bar">Your Missions</string>
+    <string name="missions_chores">Chores</string>
+    <string name="missions_extra">Extra</string>
+
+    <!--Reward Fragment-->
+    <string name="reward_title_bar">Rewards</string>
+
+    <!--Account Fragment-->
+    <string name="account_title_bar">Account Settings</string>
 </resources>

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.Task">
 
     <LinearLayout
@@ -19,11 +18,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand_b"
-                android:text="Your Missions"
+                android:text="@string/missions_title_bar"
                 android:layout_gravity="center"
                 android:textColor="#c0c0c0"
-                android:textSize="19dp"
+                android:textSize="18sp"
                 android:layout_marginBottom="10dp"/>
             <View
                 android:layout_width="match_parent"
@@ -43,8 +41,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chores"
-                    android:textSize="23dp"
+                    android:text="@string/missions_chores"
+                    android:textSize="24sp"
                     android:textColor="#707070"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="30dp"
@@ -61,8 +59,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Extra"
-                    android:textSize="23dp"
+                    android:text="@string/missions_extra"
+                    android:textSize="24sp"
                     android:textColor="#707070"
                     android:layout_marginLeft="20dp"
                     android:fontFamily="@font/quicksand_b"/>

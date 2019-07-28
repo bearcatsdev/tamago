@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context="Fragment.Home">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,10 +38,9 @@
                         android:id="@+id/tv_ChildSaving"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_b"
-                        android:text="Money"
+                        android:text=""
                         android:textColor="#FFBA2E"
-                        android:textSize="17sp"/>
+                        android:textSize="18sp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -60,10 +57,9 @@
                         android:id="@+id/tv_childWallet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_b"
                         android:textColor="#0094D6"
-                        android:text="Money"
-                        android:textSize="17sp"/>
+                        android:text=""
+                        android:textSize="18sp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,9 +75,8 @@
                         android:id="@+id/tv_childEgg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_b"
-                        android:text="Money"
-                        android:textSize="17sp"
+                        android:text=""
+                        android:textSize="18sp"
                         android:textColor="#F3B26C"/>
                 </LinearLayout>
             </LinearLayout>
@@ -102,8 +97,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/gacha_buttonLayout"
             android:layout_marginTop="25dp"
-            android:layout_marginRight="20dp"
-            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentEnd="true"
          >
 
             <androidx.cardview.widget.CardView
@@ -111,7 +106,9 @@
                 android:layout_height="42dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="#7FB800"
-                app:cardCornerRadius="14dp"></androidx.cardview.widget.CardView>
+                app:cardCornerRadius="14dp">
+
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="70dp"
@@ -143,7 +140,9 @@
                 android:layout_height="42dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="#7FB800"
-                app:cardCornerRadius="14dp"></androidx.cardview.widget.CardView>
+                app:cardCornerRadius="14dp">
+
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="70dp"
@@ -175,8 +174,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="#0088C2"
-                app:cardCornerRadius="14dp"
-               ></androidx.cardview.widget.CardView>
+                app:cardCornerRadius="14dp">
+
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="70dp"
@@ -185,14 +185,12 @@
                 android:id="@+id/btn_menu"
                 app:cardCornerRadius="14dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/quicksand_b"
-                    android:text="DONE"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_round_menu_24px"
+                    android:layout_gravity="center"/>
             </androidx.cardview.widget.CardView>
         </FrameLayout>
 
