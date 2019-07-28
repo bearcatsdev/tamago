@@ -1,5 +1,6 @@
 package com.bearcats.tamago.Fragment;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bearcats.tamago.Activity.Gacha;
 import com.bearcats.tamago.R;
 import com.bearcats.tamago.preferences.ChildPreferences;
@@ -40,6 +42,7 @@ public class Home extends Fragment {
     TextView wallet,saving,egg;
     FrameLayout gachaButtonLayout, skinButtonLayout;
     CardView menuButton;
+    LottieAnimationView chicken_idle,chicken_click;
     boolean menuOpened = false;
 
     @Override
@@ -54,6 +57,8 @@ public class Home extends Fragment {
         egg = view.findViewById(R.id.tv_childEgg);
         skinButtonLayout = view.findViewById(R.id.skin_buttonLayout);
         gachaButtonLayout = view.findViewById(R.id.gacha_buttonLayout);
+        chicken_idle = view.findViewById(R.id.chicken_idle);
+        chicken_click = view.findViewById(R.id.chicken_click);
 
         //set wallet, saving, and egg
         wallet.setText(FormatRp(ChildPreferences.getChildWallet(getContext())));
@@ -103,6 +108,36 @@ public class Home extends Fragment {
                 Intent intent = new Intent(getContext(), Gacha.class);
                 startActivity(intent);
 
+            }
+        });
+
+        chicken_idle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chicken_idle.setVisibility(View.INVISIBLE);
+                chicken_click.setVisibility(View.VISIBLE);
+                chicken_click.setSpeed(2);
+                chicken_click.playAnimation();
+            }
+        });
+
+        chicken_click.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                chicken_idle.setVisibility(View.VISIBLE);
+                chicken_click.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
             }
         });
     }
