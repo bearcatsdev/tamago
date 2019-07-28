@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -101,10 +103,29 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
 
                 ChildrenAdapter adapter = new ChildrenAdapter(MainMenuActivity.this, children_models);
-                recyclerView_child.setAdapter(adapter);
-                recyclerView_child.setVisibility(View.VISIBLE);
-                loadingShimmer.stopShimmer();
-                loadingShimmer.setVisibility(View.GONE);
+                loadingShimmer.animate()
+                        .alpha(0.0f)
+                        .setDuration(300)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                loadingShimmer.stopShimmer();
+                                loadingShimmer.setVisibility(View.GONE);
+                            }
+                        });
+                recyclerView_child.animate()
+                        .translationY(recyclerView_child.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(300)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                recyclerView_child.setAdapter(adapter);
+                                recyclerView_child.setVisibility(View.VISIBLE);
+                            }
+                        });
             } else {
 
             }
