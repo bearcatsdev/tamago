@@ -225,7 +225,7 @@
                 android:id="@+id/progress_bar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="200dp"
-                android:layout_height="22dp"
+                android:layout_height="16dp"
                 android:layout_margin="10dp"
                 android:indeterminate="false"
                 android:maxHeight="12dp"
@@ -240,7 +240,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand_b"
                 android:text="Goal Progress"
-                android:textSize="19sp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -248,7 +248,7 @@
                 android:layout_alignParentRight="true"
                 android:fontFamily="@font/quicksand_b"
                 android:text="(Rp 10.000/ Rp 20.000)"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
 
             <!--<ImageButton-->

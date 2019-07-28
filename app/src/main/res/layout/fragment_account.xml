@@ -51,11 +51,49 @@
                     android:id="@+id/account_show_qr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/account_show_qr"
+                    android:text="@string/account_sub_show_qr"
                     android:paddingHorizontal="30dp"
                     android:paddingVertical="15dp"
                     android:textSize="18sp"
                     android:background="?android:attr/selectableItemBackground"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F5F5F5"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_category_debug"
+                    android:layout_margin="20dp"
+                    android:textSize="24sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F5F5F5"/>
+                <TextView
+                    android:id="@+id/add_wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_debug_add_wallet"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="15dp"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/add_egg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_debug_add_egg"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="15dp"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/reduce_saving"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_debug_reduce_saving"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="15dp"
+                    android:textSize="18sp"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -74,7 +112,7 @@
                     android:id="@+id/account_logout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/account_logout"
+                    android:text="@string/account_sub_logout"
                     android:paddingHorizontal="30dp"
                     android:paddingVertical="15dp"
                     android:textSize="18sp"/>
@@ -82,7 +120,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#F5F5F5"/>
-
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
