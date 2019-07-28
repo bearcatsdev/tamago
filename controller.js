@@ -136,7 +136,22 @@ exports.getChildProfile = function(req, res) {
             } else {
                 if (rows.length == 1) {
                     var userId = rows[0].user_id;
-                    response.ok(rows[0], res);
+
+                    var sql = "SELECT `goal_itemprice` FROM `child_goal_list` WHERE `goal_done` = false AND `child_id` = ?";
+                    connection.query(sql, [childId], function (error1, rows1, fields){
+                        if (error1) {
+                            console.log(error1);
+                            response.error(error1, res);
+                        } else {
+                            var totalGoalsPrice = 0;
+                            rows1.forEach(Element => {
+                                totalGoalsPrice += Element.goal_itemprice;
+                            })
+                            rows[0].child_total_goals = totalGoalsPrice;
+                            response.ok(rows[0], res);
+                        }
+                    });
+                    
                 } else if (rows.length == 0) {
                     response.error("Invalid data supplied", res);
                 }
@@ -288,7 +303,7 @@ exports.buyChildGoal = function(req, res) {
 
                 var sql = 'SELECT `child_savings` FROM `children_list` WHERE `child_id` = ?';
                 connection.query(sql, [childId], function (error1, rows1) {
-                    if (error) {
+                    if (error1) {
                         console.log(error1);
                         response.error(error1, res);
                     } else {
@@ -299,13 +314,13 @@ exports.buyChildGoal = function(req, res) {
 
                             var sql = 'UPDATE `children_list` SET `child_savings` = ? WHERE `children_list`.`child_id` = ?;';
                             connection.query(sql, [newSavings, childId], function (error2, rows2) {
-                                if (error) {
+                                if (error2) {
                                     console.log(error2);
                                     response.error(error2, res);
                                 } else {
                                     var sql = 'UPDATE `child_goal_list` SET `goal_done` = true WHERE `child_goal_list`.`goal_id` = ?;';
                                     connection.query(sql, [goalId], function (error3, rows3) {
-                                        if (error) {
+                                        if (error3) {
                                             console.log(error3);
                                             response.error(error3, res);
                                         } else {
