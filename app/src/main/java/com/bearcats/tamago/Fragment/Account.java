@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bearcats.tamago.Activity.MainActivity;
+import com.bearcats.tamago.Activity.QRscan;
 import com.bearcats.tamago.Activity.ShowBarcode;
 import com.bearcats.tamago.Preferences;
 import com.bearcats.tamago.R;
@@ -40,7 +42,7 @@ public class Account extends Fragment {
         account_show_qr = view.findViewById(R.id.account_show_qr);
         account_logout = view.findViewById(R.id.account_logout);
         debug_add_wallet = view.findViewById(R.id.add_wallet);
-        debug_add_egg = view.findViewWithTag(R.id.add_egg);
+        debug_add_egg = view.findViewById(R.id.add_egg);
         debug_reduce_saving = view.findViewById(R.id.reduce_saving);
 
         account_show_qr.setOnClickListener(new View.OnClickListener() {
@@ -54,8 +56,11 @@ public class Account extends Fragment {
         account_logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), ShowBarcode.class);
-                startActivity(i);
+                ChildPreferences.clearLoggedInUser(getContext());
+                Intent intent = new Intent(getContext(),Welcome.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                getActivity().startActivity(intent);
+                getActivity().finish();
             }
         });
 

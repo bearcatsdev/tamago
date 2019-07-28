@@ -17,8 +17,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bearcats.tamago.BottomSheetDialog;
 import com.bearcats.tamago.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -28,6 +37,7 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     ArrayList<Missions_Model> missions_models;
     Context context;
+    JSONObject jsonObject;
 
     public MissionsAdapter(Context context, ArrayList<Missions_Model> missions_models){
         this.context = context;
@@ -66,6 +76,11 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         int egg = missions_models.get(i).getEgg();
         int money = missions_models.get(i).getMoney();
+
+        //set button to wait
+        if(missions_models.get(i).getTask_done() == 1){
+            ((ViewHolder) viewHolder).done.setVisibility(View.GONE);
+        }
 
         //format indonesia money
         DecimalFormat format = (DecimalFormat)DecimalFormat.getCurrencyInstance();
@@ -144,7 +159,7 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         final CardView done = ((ViewHolder)viewHolder).done;
         final Handler handler = new Handler();
-
+        final int pos = i;
         final Runnable runnable1 = new Runnable() {
             @Override
             public void run() {
@@ -153,8 +168,37 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 builder.setMessage("Do you realy want to confirm this mission?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                            public void onClick(DialogInterface dialogInterface, int a) {
+                                //get Json child mission data
+                                jsonObject = new JSONObject();
+                                try {
+                                    jsonObject.put("task_id",missions_models.get(pos).getTask_id());
+                                }catch (JSONException e){
+                                    e.printStackTrace();
+                                }
 
+                                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                                        (Request.Method.POST, "https://tamago.bancet.cf/api/child/task/setTaskDone", jsonObject, new Response.Listener<JSONObject>() {
+                                            @Override
+                                            public void onResponse(JSONObject response) {
+                                                try {
+                                                    if (response.getInt("status") == 200) {
+                                                        //refress
+                                                    }
+
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+
+                                        }, new Response.ErrorListener() {
+
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+
+                                            }
+                                        });
+                                Volley.newRequestQueue(context).add(jsonObjectRequest);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -162,8 +206,7 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                             }
-                        });
-                builder.create();
+                        }).show();
             }
         };
 

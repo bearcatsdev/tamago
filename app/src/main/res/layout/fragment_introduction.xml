@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tamago is an app for child which can keep the child Tamago is an app for child which can keep the child "
+            android:text="Tamago is an app for child which can manage child's saving activity"
             android:layout_marginLeft="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:layout_below="@id/toolbar"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_margin = "10dp"
+            android:layout_margin = "50dp"
             android:layout_gravity="center">
 
             <com.google.android.material.card.MaterialCardView
@@ -83,6 +83,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/quicksand_b"
                         android:text="Next"
+
                         android:textColor="#ffffff"
                         android:textSize="14sp" />
                 </LinearLayout>

@@ -78,7 +78,7 @@ public class Missions extends Fragment {
                             if (response.getInt("status") == 200) {
                                 JSONArray jsonArray = response.getJSONArray("response");
                                 for (int i= 0 ;i <jsonArray.length();i++){
-                                    task.add( new Missions_Model(1,2,jsonArray.getJSONObject(i).getInt("task_reward_eggs"),jsonArray.getJSONObject(i).getInt("task_reward_wallet"),jsonArray.getJSONObject(i).getString("task_name"),jsonArray.getJSONObject(i).getString("task_expiry").substring(0,10)));
+                                    task.add( new Missions_Model(1,jsonArray.getJSONObject(i).getInt("task_id"),jsonArray.getJSONObject(i).getInt("task_done"),2,jsonArray.getJSONObject(i).getInt("task_reward_eggs"),jsonArray.getJSONObject(i).getInt("task_reward_wallet"),jsonArray.getJSONObject(i).getString("task_name"),jsonArray.getJSONObject(i).getString("task_expiry").substring(0,10)));
                                 }
                                 MissionsAdapter missionsAdapter = new MissionsAdapter(getContext(),task);
                                 task_recyclerView.setAdapter(missionsAdapter);
