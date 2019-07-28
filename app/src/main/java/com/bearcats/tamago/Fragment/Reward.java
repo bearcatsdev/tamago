@@ -20,8 +20,6 @@ import java.util.ArrayList;
 
 public class Reward extends Fragment {
 
-    CarouselView carouselView;
-    int[] image = {R.drawable.gundam,R.drawable.tamiya,R.drawable.hotwell,R.drawable.rubik};
     ArrayList<com.bearcats.tamago.Reward_Model> reward_models;
 
     RecyclerView recyclerView;
@@ -42,31 +40,19 @@ public class Reward extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        carouselView = view.findViewById(R.id.carouselView);
         recyclerView = view.findViewById(R.id.listReward);
         reward_models = new ArrayList<>();
 
-        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.gundam,"Gundam"));
-        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.tamiya,"Tamiya"));
-        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.hotwell,"Lego"));
-        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.rubik,"rubik"));
+        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.bounce_off,"Bounce Off"));
+        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.kerp_lunk,"Kerp Lunk"));
+        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.scrabble,"Scrabble"));
+        reward_models.add(new com.bearcats.tamago.Reward_Model(R.drawable.uno_card,"Uno Card"));
 
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
 
         RewardAdapter rewardAdapter = new RewardAdapter(getContext(),reward_models);
 
         recyclerView.setAdapter(rewardAdapter);
-
-        ImageListener imageListener = new ImageListener() {
-            @Override
-            public void setImageForPosition(int position, ImageView imageView) {
-                imageView.setImageResource(image[position]);
-            }
-        };
-
-        carouselView.setImageListener(imageListener);
-        carouselView.setPageCount(image.length);
-
 
     }
 

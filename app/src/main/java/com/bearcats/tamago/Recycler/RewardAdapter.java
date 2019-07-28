@@ -4,12 +4,15 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bearcats.tamago.Activity.SetGoal;
 import com.bearcats.tamago.BottomSheetDialog1;
 import com.bearcats.tamago.R;
 import com.bearcats.tamago.Reward_Model;
@@ -37,6 +40,16 @@ public class RewardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         ((ViewHolder)viewHolder).imageName.setText(reward_models.get(i).getImageName());
         ((ViewHolder)viewHolder).image.setImageResource(reward_models.get(i).getImage());
+
+        final int product = i;
+        ((ViewHolder) viewHolder).image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,SetGoal.class);
+                intent.putExtra("product",product);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -52,13 +65,7 @@ public class RewardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             imageName = itemView.findViewById(R.id.RewardImageName);
             image = itemView.findViewById(R.id.RewardImage);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    BottomSheetDialog1 bottomSheetDialog1 = new BottomSheetDialog1();
-                    bottomSheetDialog1.show(((AppCompatActivity)context).getSupportFragmentManager(),"example1");
-                }
-            });
+
         }
     }
 }

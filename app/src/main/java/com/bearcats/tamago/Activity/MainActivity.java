@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 
 import androidx.annotation.NonNull;
+
+import com.bearcats.tamago.RewardData;
+import com.bearcats.tamago.RewardData_Model;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -51,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
         account = new Account();
         preferences = new Preferences();
         menu = navigationView.getMenu();
+
+        //set reward data
+        RewardData.rewardData.add(new RewardData_Model("bounce_off","https://www.tokopedia.com/mattel-shop/mattel-games-fast-fun-bounce-off-permainan",149900));
+        RewardData.rewardData.add(new RewardData_Model("kerp_lunk","https://www.tokopedia.com/mattel-shop/mattel-games-fast-fun-kerp-lunk-permainan",149900));
+        RewardData.rewardData.add(new RewardData_Model("scrabble","https://www.tokopedia.com/mattel-shop/mattel-games-scrabble-junior-permainan",258930));
+        RewardData.rewardData.add(new RewardData_Model("uno card","https://www.tokopedia.com/mattel-shop/uno-card-permainan",49900));
 
         color1 = getApplicationContext().getResources().getIntArray(R.array.home);
         color2 = getApplicationContext().getResources().getIntArray(R.array.task);

@@ -230,7 +230,6 @@
                 android:indeterminate="false"
                 android:maxHeight="12dp"
                 android:minHeight="12dp"
-                android:progress="40"
                 app:backgroundColor="#C0C0C0"
                 app:isRounded="true"
                 app:progressColor="#FFB400" />
@@ -248,7 +247,8 @@
                 android:layout_alignParentRight="true"
                 android:fontFamily="@font/quicksand_b"
                 android:text="(Rp 10.000/ Rp 20.000)"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:id="@+id/progress_status"/>
 
 
             <!--<ImageButton-->
