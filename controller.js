@@ -361,10 +361,24 @@ exports.getChildrenList = function(req, res) {
                             console.log(error);
                             response.error(error, res);
                         } else {
-                            responseArray.push(rows1[0]);
-                            if (rows.length == responseArray.length) {
-                                response.ok(responseArray, res);
-                            }
+                            var sql = "SELECT `goal_itemprice` FROM `child_goal_list` WHERE `goal_done` = false AND `child_id` = ?";
+                            connection.query(sql, [element.pc_conn_child], function (error2, rows2, fields){
+                                if (error2) {
+                                    console.log(error1);
+                                    response.error(error1, res);
+                                } else {
+                                    var totalGoalsPrice = 0;
+                                    rows2.forEach(Element => {
+                                        totalGoalsPrice += Element.goal_itemprice;
+                                    })
+                                    rows1[0].child_total_goals = totalGoalsPrice;
+
+                                    responseArray.push(rows1[0]);
+                                    if (rows.length == responseArray.length) {
+                                        response.ok(responseArray, res);
+                                    }
+                                }
+                            });
                         }
                     });
                 });
