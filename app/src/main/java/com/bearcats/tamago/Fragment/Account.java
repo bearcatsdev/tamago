@@ -40,7 +40,7 @@ public class Account extends Fragment {
         account_show_qr = view.findViewById(R.id.account_show_qr);
         account_logout = view.findViewById(R.id.account_logout);
         debug_add_wallet = view.findViewById(R.id.add_wallet);
-        debug_add_egg = view.findViewWithTag(R.id.add_egg);
+        debug_add_egg = view.findViewById(R.id.add_egg);
         debug_reduce_saving = view.findViewById(R.id.reduce_saving);
 
         account_show_qr.setOnClickListener(new View.OnClickListener() {
@@ -67,19 +67,19 @@ public class Account extends Fragment {
             }
         });
 
-//        debug_add_egg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) + 15);
-//                Toast.makeText(getContext(), "Egg added by 15", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        debug_add_egg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) + 15);
+                    Toast.makeText(getContext(), "Egg added by 15", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         debug_reduce_saving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(ChildPreferences.getChildSaving(getContext())>1000){
-                    ChildPreferences.setChildEgg(getContext(), ChildPreferences.getChildEgg(getContext()) - 1000);
+                    ChildPreferences.setChildSaving(getContext(), ChildPreferences.getChildSaving(getContext()) - 1000);
                     Toast.makeText(getContext(), "Saving reduced by 1000", Toast.LENGTH_SHORT).show();
                 }
             }
