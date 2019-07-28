@@ -48,6 +48,7 @@
                     android:layout_height="1dp"
                     android:background="#F5F5F5"/>
                 <TextView
+                    android:id="@+id/account_show_qr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/account_show_qr"
@@ -69,6 +70,7 @@
                     android:layout_height="1dp"
                     android:background="#F5F5F5"/>
                 <TextView
+                    android:id="@+id/account_logout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/account_logout"
