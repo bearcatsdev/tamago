@@ -14,18 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Scan_Barcode">
-        </activity>
-        <activity android:name=".Activity.Login">
-        </activity>
-        <activity android:name=".Activity.Gacha">
-        </activity>
-        <activity android:name=".Activity.MainActivity">
-        </activity>
-        <activity android:name=".Activity.QRscan">
-        </activity>
+        <activity android:name=".Activity.ShowBarcode"></activity>
+        <activity android:name=".Scan_Barcode"></activity>
+        <activity android:name=".Activity.Login"></activity>
+        <activity android:name=".Activity.Gacha"></activity>
+        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.QRscan"></activity>
         <activity
-            android:name="Launch_Screen"
+            android:name=".Launch_Screen"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

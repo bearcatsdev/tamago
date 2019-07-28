@@ -178,7 +178,7 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView task,money,time;
+        TextView task,money,time,task_done;
         ImageView child_parent, child_task, child_reward;
         CardView done;
         public ViewHolder(@NonNull View itemView) {
@@ -186,14 +186,18 @@ public class MissionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             task = itemView.findViewById(R.id.tv_task);
             money = itemView.findViewById(R.id.tv_money);
             time = itemView.findViewById(R.id.tv_time);
+            task_done = itemView.findViewById(R.id.tv_task_done);
             done = itemView.findViewById(R.id.btn_done);
             child_parent = itemView.findViewById(R.id.icon_parent);
             child_task = itemView.findViewById(R.id.icon_task);
             child_reward = itemView.findViewById(R.id.icon_reward);
 
             Typeface face = ResourcesCompat.getFont(context, R.font.quicksand_r);
-            time.setTypeface(face);
-            time.setTextColor(0xFFC0C0C0);
+            Typeface face1 = ResourcesCompat.getFont(context, R.font.quicksand_b);
+            time.setTypeface(face1);
+            time.setTextColor(0xFF96C42E);
+            task_done.setTypeface(face);
+            task_done.setTextColor(0xFFC0C0C0);
         }
     }
 }

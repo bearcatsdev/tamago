@@ -79,7 +79,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Task Done"
+                    android:text="Task Done : "
+                    android:id="@+id/tv_task_done"
                     android:layout_alignParentRight="true"
                     android:textSize="14sp"/>
                 <TextView
@@ -141,8 +142,7 @@
                     android:backgroundTint="#00A6ED"
                     app:cardCornerRadius="14dp"
                     app:strokeColor="#0088C2"
-                    app:strokeWidth="1dp"
-                    android:visibility="invisible">
+                    app:strokeWidth="1dp">
 
                     <TextView
                         android:layout_width="wrap_content"

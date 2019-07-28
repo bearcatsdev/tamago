@@ -20,4 +20,6 @@
 
     <!--Placeholder-->
     <string name="placeholder_category">Category</string>
+
+    <string name="show_qrcode_title">Show QR Code</string>
 </resources>
