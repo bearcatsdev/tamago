@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -19,11 +18,9 @@ import com.google.zxing.Result;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.security.auth.login.LoginException;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class Login_ScanQRCode extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+public class QRscan extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
     ZXingScannerView zXingScannerView;
     JSONObject jsonObject;
@@ -31,7 +28,7 @@ public class Login_ScanQRCode extends AppCompatActivity implements ZXingScannerV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login__scan_qrcode);
+        setContentView(R.layout.activity_qrscan);
 
         zXingScannerView = (ZXingScannerView) findViewById(R.id.zxingscanner);
         zXingScannerView.setResultHandler(this);
@@ -64,28 +61,28 @@ public class Login_ScanQRCode extends AppCompatActivity implements ZXingScannerV
                                 //add  data to sqlite
                                 //pindah
                                 JSONObject r = response.getJSONObject("response");
-                                ChildPreferences.setChildId(Login_ScanQRCode.this,r.getInt("child_id"));
-                                ChildPreferences.setChildname(Login_ScanQRCode.this,r.getString("child_name"));
-                                ChildPreferences.setChildGender(Login_ScanQRCode.this,r.getInt("child_gender"));
-                                ChildPreferences.setChildDob(Login_ScanQRCode.this,r.getString("child_dob"));
-                                ChildPreferences.setChildSaving(Login_ScanQRCode.this, r.getInt("child_savings"));
+                                ChildPreferences.setChildId(QRscan.this,r.getInt("child_id"));
+                                ChildPreferences.setChildname(QRscan.this,r.getString("child_name"));
+                                ChildPreferences.setChildGender(QRscan.this,r.getInt("child_gender"));
+                                ChildPreferences.setChildDob(QRscan.this,r.getString("child_dob"));
+                                ChildPreferences.setChildSaving(QRscan.this, r.getInt("child_savings"));
 
-                                ChildPreferences.setChildEgg(Login_ScanQRCode.this, r.getInt("child_eggs"));
+                                ChildPreferences.setChildEgg(QRscan.this, r.getInt("child_eggs"));
 
-                                ChildPreferences.setChildWallet(Login_ScanQRCode.this, r.getInt("child_wallet"));
+                                ChildPreferences.setChildWallet(QRscan.this, r.getInt("child_wallet"));
 
-                                ChildPreferences.setChildDailyLimit(Login_ScanQRCode.this, r.getInt("child_daily_limit"));
+                                ChildPreferences.setChildDailyLimit(QRscan.this, r.getInt("child_daily_limit"));
 
-                                ChildPreferences.setChildLoggedIn(Login_ScanQRCode.this,true);
+                                ChildPreferences.setChildLoggedIn(QRscan.this,true);
 
-                                Toast.makeText(Login_ScanQRCode.this, "Success Logged", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(QRscan.this, "Success Logged", Toast.LENGTH_SHORT).show();
 
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Intent intent = new Intent(Login_ScanQRCode.this, MainActivity.class);
+                        Intent intent = new Intent(QRscan.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
@@ -95,11 +92,11 @@ public class Login_ScanQRCode extends AppCompatActivity implements ZXingScannerV
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Login_ScanQRCode.this, "Something went error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(QRscan.this, "Something went error", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });
-        Volley.newRequestQueue(Login_ScanQRCode.this).add(jsonObjectRequest);
+        Volley.newRequestQueue(QRscan.this).add(jsonObjectRequest);
 
     }
 }

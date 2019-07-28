@@ -54,7 +54,9 @@
                     android:text="@string/account_show_qr"
                     android:paddingHorizontal="30dp"
                     android:paddingVertical="15dp"
-                    android:textSize="18sp"/>
+                    android:id="@+id/show_barcode"
+                    android:textSize="18sp"
+                    android:background="?android:attr/selectableItemBackground"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

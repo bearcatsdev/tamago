@@ -1,28 +1,18 @@
 package com.bearcats.tamago.Fragment;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.bearcats.tamago.Activity.Login;
-import com.bearcats.tamago.Activity.Login_ScanQRCode;
 import com.bearcats.tamago.Manager.FragmentChangeListener;
 import com.bearcats.tamago.R;
 import com.google.android.material.card.MaterialCardView;
@@ -63,7 +53,7 @@ public class Introduction extends Fragment {
             @Override
             public void run() {
                 next.setClickable(true);
-                Fragment loginFragment = new QRCode();
+                Fragment loginFragment = new QRlogin();
                 FragmentChangeListener fc = (FragmentChangeListener) getActivity();
                 fc.replaceFragment(loginFragment);
             }
