@@ -1,7 +1,8 @@
-package com.bearcats.tamagoparent.RecyclerView;
+package com.bearcats.tamagoparent.recyclerview;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bearcats.tamagoparent.Add_Mission;
 import com.bearcats.tamagoparent.R;
 import com.bearcats.tamagoparent.views.FButton;
 import com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar;
@@ -21,12 +22,12 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
-public class Children_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ChildrenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Children_Model> children_models;
+    ArrayList<ChildrenModel> children_models;
     Context context;
 
-    public Children_Adapter(Context context, ArrayList<Children_Model> children_models){
+    public ChildrenAdapter(Context context, ArrayList<ChildrenModel> children_models){
         this.context = context;
         this.children_models = children_models;
     }
@@ -46,10 +47,15 @@ public class Children_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         //set Goal Sentence
         int a = children_models.get(i).getGoal_start();
         int b = children_models.get(i).getGoal_end();
-        ((ViewHolder) viewHolder).goal.setText("Goal Progress ("+FormatRp(a)+"/"+FormatRp(b)+")");
 
         //set Goal progress bar
-        ((ViewHolder) viewHolder).progressBar.setProgress(a*100/b);
+        if (b != 0) {
+            ((ViewHolder) viewHolder).progressBar.setProgress(a * 100 / b);
+            ((ViewHolder) viewHolder).goal.setText("Goal Progress ("+FormatRp(a)+"/"+FormatRp(b)+")");
+        } else {
+            ((ViewHolder) viewHolder).progressBar.setVisibility(View.GONE);
+            ((ViewHolder) viewHolder).goal.setText("No current goals");
+        }
 
         //set wallet
         ((ViewHolder) viewHolder).wallet.setText(FormatRp(children_models.get(i).getWallet()));
@@ -71,6 +77,14 @@ public class Children_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         //add click listener here
+        ((ViewHolder) viewHolder).addMission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Add_Mission.class);
+                intent.putExtra("child_id",children_models.get(i).getId());
+                context.startActivity(intent);
+            }
+        });
 
     }
 

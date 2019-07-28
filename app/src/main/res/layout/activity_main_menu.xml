@@ -5,28 +5,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mainmenu.MainMenuActivity">
+    tools:context=".mainmenu.MainMenuActivity"
+    android:animateLayoutChanges="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        android:layout_gravity="center"
-        android:textColor="#c0c0c0"
-        android:textSize="19dp"
-        android:layout_marginVertical="10dp"
-        android:fontFamily="@font/quicksand_b"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:layout_gravity="center"
+            android:textColor="#c0c0c0"
+            android:textSize="19dp"
+            android:layout_marginVertical="10dp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/quicksand_b"/>
+
+        <com.bearcats.tamagoparent.views.FButton
+            android:id="@+id/btn_menu"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_baseline_menu_24px"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="@string/action_next"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white" />
+
+
+        <com.bearcats.tamagoparent.views.FButton
+            android:id="@+id/btn_scan"
+            android:layout_alignParentLeft="@id/btn_menu"
+            android:src="@drawable/ic_baseline_menu_24px"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="@string/action_next"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#F5F5F5"/>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <com.google.android.material.card.MaterialCardView
+               android:layout_width="match_parent"
+               android:layout_height="225dp"
+               android:layout_marginEnd="10dp"
+               android:layout_marginStart="10dp"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="10dp"
+               app:cardBackgroundColor="#E1E1E1"
+               app:cardCornerRadius="10dp"
+               app:cardElevation="0dp"
+               app:strokeColor="#E1E1E1"
+               app:strokeWidth="1dp"/>
+
+           <com.google.android.material.card.MaterialCardView
+               android:layout_width="match_parent"
+               android:layout_height="225dp"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="10dp"
+               android:layout_marginEnd="10dp"
+               android:layout_marginStart="10dp"
+               app:cardBackgroundColor="#E1E1E1"
+               app:cardCornerRadius="10dp"
+               app:cardElevation="0dp"
+               app:strokeColor="#E1E1E1"
+               app:strokeWidth="1dp"/>
+
+           <com.google.android.material.card.MaterialCardView
+               android:layout_width="match_parent"
+               android:layout_height="225dp"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="10dp"
+               android:layout_marginEnd="10dp"
+               android:layout_marginStart="10dp"
+               app:cardBackgroundColor="#E1E1E1"
+               app:cardCornerRadius="10dp"
+               app:cardElevation="0dp"
+               app:strokeColor="#E1E1E1"
+               app:strokeWidth="1dp"/>
+       </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_child"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerView_child">
+        tools:listitem="@layout/children_layout"
+        android:visibility="gone">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
+
 
 </LinearLayout>

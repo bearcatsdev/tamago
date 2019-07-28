@@ -7,17 +7,19 @@ import android.os.Bundle;
 
 import com.bearcats.tamagoparent.login.LoginActivity;
 import com.bearcats.tamagoparent.mainmenu.MainMenuActivity;
+import com.bearcats.tamagoparent.manager.InterfaceManager;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (UserPreferences.getUserLoggedIn(this)) {
+        InterfaceManager.setLightStatusBar(this);
+
+        if (!UserPreferences.getUserLoggedIn(this)) {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         } else {

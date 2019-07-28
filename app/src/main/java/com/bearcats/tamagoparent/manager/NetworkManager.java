@@ -75,35 +75,25 @@ public class NetworkManager {
                     }
                 },
                 error -> {
-                    JSONObject jsonObject = null;
-                    String errorReason = null;
-                    String responseBody = null;
                     try {
-                        responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
-                        jsonObject = new JSONObject(responseBody);
-                        Log.d(TAG, jsonObject.getString("reason"));
-                        errorReason = jsonObject.getString("reason");
-                    } catch (Exception e)  {
-                        Log.e(TAG, e.getLocalizedMessage());
-                    }
+                        String responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                        JSONObject jsonObject = new JSONObject(responseBody);
+                        String errorReason = jsonObject.getString("reason");
+                        Log.e(TAG, errorReason);
 
-                    if (errorReason != null || responseBody != null) {
-                        try {
+                        if (errorReason != null) {
                             JSONObject errorObject = new JSONObject();
-                            errorObject.put("reason", jsonObject.getString("reason"));
+                            errorObject.put("reason", errorReason);
                             callback.onResponse(false, errorObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Log.e(TAG, e.getLocalizedMessage());
-                        }
-                    } else {
-                        JSONObject errorObject = new JSONObject();
-                        try {
+
+                        } else {
+                            JSONObject errorObject = new JSONObject();
                             errorObject.put("reason", error.getLocalizedMessage());
                             callback.onResponse(false, errorObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+
+                    } catch (Exception e)  {
+                        Log.e(TAG, e.getLocalizedMessage());
                     }
                 });
 
@@ -137,35 +127,25 @@ public class NetworkManager {
                     }
                 },
                 error -> {
-                    JSONObject jsonObject = null;
-                    String errorReason = null;
-                    String responseBody = null;
                     try {
-                        responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
-                        jsonObject = new JSONObject(responseBody);
-                        Log.d(TAG, jsonObject.getString("reason"));
-                        errorReason = jsonObject.getString("reason");
-                    } catch (Exception e)  {
-                        Log.e(TAG, e.getLocalizedMessage());
-                    }
+                        String responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                        JSONObject jsonObject = new JSONObject(responseBody);
+                        String errorReason = jsonObject.getString("reason");
+                        Log.e(TAG, errorReason);
 
-                    if (errorReason != null || responseBody != null) {
-                        try {
+                        if (errorReason != null) {
                             JSONObject errorObject = new JSONObject();
-                            errorObject.put("reason", jsonObject.getString("reason"));
+                            errorObject.put("reason", errorReason);
                             callback.onResponse(false, errorObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Log.e(TAG, e.getLocalizedMessage());
-                        }
-                    } else {
-                        JSONObject errorObject = new JSONObject();
-                        try {
+
+                        } else {
+                            JSONObject errorObject = new JSONObject();
                             errorObject.put("reason", error.getLocalizedMessage());
                             callback.onResponse(false, errorObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+
+                    } catch (Exception e)  {
+                        Log.e(TAG, e.getLocalizedMessage());
                     }
                 });
 
@@ -199,35 +179,80 @@ public class NetworkManager {
                     }
                 },
                 error -> {
-                    JSONObject jsonObject = null;
-                    String errorReason = null;
-                    String responseBody = null;
                     try {
-                        responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
-                        jsonObject = new JSONObject(responseBody);
-                        Log.d(TAG, jsonObject.getString("reason"));
-                        errorReason = jsonObject.getString("reason");
+                        String responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                        JSONObject jsonObject = new JSONObject(responseBody);
+                        String errorReason = jsonObject.getString("reason");
+                        Log.e(TAG, errorReason);
+
+                        if (errorReason != null) {
+                            JSONObject errorObject = new JSONObject();
+                            errorObject.put("reason", errorReason);
+                            callback.onResponse(false, errorObject);
+
+                        } else {
+                            JSONObject errorObject = new JSONObject();
+                            errorObject.put("reason", error.getLocalizedMessage());
+                            callback.onResponse(false, errorObject);
+                        }
+
                     } catch (Exception e)  {
                         Log.e(TAG, e.getLocalizedMessage());
                     }
+                });
 
-                    if (errorReason != null || responseBody != null) {
-                        try {
+        requestQueue.add(jsonObjReq);
+    }
+
+    public void getChildrenList(int parentId, postArrayCallback callback) {
+        String url =  SERVER_URL + "/api/user/getChildrenList";
+        Map<String,Integer> params = new HashMap<>();
+        params.put("parent_id", parentId);
+        JSONObject jsonBody = new JSONObject(params);
+
+        Log.d(TAG, jsonBody.toString());
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                url, jsonBody,
+                response -> {
+                    Log.d(TAG, response.toString());
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.toString());
+                        Integer networkStatus = jsonObject.getInt("status");
+
+                        if (networkStatus == 200) {
+                            callback.onResponse(true, jsonObject.getJSONArray("response"));
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Log.e(TAG, e.getLocalizedMessage());
+                    }
+                },
+                error -> {
+                    try {
+                        String responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                        JSONObject jsonObject = new JSONObject(responseBody);
+                        String errorReason = jsonObject.getString("reason");
+                        Log.e(TAG, errorReason);
+
+                        if (errorReason != null) {
+                            JSONArray errorArray = new JSONArray();
                             JSONObject errorObject = new JSONObject();
-                            errorObject.put("reason", jsonObject.getString("reason"));
-                            callback.onResponse(false, errorObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Log.e(TAG, e.getLocalizedMessage());
-                        }
-                    } else {
-                        JSONObject errorObject = new JSONObject();
-                        try {
+                            errorObject.put("reason", errorReason);
+                            errorArray.put(0, jsonObject);
+                            callback.onResponse(false, errorArray);
+
+                        } else {
+                            JSONArray errorArray = new JSONArray();
+                            JSONObject errorObject = new JSONObject();
                             errorObject.put("reason", error.getLocalizedMessage());
-                            callback.onResponse(false, errorObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            errorArray.put(0, jsonObject);
+                            callback.onResponse(false, errorArray);
                         }
+
+                    } catch (Exception e)  {
+                        Log.e(TAG, e.getLocalizedMessage());
                     }
                 });
 
