@@ -44,6 +44,9 @@ module.exports = function(app) {
         
     app.route('/api/child/goal/getGoals')
         .post(todoList.getChildGoals);
+        
+    app.route('/api/child/goal/buyGoal')
+        .post(todoList.buyChildGoal);
 
     // default page if no route found
     app.route('*')

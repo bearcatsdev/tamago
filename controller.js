@@ -271,6 +271,60 @@ exports.newChildGoal = function(req, res) {
     }
 };
 
+exports.buyChildGoal = function(req, res) {
+    var childId = req.body.child_id;
+    var goalId = req.body.goal_id;
+
+    if (childId == null || goalId == null) {
+        response.error("Data supplied not sufficient", res);
+    } else {
+        var sql = 'SELECT `goal_itemprice` FROM `child_goal_list` WHERE `child_id` = ? AND `goal_id` = ?';
+        connection.query(sql, [childId, goalId], function (error, rows) {
+            if(error){
+                console.log(error);
+                response.error(error, res);
+            } else{
+                var goalPrice = rows[0].goal_itemprice;
+
+                var sql = 'SELECT `child_savings` FROM `children_list` WHERE `child_id` = ?';
+                connection.query(sql, [childId], function (error1, rows1) {
+                    if (error) {
+                        console.log(error1);
+                        response.error(error1, res);
+                    } else {
+                        var childSavings = rows1[0].child_savings;
+
+                        if (childSavings > goalPrice) {
+                            var newSavings = childSavings - goalPrice;
+
+                            var sql = 'UPDATE `children_list` SET `child_savings` = ? WHERE `children_list`.`child_id` = ?;';
+                            connection.query(sql, [newSavings, childId], function (error2, rows2) {
+                                if (error) {
+                                    console.log(error2);
+                                    response.error(error2, res);
+                                } else {
+                                    var sql = 'UPDATE `child_goal_list` SET `goal_done` = true WHERE `child_goal_list`.`goal_id` = ?;';
+                                    connection.query(sql, [goalId], function (error3, rows3) {
+                                        if (error) {
+                                            console.log(error3);
+                                            response.error(error3, res);
+                                        } else {
+                                            response.ok("Item bought successfully.", res);
+                                        }
+                                    });
+                                }
+                            });
+                            
+                        } else {
+                            response.ok("Savings not enough to buy item.", res);
+                        }
+                    }
+                });
+            }
+        });
+    }
+};
+
 exports.getChildrenList = function(req, res) {
     var parentId = req.body.parent_id;
 
