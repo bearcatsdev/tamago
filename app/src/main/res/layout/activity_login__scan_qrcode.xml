@@ -6,13 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Login_ScanQRCode">
 
-    <me.dm7.barcodescanner.zxing.ZXingScannerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/zxingscanner">
-    </me.dm7.barcodescanner.zxing.ZXingScannerView>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+        <me.dm7.barcodescanner.zxing.ZXingScannerView
+            android:id="@+id/zxingscanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></me.dm7.barcodescanner.zxing.ZXingScannerView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="17dp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="20dp"
+            android:text="Scan QR Code from Parent App"/>
 
 </RelativeLayout>

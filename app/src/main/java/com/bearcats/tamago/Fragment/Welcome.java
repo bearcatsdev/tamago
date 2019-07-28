@@ -43,6 +43,9 @@ public class Welcome extends Fragment {
             @Override
             public void run() {
                 next.setClickable(true);
+                Fragment loginFragment = new Introduction();
+                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
+                fc.replaceFragment(loginFragment);
             }
         };
 
@@ -60,9 +63,6 @@ public class Welcome extends Fragment {
                 next.setClickable(false);
                 next.animate().translationY(20).setDuration(100);
                 handler.postDelayed(runnable,100);
-                Fragment loginFragment = new Introduction();
-                FragmentChangeListener fc = (FragmentChangeListener) getActivity();
-                fc.replaceFragment(loginFragment);
             }
         });
 
