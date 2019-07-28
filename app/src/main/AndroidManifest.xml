@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".Activity.MainActivity">
         </activity>
-        <activity android:name=".Activity.Login_ScanQRCode">
+        <activity android:name=".Activity.QRscan">
         </activity>
         <activity
             android:name="Launch_Screen"
