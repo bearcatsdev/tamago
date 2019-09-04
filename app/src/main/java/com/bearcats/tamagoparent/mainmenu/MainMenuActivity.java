@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -75,8 +77,8 @@ public class MainMenuActivity extends AppCompatActivity {
                     children_models.add(new ChildrenModel(
                             response.getJSONObject(i).getInt("child_id"),
                             response.getJSONObject(i).getString("child_name"),
-                            5000,
-                            10000,
+                            response.getJSONObject(i).getInt("child_savings"),
+                            response.getJSONObject(i).getInt("child_total_goals"),
                             response.getJSONObject(i).getInt("child_wallet"),
                             response.getJSONObject(i).getInt("child_savings"),
                             response.getJSONObject(i).getInt("child_eggs"),
@@ -85,10 +87,29 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
 
                 ChildrenAdapter adapter = new ChildrenAdapter(MainMenuActivity.this, children_models);
-                recyclerView_child.setAdapter(adapter);
-                recyclerView_child.setVisibility(View.VISIBLE);
-                loadingShimmer.stopShimmer();
-                loadingShimmer.setVisibility(View.GONE);
+                loadingShimmer.animate()
+                        .alpha(0.0f)
+                        .setDuration(300)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                loadingShimmer.stopShimmer();
+                                loadingShimmer.setVisibility(View.GONE);
+                            }
+                        });
+                recyclerView_child.animate()
+                        .translationY(recyclerView_child.getHeight())
+                        .alpha(0.0f)
+                        .setDuration(300)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                recyclerView_child.setAdapter(adapter);
+                                recyclerView_child.setVisibility(View.VISIBLE);
+                            }
+                        });
             } else {
 
             }
