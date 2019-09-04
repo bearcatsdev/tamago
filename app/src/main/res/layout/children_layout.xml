@@ -111,7 +111,7 @@
                             android:background="@drawable/currency_01_saving" />
 
                         <TextView
-                            android:id="@+id/tv_ChildWallet"
+                            android:id="@+id/tv_ChildSaving"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/quicksand_b"
@@ -133,7 +133,7 @@
                             android:background="@drawable/currency_00_wallet" />
 
                         <TextView
-                            android:id="@+id/tv_childSsving"
+                            android:id="@+id/tv_childWallet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/quicksand_b"

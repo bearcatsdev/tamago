@@ -1,6 +1,7 @@
 package com.bearcats.tamagoparent.scan_barcode;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bearcats.tamagoparent.Add_Existing_Child;
 import com.bearcats.tamagoparent.R;
+import com.bearcats.tamagoparent.mainmenu.MainMenuActivity;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 import com.bearcats.tamagoparent.tempData.Temp;
 import com.bearcats.tamagoparent.views.FButton;
@@ -71,7 +73,7 @@ public class parent_relation extends Fragment {
                 }
             }
         });
-        
+
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,23 +95,27 @@ public class parent_relation extends Fragment {
                                 try{
                                     if(response.getInt("status") == 200){
                                         //pindah
-                                        Toast.makeText(getContext(), "Berhasil", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "Succes To Add Child ", Toast.LENGTH_SHORT).show();
                                     }
 
                                 }catch(JSONException e){
                                     e.printStackTrace();
                                 }
-
+                                Intent intent = new Intent(getContext(), MainMenuActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                getActivity().finish();
                             }
                         }, new Response.ErrorListener() {
 
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 Toast.makeText(getContext(), error+"", Toast.LENGTH_SHORT).show();
+                                getActivity().finish();
                             }
                         });
                 Volley.newRequestQueue(getContext()).add(jsonObjectRequest);
-                getActivity().finish();
+
             }
         });
     }

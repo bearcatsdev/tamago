@@ -98,8 +98,8 @@ public class ChildrenAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
             goal = itemView.findViewById(R.id.tv_goal);
-            wallet = itemView.findViewById(R.id.tv_ChildWallet);
-            saving = itemView.findViewById(R.id.tv_childSsving);
+            wallet = itemView.findViewById(R.id.tv_childWallet);
+            saving = itemView.findViewById(R.id.tv_ChildSaving);
             egg = itemView.findViewById(R.id.tv_childEgg);
             child_icon = itemView.findViewById(R.id.icon_child);
             progressBar = itemView.findViewById(R.id.progress_bar);

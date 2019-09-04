@@ -1,6 +1,7 @@
 package com.bearcats.tamagoparent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -40,6 +41,7 @@ public class Create_Child extends AppCompatActivity {
     Calendar myCalendar;
     int child_gender;
     String parent;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,11 @@ public class Create_Child extends AppCompatActivity {
         dailyLimit = findViewById(R.id.edit_dailyLimit);
         dob = findViewById(R.id.edit_dob);
         finish = findViewById(R.id.btn_finish);
+        toolbar = findViewById(R.id.toolbar_create_new_account);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //set Radio Group childGender to boy
         childGender.check(R.id.rb_boy);
@@ -146,20 +153,22 @@ public class Create_Child extends AppCompatActivity {
                                 public void onResponse(JSONObject response) {
                                     try{
                                         if(response.getInt("status") == 200){
-                                            //add  data to sqlite
-                                            //pindah
+                                            Intent intent = new Intent(Create_Child.this, MainMenuActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            Toast.makeText(Create_Child.this, "Success to Create Child", Toast.LENGTH_SHORT).show();
+                                            startActivity(intent);
+                                            finish();
                                         }
 
                                     }catch(JSONException e){
                                         e.printStackTrace();
                                     }
-
                                 }
                             }, new Response.ErrorListener() {
 
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-                                    Toast.makeText(Create_Child.this, error+"", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Create_Child.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                                 }
                             });
                     Volley.newRequestQueue(Create_Child.this).add(jsonObjectRequest);
@@ -185,5 +194,9 @@ public class Create_Child extends AppCompatActivity {
         dob.setText(sdf.format(myCalendar.getTime()));
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }

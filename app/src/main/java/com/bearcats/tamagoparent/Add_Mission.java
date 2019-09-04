@@ -1,8 +1,10 @@
 package com.bearcats.tamagoparent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -16,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bearcats.tamagoparent.mainmenu.MainMenuActivity;
 import com.bearcats.tamagoparent.preferences.UserPreferences;
 import com.bearcats.tamagoparent.views.FButton;
 
@@ -34,6 +37,7 @@ public class Add_Mission extends AppCompatActivity {
     int reward_type,child_id;
     Calendar myCalendar;
     JSONObject jsonObject;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,11 @@ public class Add_Mission extends AppCompatActivity {
         amount = findViewById(R.id.edit_amount);
         reward = findViewById(R.id.rg_reward);
         finishButton = findViewById(R.id.btn_finish);
+        toolbar = findViewById(R.id.toolbar_create_mission);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //get child_id
         child_id = getIntent().getExtras().getInt("child_id");
@@ -121,9 +130,11 @@ public class Add_Mission extends AppCompatActivity {
                                 public void onResponse(JSONObject response) {
                                     try{
                                         if(response.getInt("status") == 200){
-                                            //add  data to sqlite
-                                            //pindah
-                                            Toast.makeText(Add_Mission.this, "Success", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(Add_Mission.this, MainMenuActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                            Toast.makeText(Add_Mission.this, "Success to Add Mission", Toast.LENGTH_SHORT).show();
                                         }
 
                                     }catch(JSONException e){
@@ -135,7 +146,7 @@ public class Add_Mission extends AppCompatActivity {
 
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-                                    Toast.makeText(Add_Mission.this, error+"", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Add_Mission.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                                 }
                             });
                     Volley.newRequestQueue(Add_Mission.this).add(jsonObjectRequest);
@@ -150,5 +161,11 @@ public class Add_Mission extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         missionDeadline.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

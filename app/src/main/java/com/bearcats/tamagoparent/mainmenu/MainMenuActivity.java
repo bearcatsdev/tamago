@@ -24,16 +24,19 @@ import com.bearcats.tamagoparent.preferences.UserPreferences;
 import com.bearcats.tamagoparent.views.FButton;
 import com.facebook.shimmer.Shimmer;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.ArrayList;
 
 public class MainMenuActivity extends AppCompatActivity {
 
     RecyclerView recyclerView_child;
-    FButton menuButton,scanButton;
     ArrayList<ChildrenModel> children_models;
     ShimmerFrameLayout loadingShimmer;
     int MY_CAMERA_REQUEST_CODE = 100;
+    FloatingActionMenu fabMenu;
+    FloatingActionButton fabCreateChildAccount,fabLinkExistingChildAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,34 +51,15 @@ public class MainMenuActivity extends AppCompatActivity {
         int UserId = UserPreferences.getUserId(this);
 
         recyclerView_child = findViewById(R.id.recyclerView_child);
-        menuButton = findViewById(R.id.btn_menu);
         loadingShimmer = findViewById(R.id.shimmer_view_container);
-        scanButton = findViewById(R.id.btn_scan);
+        fabMenu = findViewById(R.id.fab_menu);
+        fabCreateChildAccount = findViewById(R.id.fab_create_child_account);
+        fabLinkExistingChildAccount = findViewById(R.id.fab_link_existing_child);
+
 
         loadingShimmer.startShimmer();
 
         children_models = new ArrayList<>();
-
-        //to make a child activity
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainMenuActivity.this, Create_Child.class));
-            }
-        });
-
-        //to add a existing child activity
-        scanButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ContextCompat.checkSelfPermission(MainMenuActivity.this, Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA},MY_CAMERA_REQUEST_CODE);
-                }
-                else
-                startActivity(new Intent(MainMenuActivity.this, Add_Existing_Child.class));
-            }
-        });
 
 
         //set recycler view layout
@@ -107,6 +91,25 @@ public class MainMenuActivity extends AppCompatActivity {
                 loadingShimmer.setVisibility(View.GONE);
             } else {
 
+            }
+        });
+
+        fabCreateChildAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainMenuActivity.this, Create_Child.class));
+            }
+        });
+
+        fabLinkExistingChildAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(MainMenuActivity.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA},MY_CAMERA_REQUEST_CODE);
+                }
+                else
+                    startActivity(new Intent(MainMenuActivity.this, Add_Existing_Child.class));
             }
         });
 
