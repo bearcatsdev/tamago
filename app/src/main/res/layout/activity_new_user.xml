@@ -79,15 +79,15 @@
 
     <com.bearcats.tamagoparent.views.FButton
         android:id="@+id/btn_next"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/login_margin_bottom"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
         android:text="@string/action_next"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
         fbutton:buttonColor="@color/colorPrimary"
-        fbutton:shadowEnabled="true"/>
+        fbutton:shadowEnabled="true" />
 
 </RelativeLayout>
