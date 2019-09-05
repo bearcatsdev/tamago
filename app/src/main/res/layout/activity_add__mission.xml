@@ -6,16 +6,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Add_Mission">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_mission_title"
-        android:layout_gravity="center"
-        android:textColor="#c0c0c0"
-        android:textSize="19dp"
-        android:layout_marginVertical="10dp"
-        android:layout_centerInParent="true"
-        android:fontFamily="@font/quicksand_b"/>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_create_mission"
+            android:background="@android:color/white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create a Mission For Child"
+                android:layout_gravity="center"
+                android:textColor="#c0c0c0"
+                android:textSize="19dp"
+                android:layout_marginVertical="10dp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/quicksand_b"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <View
         android:layout_width="match_parent"
