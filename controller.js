@@ -458,6 +458,24 @@ exports.setTaskDone = function(req, res) {
     }
 };
 
+exports.setTaskVerified = function(req, res) {
+    var taskId = req.body.task_id;
+
+    if (taskId == null) {
+        response.error("Data supplied not sufficient", res);
+    } else {
+        var sql = 'UPDATE `child_task_list` SET `task_verified` = true WHERE `child_task_list`.`task_id` = ?;';
+        connection.query(sql, [taskId], function (error, rows) {
+            if(error){
+                console.log(error);
+                response.error(error, res);
+            } else{
+                response.ok("Task is now verified.", res);
+            }
+        });
+    }
+};
+
 exports.newTask = function(req, res) {
     var taskName = req.body.task_name;
     var taskDetail = req.body.task_detail;

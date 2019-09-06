@@ -36,6 +36,9 @@ module.exports = function(app) {
     app.route('/api/child/task/setTaskDone')
         .post(todoList.setTaskDone);
 
+    app.route('/api/child/task/setTaskVerified')
+        .post(todoList.setTaskVerified);
+
     app.route('/api/child/login')
         .post(todoList.loginChild);
 
