@@ -499,3 +499,15 @@ exports.newTask = function(req, res) {
         });
     }
 };
+
+exports.getNews = function(req, res) {
+    var sql = 'SELECT * FROM `news_stream`';
+    connection.query(sql, function (error, rows){
+        if(error){
+            console.log(error)
+            response.error(error, res)
+        } else{
+            response.ok(rows, res)
+        }
+    });
+};
