@@ -6,6 +6,9 @@ module.exports = function(app) {
     app.route('/')
         .get(todoList.index);
 
+    app.route('/api/getNews')
+        .get(todoList.getNews);
+
     app.route('/api/user/newUser')
         .post(todoList.newUser);
         
