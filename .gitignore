@@ -89,3 +89,9 @@ typings/
 
 # Config files
 conn.js
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/TamagoServer.iml
+.idea/modules.xml
+.idea/misc.xml
+.DS_Store
