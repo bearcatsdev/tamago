@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Tamago Parent</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_tamago">Hey, welcome to\nTamago for Parents!</string>
+    <string name="action_lets_go">Let\'s go!</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="terms_of_service">Terms of service</string>
+    <string name="action_send_otp">Send OTP</string>
+    <string name="verification">Verification</string>
+    <string name="please_input_phone_number">Please input your phone number</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="otp_note">We will send you a one time SMS message\nCarrier rates may apply</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="field_must_be_filled">Field must be filled</string>
+    <string name="otp_has_been_sent">OTP has been sent!</string>
+    <string name="otp_sent_number">Please type the verification code\nsent to %1s</string>
+    <string name="action_verify">Verify</string>
+    <string name="otp_invalid">OTP code is invalid</string>
+    <string name="tell_your_name">Hello, who are you?</string>
+    <string name="hint_name">Your name</string>
+    <string name="action_next">Next</string>
+    <string name="welcome">Welcome</string>
+    <string name="create_child_title">Create a Child</string>
+    <string name="child_gender">Child Gender</string>
+    <string name="child_name">Child Name</string>
+    <string name="dob">Date of Birth</string>
+    <string name="action_finish">Finish</string>
+    <string name="child_initial_saving">Initial Saving</string>
+    <string name="child_daily_limit">Daily Limit</string>
+    <string name="parent_relation">Parent Relation</string>
+    <string name="add_mission_title">Add Mission</string>
+    <string name="mission_name">Mission Name</string>
+    <string name="mission_detail">Mission Detail</string>
+    <string name="Reward">Reward</string>
+    <string name="mission_deadline">Mission Deadline</string>
+    <string name="amount">Amount</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="chicken_size">120dp</dimen>
+    <dimen name="login_margin_bottom">15dp</dimen>
+    <dimen name="login_margin_top">5dp</dimen>
+    <dimen name="login_chicken_margin_top">0dp</dimen>
+    <dimen name="login_otp_field_width">35dp</dimen>
+    <dimen name="login_otp_field_height">45dp</dimen>
+    <dimen name="login_otp_text_size">20sp</dimen>
+
+</resources>
