@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Home" android:icon="@drawable/ic_01_home_b" android:id="@+id/home"></item>
+    <item android:title="Missions"  android:icon="@drawable/ic_02_task_w" android:id="@+id/task"></item>
+    <item android:enabled="false" android:checkable="false" ></item>
+    <item android:title="Rewards"  android:icon="@drawable/ic_03_reward_w" android:id="@+id/reward"></item>
+    <item android:title="Account"  android:icon="@drawable/ic_04_account_w" android:id="@+id/account"></item>
+
+</menu>
